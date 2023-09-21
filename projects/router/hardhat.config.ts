@@ -55,7 +55,7 @@ const eth: NetworkUserConfig = {
 }
 
 const polygon:NetworkUserConfig =  {
-  url: "https://polygon.llamarpc.com",
+  url: "https://polygon-bor.publicnode.com",
   chainId: 137,
   accounts: [process.env.PRIVATEKEY!]
 }

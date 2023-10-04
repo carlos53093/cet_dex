@@ -1,8 +1,8 @@
 import { ethers, network } from 'hardhat'
-// import { configs } from '@squadswap/common/config'
-// import { tryVerify } from '@squadswap/common/verify'
+// import { configs } from '@cryptoswap2/common/config'
+// import { tryVerify } from '@cryptoswap2/common/verify'
 import fs from 'fs'
-import { abi } from '@squadswap/v3-core/artifacts/contracts/SquadV3Factory.sol/SquadV3Factory.json'
+import { abi } from '@cryptoswap2/v3-core/artifacts/contracts/CryptoV3Factory.sol/CryptoV3Factory.json'
 import { configs } from '../../../common/config';
 
 import { parseEther } from 'ethers/lib/utils'
@@ -20,19 +20,19 @@ async function main() {
   const v3DeployedContracts = await import(`../../v3-core/deployments/${networkName}.json`)
   const mcV3DeployedContracts = await import(`../../masterchef-v3/deployments/${networkName}.json`)
 
-  const squadV3Factory_address = v3DeployedContracts.SquadV3Factory
+  const cryptoV3Factory_address = v3DeployedContracts.CryptoV3Factory
 
-  const SquadV3LmPoolDeployer = await ethers.getContractFactory('SquadV3LmPoolDeployer')
-  const squadV3LmPoolDeployer = await SquadV3LmPoolDeployer.deploy(mcV3DeployedContracts.MasterChefV3)
+  const CryptoV3LmPoolDeployer = await ethers.getContractFactory('CryptoV3LmPoolDeployer')
+  const cryptoV3LmPoolDeployer = await CryptoV3LmPoolDeployer.deploy(mcV3DeployedContracts.MasterChefV3)
 
-  console.log('squadV3LmPoolDeployer deployed to:', squadV3LmPoolDeployer.address)
+  console.log('cryptoV3LmPoolDeployer deployed to:', cryptoV3LmPoolDeployer.address)
 
-  const squadV3Factory = new ethers.Contract(squadV3Factory_address, abi, owner)
+  const cryptoV3Factory = new ethers.Contract(cryptoV3Factory_address, abi, owner)
 
-  await squadV3Factory.setLmPoolDeployer(squadV3LmPoolDeployer.address)
+  await cryptoV3Factory.setLmPoolDeployer(cryptoV3LmPoolDeployer.address)
 
   const contracts = {
-    SquadV3LmPoolDeployer: squadV3LmPoolDeployer.address,
+    CryptoV3LmPoolDeployer: cryptoV3LmPoolDeployer.address,
   }
   fs.writeFileSync(`./deployments/${networkName}.json`, JSON.stringify(contracts, null, 2))
 }

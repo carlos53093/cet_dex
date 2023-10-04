@@ -11,13 +11,13 @@ import "../interfaces/IReceiver.sol";
 
 /**
  * @dev MasterChefV3KeeperV1 was designed to use in BNB chain.
- * Receiver will harvest squad from MasterChefV2 pool , then upkeep for MasterChefV3.
+ * Receiver will harvest crypto from MasterChefV2 pool , then upkeep for MasterChefV3.
  */
 contract MasterChefV3KeeperV1 is KeeperCompatibleInterface, Ownable, Pausable {
     IMasterChefV2 public immutable MasterChefV2;
     IMasterChefV3 public immutable MasterChefV3;
     IReceiver public immutable Receiver;
-    IERC20 public immutable Squad;
+    IERC20 public immutable Crypto;
 
     uint256 public immutable V2Pid;
     address public register;
@@ -44,13 +44,13 @@ contract MasterChefV3KeeperV1 is KeeperCompatibleInterface, Ownable, Pausable {
     /// @param _V2 MasterChefV2 address.
     /// @param _V3 MasterChefV3 address.
     /// @param _receiver Receiver address.
-    /// @param _squad Squad address.
+    /// @param _crypto Crypto address.
     /// @param _V2Pid Pid in MasterChefV2.
-    constructor(IMasterChefV2 _V2, IMasterChefV3 _V3, IReceiver _receiver, IERC20 _squad, uint256 _V2Pid) {
+    constructor(IMasterChefV2 _V2, IMasterChefV3 _V3, IReceiver _receiver, IERC20 _crypto, uint256 _V2Pid) {
         MasterChefV2 = _V2;
         MasterChefV3 = _V3;
         Receiver = _receiver;
-        Squad = _squad;
+        Crypto = _crypto;
         V2Pid = _V2Pid;
     }
 
@@ -62,10 +62,10 @@ contract MasterChefV3KeeperV1 is KeeperCompatibleInterface, Ownable, Pausable {
     //The logic is consistent with the following performUpkeep function, in order to make the code logic clearer.
     function checkUpkeep(bytes calldata) external view override returns (bool upkeepNeeded, bytes memory) {
         if (!paused()) {
-            uint256 penddingSquadAmount = MasterChefV2.pendingSquad(V2Pid, address(Receiver));
-            uint256 squadBalanceInReceiver = Squad.balanceOf(address(Receiver));
+            uint256 penddingCryptoAmount = MasterChefV2.pendingCrypto(V2Pid, address(Receiver));
+            uint256 cryptoBalanceInReceiver = Crypto.balanceOf(address(Receiver));
             uint256 latestPeriodEndTime = MasterChefV3.latestPeriodEndTime();
-            if (penddingSquadAmount + squadBalanceInReceiver > 0 && latestPeriodEndTime < block.timestamp + bufferSecond)
+            if (penddingCryptoAmount + cryptoBalanceInReceiver > 0 && latestPeriodEndTime < block.timestamp + bufferSecond)
                 upkeepNeeded = true;
         }
     }

@@ -2,9 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '../lens/SquadInterfaceMulticall.sol';
+import '../lens/CryptoInterfaceMulticall.sol';
 
-contract SquadInterfaceMulticallTest is SquadInterfaceMulticall {
+contract CryptoInterfaceMulticallTest is CryptoInterfaceMulticall {
 
     event Multicall(uint256 blockNumber, bool success, uint256 gasUsed, bytes returnData);
 

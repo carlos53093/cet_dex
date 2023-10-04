@@ -10,7 +10,7 @@ const abi = [
     inputs: [
       {
         internalType: "contract IERC20",
-        name: "_SQUAD",
+        name: "_crypto",
         type: "address",
       },
       {
@@ -80,7 +80,7 @@ const abi = [
   },
   {
     inputs: [],
-    name: "NotSquadNFT",
+    name: "NotCryptoNFT",
     type: "error",
   },
   {
@@ -110,7 +110,7 @@ const abi = [
       },
       {
         indexed: true,
-        internalType: "contract ISquadV3Pool",
+        internalType: "contract ICryptoV3Pool",
         name: "v3Pool",
         type: "address",
       },
@@ -286,13 +286,13 @@ const abi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "squadPerSecond",
+        name: "cryptoPerSecond",
         type: "uint256",
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "squadAmount",
+        name: "cryptoAmount",
         type: "uint256",
       },
     ],
@@ -430,7 +430,7 @@ const abi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "remainingSquad",
+        name: "remainingCrypto",
         type: "uint256",
       },
     ],
@@ -483,7 +483,7 @@ const abi = [
   },
   {
     inputs: [],
-    name: "SQUAD",
+    name: "CST",
     outputs: [
       {
         internalType: "contract IERC20",
@@ -593,7 +593,7 @@ const abi = [
         type: "uint256",
       },
       {
-        internalType: "contract ISquadV3Pool",
+        internalType: "contract ICryptoV3Pool",
         name: "_v3Pool",
         type: "address",
       },
@@ -762,7 +762,7 @@ const abi = [
     outputs: [
       {
         internalType: "uint256",
-        name: "squadPerSecond",
+        name: "cryptoPerSecond",
         type: "uint256",
       },
       {
@@ -786,7 +786,7 @@ const abi = [
     outputs: [
       {
         internalType: "uint256",
-        name: "squadPerSecond",
+        name: "cryptoPerSecond",
         type: "uint256",
       },
       {
@@ -879,7 +879,7 @@ const abi = [
   },
   {
     inputs: [],
-    name: "latestPeriodSquadPerSecond",
+    name: "latestPeriodCryptoPerSecond",
     outputs: [
       {
         internalType: "uint256",
@@ -1029,7 +1029,7 @@ const abi = [
         type: "uint256",
       },
     ],
-    name: "pendingSquad",
+    name: "pendingCrypto",
     outputs: [
       {
         internalType: "uint256",
@@ -1056,7 +1056,7 @@ const abi = [
         type: "uint256",
       },
       {
-        internalType: "contract ISquadV3Pool",
+        internalType: "contract ICryptoV3Pool",
         name: "v3Pool",
         type: "address",
       },

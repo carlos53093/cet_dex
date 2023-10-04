@@ -1,6 +1,6 @@
 # Solidity API
 
-## ISquadV3Pool
+## ICryptoV3Pool
 
 ### factory
 

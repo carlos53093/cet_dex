@@ -1,6 +1,6 @@
 # Solidity API
 
-## ISquadV3PoolDeployer
+## ICryptoV3PoolDeployer
 
 A contract that constructs a pool must implement this to pass arguments to the pool
 

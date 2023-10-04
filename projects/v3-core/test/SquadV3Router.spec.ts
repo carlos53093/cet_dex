@@ -1,8 +1,8 @@
 import { Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
 import { TestERC20 } from '../typechain-types/contracts/test/TestERC20'
-import { SquadV3Factory } from '../typechain-types/contracts/SquadV3Factory'
-import { MockTimeSquadV3Pool } from '../typechain-types/contracts/test/MockTimeSquadV3Pool'
+import { CryptoV3Factory } from '../typechain-types/contracts/CryptoV3Factory'
+import { MockTimeCryptoV3Pool } from '../typechain-types/contracts/test/MockTimeCryptoV3Pool'
 import { expect } from './shared/expect'
 
 import { poolFixture } from './shared/fixtures'
@@ -18,8 +18,8 @@ import {
   getMaxTick,
   expandTo18Decimals,
 } from './shared/utilities'
-import { TestSquadV3Router } from '../typechain-types/contracts/test/TestSquadV3Router'
-import { TestSquadV3Callee } from '../typechain-types/contracts/test/TestSquadV3Callee'
+import { TestCryptoV3Router } from '../typechain-types/contracts/test/TestCryptoV3Router'
+import { TestCryptoV3Callee } from '../typechain-types/contracts/test/TestCryptoV3Callee'
 
 const feeAmount = FeeAmount.MEDIUM
 const tickSpacing = TICK_SPACINGS[feeAmount]
@@ -28,15 +28,15 @@ const createFixtureLoader = waffle.createFixtureLoader
 
 type ThenArg<T> = T extends PromiseLike<infer U> ? U : T
 
-describe('SquadV3Pool', () => {
+describe('CryptoV3Pool', () => {
   let wallet: Wallet, other: Wallet
 
   let token0: TestERC20
   let token1: TestERC20
   let token2: TestERC20
-  let factory: SquadV3Factory
-  let pool0: MockTimeSquadV3Pool
-  let pool1: MockTimeSquadV3Pool
+  let factory: CryptoV3Factory
+  let pool0: MockTimeCryptoV3Pool
+  let pool1: MockTimeCryptoV3Pool
 
   let pool0Functions: PoolFunctions
   let pool1Functions: PoolFunctions
@@ -44,8 +44,8 @@ describe('SquadV3Pool', () => {
   let minTick: number
   let maxTick: number
 
-  let swapTargetCallee: TestSquadV3Callee
-  let swapTargetRouter: TestSquadV3Router
+  let swapTargetCallee: TestCryptoV3Callee
+  let swapTargetRouter: TestCryptoV3Router
 
   let loadFixture: ReturnType<typeof createFixtureLoader>
   let createPool: ThenArg<ReturnType<typeof poolFixture>>['createPool']
@@ -66,7 +66,7 @@ describe('SquadV3Pool', () => {
       spacing: number,
       firstToken: TestERC20,
       secondToken: TestERC20
-    ): Promise<[MockTimeSquadV3Pool, any]> => {
+    ): Promise<[MockTimeCryptoV3Pool, any]> => {
       const pool = await createPool(amount, spacing, firstToken, secondToken)
       const poolFunctions = createPoolFunctions({
         swapTarget: swapTargetCallee,

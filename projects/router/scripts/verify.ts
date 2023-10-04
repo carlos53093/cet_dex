@@ -11,7 +11,7 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`)
   }
 
-  // config.v2Factory = "0xf7b814A12617B92fb17f17276Cbc02ef3523C0D2";    // Squad factory v2 in bsc testnet
+  // config.v2Factory = "0xf7b814A12617B92fb17f17276Cbc02ef3523C0D2";    // Crypto factory v2 in bsc testnet
 
   const deployedContracts_v3_core = await import(`../../v3-core/deployments/${networkName}.json`)
   const deployedContracts_v3_periphery = await import(`../../v3-periphery/deployments/${networkName}.json`)
@@ -26,8 +26,8 @@ async function main() {
   console.log('Verify swapRouter')
   await verifyContract(deployedContracts_smart_router.SmartRouter, [
     config.v2Factory,
-    deployedContracts_v3_core.SquadV3PoolDeployer,
-    deployedContracts_v3_core.SquadV3Factory,
+    deployedContracts_v3_core.CryptoV3PoolDeployer,
+    deployedContracts_v3_core.CryptoV3Factory,
     deployedContracts_v3_periphery.NonfungiblePositionManager,
     config.stableFactory,
     config.stableInfo,
@@ -38,8 +38,8 @@ async function main() {
   // Verify mixedRouteQuoterV1
   console.log('Verify mixedRouteQuoterV1')
   await verifyContract(deployedContracts_smart_router.MixedRouteQuoterV1, [
-    deployedContracts_v3_core.SquadV3PoolDeployer,
-    deployedContracts_v3_core.SquadV3Factory,
+    deployedContracts_v3_core.CryptoV3PoolDeployer,
+    deployedContracts_v3_core.CryptoV3Factory,
     config.v2Factory,
     config.stableFactory,
     config.WNATIVE,
@@ -49,8 +49,8 @@ async function main() {
   // Verify quoterV2
   console.log('Verify quoterV2')
   await verifyContract(deployedContracts_smart_router.QuoterV2, [
-    deployedContracts_v3_core.SquadV3PoolDeployer,
-    deployedContracts_v3_core.SquadV3Factory,
+    deployedContracts_v3_core.CryptoV3PoolDeployer,
+    deployedContracts_v3_core.CryptoV3Factory,
     config.WNATIVE,
   ])
   await sleep(10000)

@@ -3540,7 +3540,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "1000",
@@ -3556,7 +3556,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "0",
@@ -3572,7 +3572,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "1000000000000000000",
@@ -3588,7 +3588,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "1000000000000000000",
@@ -3604,7 +3604,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "0",
@@ -3620,7 +3620,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "poolBalance0": "1",
   "poolBalance1": "26087635650665564424699143612505016738",
@@ -3630,7 +3630,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "2",
@@ -3646,7 +3646,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "2",
@@ -3662,7 +3662,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "2",
@@ -3678,7 +3678,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "3170203168088600911",
@@ -3694,7 +3694,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "1268081267235440409",
@@ -3710,7 +3710,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "0",
@@ -3726,7 +3726,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "1",
   "amount0Delta": "0",
@@ -3742,7 +3742,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "poolBalance0": "1",
   "poolBalance1": "26087635650665564424699143612505016738",
@@ -3752,7 +3752,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "1",
   "poolBalance1": "26087635650665564424699143612505016738",
@@ -3762,7 +3762,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to max price swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests close to max price swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "1",
   "poolBalance1": "26087635650665564424699143612505016738",
@@ -3772,7 +3772,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "1000",
@@ -3788,7 +3788,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-26033696443732900224230990682799108357",
@@ -3804,7 +3804,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "1000000000000000000",
@@ -3820,7 +3820,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "poolBalance0": "26037782196502120275425782622539039026",
   "poolBalance1": "1",
@@ -3830,7 +3830,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-26037782196502120271415757559882397088",
@@ -3846,7 +3846,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-26037782196502120271415757559882397088",
@@ -3862,7 +3862,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "10840864411451148338440683402407723726",
@@ -3878,7 +3878,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "10840864411451148338440683402407723726",
@@ -3894,7 +3894,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "poolBalance0": "26037782196502120275425782622539039026",
   "poolBalance1": "1",
@@ -3904,7 +3904,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "26037782196502120275425782622539039026",
   "poolBalance1": "1",
@@ -3914,7 +3914,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "26037782196502120275425782622539039026",
   "poolBalance1": "1",
@@ -3924,7 +3924,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-1000",
@@ -3940,7 +3940,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-1000000000000000000",
@@ -3956,7 +3956,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-1000000000000000000",
@@ -3972,7 +3972,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-26037782196502120272263504962370659657",
@@ -3988,7 +3988,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests close to min price swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests close to min price swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "26037782196502120275425782622539039026",
   "amount0Delta": "-26037782196502120274160871558471687256",
@@ -4004,7 +4004,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1000",
@@ -4020,7 +4020,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-989",
@@ -4036,7 +4036,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1000000000000000000",
@@ -4052,7 +4052,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "836795075501202120",
@@ -4068,7 +4068,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-662207357859531772",
@@ -4084,7 +4084,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-585786437626904951",
@@ -4100,7 +4100,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1012",
@@ -4116,7 +4116,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "2020202020202020203",
@@ -4132,7 +4132,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "836795075501202120",
@@ -4148,7 +4148,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1174017838553918518",
@@ -4164,7 +4164,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "2000000000000000000",
   "poolBalance1": "2000000000000000000",
@@ -4174,7 +4174,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-1000",
@@ -4190,7 +4190,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-1000000000000000000",
@@ -4206,7 +4206,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-585786437626904951",
@@ -4222,7 +4222,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "2000000000000000000",
   "poolBalance1": "2000000000000000000",
@@ -4232,7 +4232,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests high fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-735088935932648267",
@@ -4248,7 +4248,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1000",
@@ -4264,7 +4264,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4274,7 +4274,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1000000000000000000",
@@ -4290,7 +4290,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1000000000000000000",
@@ -4306,7 +4306,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4316,7 +4316,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4326,7 +4326,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "2",
@@ -4342,7 +4342,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "2",
@@ -4358,7 +4358,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "2",
@@ -4374,7 +4374,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "3170203168088600913",
@@ -4390,7 +4390,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1268081267235440411",
@@ -4406,7 +4406,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4416,7 +4416,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4426,7 +4426,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4436,7 +4436,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4446,7 +4446,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the max ratio swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the max ratio swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "36851544448870481547184934703545702873",
@@ -4456,7 +4456,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4466,7 +4466,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-36847450330381418730249498720728641159",
@@ -4482,7 +4482,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4492,7 +4492,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4502,7 +4502,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-36851544446924640739010339253784101494",
@@ -4518,7 +4518,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-36851544446924640739010339253784101494",
@@ -4534,7 +4534,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4544,7 +4544,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4554,7 +4554,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4564,7 +4564,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4574,7 +4574,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "36851544446924640743020364316440743440",
   "poolBalance1": "0",
@@ -4584,7 +4584,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-1000",
@@ -4600,7 +4600,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-1000000000000000000",
@@ -4616,7 +4616,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-1000000000000000000",
@@ -4632,7 +4632,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-36851544446924640739858086656272364071",
@@ -4648,7 +4648,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests initialized at the min ratio swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests initialized at the min ratio swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "36851544446924640743020364316440743440",
   "amount0Delta": "-36851544446924640741755453252373391670",
@@ -4664,7 +4664,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1000",
@@ -4680,7 +4680,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-998",
@@ -4696,7 +4696,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1000000000000000000",
@@ -4712,7 +4712,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "828841545518949575",
@@ -4728,7 +4728,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-666444407401233536",
@@ -4744,7 +4744,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-585786437626904950",
@@ -4760,7 +4760,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1002",
@@ -4776,7 +4776,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "2001000500250125077",
@@ -4792,7 +4792,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "828841545518949575",
@@ -4808,7 +4808,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1162859089713235953",
@@ -4824,7 +4824,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "2000000000000000000",
   "poolBalance1": "2000000000000000000",
@@ -4834,7 +4834,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-1000",
@@ -4850,7 +4850,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-1000000000000000000",
@@ -4866,7 +4866,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-585786437626904950",
@@ -4882,7 +4882,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "2000000000000000000",
   "poolBalance1": "2000000000000000000",
@@ -4892,7 +4892,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-735088935932648266",
@@ -4908,7 +4908,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "1000",
@@ -4924,7 +4924,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "-998",
@@ -4940,7 +4940,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "1000700370186095",
@@ -4956,7 +4956,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "1000700370186095",
@@ -4972,7 +4972,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "-999700069986002",
@@ -4988,7 +4988,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "-999700069986002",
@@ -5004,7 +5004,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "1002",
@@ -5020,7 +5020,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "1000700370186095",
@@ -5036,7 +5036,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "1000700370186095",
@@ -5052,7 +5052,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "1000700370186095",
@@ -5068,7 +5068,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "999700069986003",
   "poolBalance1": "999700069986003",
@@ -5078,7 +5078,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "-1000",
@@ -5094,7 +5094,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "-999700069986002",
@@ -5110,7 +5110,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "-999700069986002",
@@ -5126,7 +5126,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "999700069986003",
   "poolBalance1": "999700069986003",
@@ -5136,7 +5136,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests low fee, large liquidity around current price (stable swap) swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "999700069986003",
   "amount0Delta": "-999700069986002",
@@ -5152,7 +5152,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "1000",
@@ -5168,7 +5168,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "0",
@@ -5184,7 +5184,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "1000000000000000000",
@@ -5200,7 +5200,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "1000000000000000000",
@@ -5216,7 +5216,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "-997499999999916603",
@@ -5232,7 +5232,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "-997499999999916603",
@@ -5248,7 +5248,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "121320",
@@ -5264,7 +5264,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "1002506265664222743",
@@ -5280,7 +5280,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "1002506265664222743",
@@ -5296,7 +5296,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "5585836237227797734613739025097051",
@@ -5312,7 +5312,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "9587849508916019933079002215745980",
   "poolBalance1": "9587849508916019933079002215718504",
@@ -5322,7 +5322,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "-1000",
@@ -5338,7 +5338,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "-1000000000000000000",
@@ -5354,7 +5354,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "-1000000000000000000",
@@ -5370,7 +5370,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "9587849508916019933079002215745980",
   "poolBalance1": "9587849508916019933079002215718504",
@@ -5380,7 +5380,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests max full range liquidity at 1:1 price with default fee swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "9587849508916019933079002215745980",
   "amount0Delta": "-3523961046695720664048729423726856",
@@ -5396,7 +5396,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "1000",
@@ -5412,7 +5412,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "-992",
@@ -5428,7 +5428,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "1000000000000000000",
@@ -5444,7 +5444,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "825484832224219584",
@@ -5460,7 +5460,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "-662786011041514718",
@@ -5476,7 +5476,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "-580792931780997577",
@@ -5492,7 +5492,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "1009",
@@ -5508,7 +5508,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "2020118556127751712",
@@ -5524,7 +5524,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "825484832224219584",
@@ -5540,7 +5540,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "1160172085780299018",
@@ -5556,7 +5556,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "1995006494154092626",
   "poolBalance1": "1995006494154092626",
@@ -5566,7 +5566,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "-1000",
@@ -5582,7 +5582,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "-1000000000000000000",
@@ -5598,7 +5598,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "-580792931780997577",
@@ -5614,7 +5614,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "1995006494154092626",
   "poolBalance1": "1995006494154092626",
@@ -5624,7 +5624,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 0 liquidity, all liquidity around current price swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "1995006494154092626",
   "amount0Delta": "-730095430086740893",
@@ -5640,7 +5640,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1000",
@@ -5656,7 +5656,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-996",
@@ -5672,7 +5672,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1000000000000000000",
@@ -5688,7 +5688,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "830503383204200600",
@@ -5704,7 +5704,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-665554628857381150",
@@ -5720,7 +5720,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-585786437626904951",
@@ -5736,7 +5736,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1004",
@@ -5752,7 +5752,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "2005012531328320805",
@@ -5768,7 +5768,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "830503383204200600",
@@ -5784,7 +5784,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "1165190636760280033",
@@ -5800,7 +5800,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "2000000000000000000",
   "poolBalance1": "2000000000000000000",
@@ -5810,7 +5810,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-1000",
@@ -5826,7 +5826,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-1000000000000000000",
@@ -5842,7 +5842,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-585786437626904951",
@@ -5858,7 +5858,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "2000000000000000000",
   "poolBalance1": "2000000000000000000",
@@ -5868,7 +5868,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "2000000000000000000",
   "amount0Delta": "-735088935932648267",
@@ -5884,7 +5884,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "1000",
@@ -5900,7 +5900,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "-996",
@@ -5916,7 +5916,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "1000000000000000000",
@@ -5932,7 +5932,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "1000000000000000000",
@@ -5948,7 +5948,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "-796609533654839122",
@@ -5964,7 +5964,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "-796609533654839122",
@@ -5980,7 +5980,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "1004",
@@ -5996,7 +5996,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "1340570900700822994",
@@ -6012,7 +6012,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "1340570900700822994",
@@ -6028,7 +6028,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "2325362722540579051",
@@ -6044,7 +6044,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "3995006494154092626",
   "poolBalance1": "3995006494154092626",
@@ -6054,7 +6054,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "-1000",
@@ -6070,7 +6070,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "-1000000000000000000",
@@ -6086,7 +6086,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "-1000000000000000000",
@@ -6102,7 +6102,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "3995006494154092626",
   "poolBalance1": "3995006494154092626",
@@ -6112,7 +6112,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:1 price, additional liquidity around current price swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "3995006494154092626",
   "amount0Delta": "-1465184366019389159",
@@ -6128,7 +6128,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "1000",
@@ -6144,7 +6144,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-9969",
@@ -6160,7 +6160,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "1000000000000000000",
@@ -6176,7 +6176,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "poolBalance0": "6324555320336758664",
   "poolBalance1": "632455532033675867",
@@ -6186,7 +6186,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-3870500641305577839",
@@ -6202,7 +6202,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-3870500641305577839",
@@ -6218,7 +6218,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "10027",
@@ -6234,7 +6234,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "36943904207443248858842916286821037437",
@@ -6250,7 +6250,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "poolBalance0": "6324555320336758664",
   "poolBalance1": "632455532033675867",
@@ -6260,7 +6260,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "6324555320336758664",
   "poolBalance1": "632455532033675867",
@@ -6270,7 +6270,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "6324555320336758664",
   "poolBalance1": "632455532033675867",
@@ -6280,7 +6280,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-1000",
@@ -6296,7 +6296,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-1000000000000000000",
@@ -6312,7 +6312,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-1000000000000000000",
@@ -6328,7 +6328,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-3162277660168379331",
@@ -6344,7 +6344,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 1:10 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "6324555320336758664",
   "amount0Delta": "-5059644256269406930",
@@ -6360,7 +6360,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "1000",
@@ -6376,7 +6376,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "-99",
@@ -6392,7 +6392,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "1000000000000000000",
@@ -6408,7 +6408,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "1000000000000000000",
@@ -6424,7 +6424,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "-86160834028576591",
@@ -6440,7 +6440,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "poolBalance0": "632455532033675867",
   "poolBalance1": "6324555320336758664",
@@ -6450,7 +6450,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "102",
@@ -6466,7 +6466,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "119078607596778508",
@@ -6482,7 +6482,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "119078607596778508",
@@ -6498,7 +6498,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "2536162534470880671",
@@ -6514,7 +6514,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "634040633617720169",
@@ -6530,7 +6530,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "-1000",
@@ -6546,7 +6546,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "632455532033675867",
   "amount0Delta": "-632455532033675831",
@@ -6562,7 +6562,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "poolBalance0": "632455532033675867",
   "poolBalance1": "6324555320336758664",
@@ -6572,7 +6572,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "632455532033675867",
   "poolBalance1": "6324555320336758664",
@@ -6582,7 +6582,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, 10:1 price, 2e18 max range liquidity swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "632455532033675867",
   "poolBalance1": "6324555320336758664",
@@ -6592,7 +6592,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "0",
@@ -6608,7 +6608,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "-996",
@@ -6624,7 +6624,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "0",
@@ -6640,7 +6640,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "0",
@@ -6656,7 +6656,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "-665554628857381150",
@@ -6672,7 +6672,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "-585786437626904951",
@@ -6688,7 +6688,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "0",
@@ -6704,7 +6704,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "0",
@@ -6720,7 +6720,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "0",
@@ -6736,7 +6736,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "0",
@@ -6752,7 +6752,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "1986520736831810281",
   "poolBalance1": "0",
@@ -6762,7 +6762,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "-1000",
@@ -6778,7 +6778,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "-1000000000000000000",
@@ -6794,7 +6794,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "-585786437626904951",
@@ -6810,7 +6810,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "1986520736831810281",
   "poolBalance1": "0",
@@ -6820,7 +6820,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token0 liquidity only swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token0 liquidity only swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "1986520736831810281",
   "amount0Delta": "-735088935932648267",
@@ -6836,7 +6836,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap exactly 0.0000000000000010000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap exactly 0.0000000000000010000 token0 for token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1000",
@@ -6852,7 +6852,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap exactly 0.0000000000000010000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap exactly 0.0000000000000010000 token1 for token0 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "0",
@@ -6868,7 +6868,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token0 for token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token0 for token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1000000000000000000",
@@ -6884,7 +6884,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token0 for token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "830503383204200600",
@@ -6900,7 +6900,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token1 for token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token1 for token0 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "0",
@@ -6916,7 +6916,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap exactly 1.0000 token1 for token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "0",
@@ -6932,7 +6932,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token0 for exactly 0.0000000000000010000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token0 for exactly 0.0000000000000010000 token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1004",
@@ -6948,7 +6948,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token0 for exactly 1.0000 token1 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token0 for exactly 1.0000 token1 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "2005012531328320805",
@@ -6964,7 +6964,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token0 for exactly 1.0000 token1 to price 0.50000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "830503383204200600",
@@ -6980,7 +6980,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token0 for token1 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token0 for token1 to price 0.40000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "1165190636760280033",
@@ -6996,7 +6996,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token0 for token1 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token0 for token1 to price 2.5000 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "1986520736831810281",
@@ -7006,7 +7006,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token1 for exactly 0.0000000000000010000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token1 for exactly 0.0000000000000010000 token0 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "0",
@@ -7022,7 +7022,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token1 for exactly 1.0000 token0 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token1 for exactly 1.0000 token0 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "0",
@@ -7038,7 +7038,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token1 for exactly 1.0000 token0 to price 2.0000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "0",
@@ -7054,7 +7054,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token1 for token0 to price 0.40000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token1 for token0 to price 0.40000 1`] = `
 Object {
   "poolBalance0": "0",
   "poolBalance1": "1986520736831810281",
@@ -7064,7 +7064,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool swap tests medium fee, token1 liquidity only swap token1 for token0 to price 2.5000 1`] = `
+exports[`CryptoV3Pool swap tests medium fee, token1 liquidity only swap token1 for token0 to price 2.5000 1`] = `
 Object {
   "amount0Before": "0",
   "amount0Delta": "0",

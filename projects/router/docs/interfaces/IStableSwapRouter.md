@@ -2,7 +2,7 @@
 
 ## IStableSwapRouter
 
-Functions for swapping tokens via squad Stable Swap
+Functions for swapping tokens via crypto Stable Swap
 
 ### exactInputStableSwap
 

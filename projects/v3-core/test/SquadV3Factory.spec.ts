@@ -1,7 +1,7 @@
 import { Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
-import { SquadV3Factory } from '../typechain-types/contracts/SquadV3Factory'
-import { SquadV3PoolDeployer } from '../typechain-types/contracts/SquadV3PoolDeployer'
+import { CryptoV3Factory } from '../typechain-types/contracts/CryptoV3Factory'
+import { CryptoV3PoolDeployer } from '../typechain-types/contracts/CryptoV3PoolDeployer'
 import { expect } from './shared/expect'
 import snapshotGasCost from './shared/snapshotGasCost'
 
@@ -16,21 +16,21 @@ const TEST_ADDRESSES: [string, string] = [
 
 const createFixtureLoader = waffle.createFixtureLoader
 
-describe('SquadV3Factory', () => {
+describe('CryptoV3Factory', () => {
   let wallet: Wallet, other: Wallet
 
-  let deployer: SquadV3PoolDeployer
-  let factory: SquadV3Factory
+  let deployer: CryptoV3PoolDeployer
+  let factory: CryptoV3Factory
   let poolBytecode: string
   const fixture = async () => {
-    const deployerFactory = await ethers.getContractFactory('SquadV3PoolDeployer')
-    const factoryFactory = await ethers.getContractFactory('SquadV3Factory')
-    const deployer_ = (await deployerFactory.deploy()) as SquadV3PoolDeployer
-    const factory_ = (await factoryFactory.deploy(deployer_.address)) as SquadV3Factory
+    const deployerFactory = await ethers.getContractFactory('CryptoV3PoolDeployer')
+    const factoryFactory = await ethers.getContractFactory('CryptoV3Factory')
+    const deployer_ = (await deployerFactory.deploy()) as CryptoV3PoolDeployer
+    const factory_ = (await factoryFactory.deploy(deployer_.address)) as CryptoV3Factory
 
     await deployer_.setFactoryAddress(factory_.address)
 
-    return [factory_, deployer_] as [SquadV3Factory, SquadV3PoolDeployer]
+    return [factory_, deployer_] as [CryptoV3Factory, CryptoV3PoolDeployer]
   }
 
   let loadFixture: ReturnType<typeof createFixtureLoader>
@@ -41,7 +41,7 @@ describe('SquadV3Factory', () => {
   })
 
   before('load pool bytecode', async () => {
-    poolBytecode = (await ethers.getContractFactory('SquadV3Pool')).bytecode
+    poolBytecode = (await ethers.getContractFactory('CryptoV3Pool')).bytecode
   })
 
   beforeEach('deploy factory', async () => {
@@ -85,7 +85,7 @@ describe('SquadV3Factory', () => {
     expect(await factory.getPool(tokens[0], tokens[1], feeAmount), 'getPool in order').to.eq(create2Address)
     expect(await factory.getPool(tokens[1], tokens[0], feeAmount), 'getPool in reverse').to.eq(create2Address)
 
-    const poolContractFactory = await ethers.getContractFactory('SquadV3Pool')
+    const poolContractFactory = await ethers.getContractFactory('CryptoV3Pool')
     const pool = poolContractFactory.attach(create2Address)
     expect(await pool.factory(), 'pool factory address').to.eq(factory.address)
     expect(await pool.token0(), 'pool token0').to.eq(TEST_ADDRESSES[0])

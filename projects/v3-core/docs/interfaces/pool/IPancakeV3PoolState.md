@@ -1,6 +1,6 @@
 # Solidity API
 
-## ISquadV3PoolState
+## ICryptoV3PoolState
 
 These methods compose the pool's state, and can change with any frequency including multiple times
 per transaction

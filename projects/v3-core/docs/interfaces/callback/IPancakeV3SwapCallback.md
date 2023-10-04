@@ -1,19 +1,19 @@
 # Solidity API
 
-## ISquadV3SwapCallback
+## ICryptoV3SwapCallback
 
-Any contract that calls ISquadV3PoolActions#swap must implement this interface
+Any contract that calls ICryptoV3PoolActions#swap must implement this interface
 
-### squadV3SwapCallback
+### CryptoV3SwapCallback
 
 ```solidity
-function squadV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes data) external
+function CryptoV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes data) external
 ```
 
-Called to `msg.sender` after executing a swap via ISquadV3Pool#swap.
+Called to `msg.sender` after executing a swap via ICryptoV3Pool#swap.
 
 _In the implementation you must pay the pool tokens owed for the swap.
-The caller of this method must be checked to be a SquadV3Pool deployed by the canonical SquadV3Factory.
+The caller of this method must be checked to be a CryptoV3Pool deployed by the canonical CryptoV3Factory.
 amount0Delta and amount1Delta can both be 0 if no tokens were swapped._
 
 #### Parameters
@@ -22,5 +22,5 @@ amount0Delta and amount1Delta can both be 0 if no tokens were swapped._
 | ---- | ---- | ----------- |
 | amount0Delta | int256 | The amount of token0 that was sent (negative) or must be received (positive) by the pool by the end of the swap. If positive, the callback must send that amount of token0 to the pool. |
 | amount1Delta | int256 | The amount of token1 that was sent (negative) or must be received (positive) by the pool by the end of the swap. If positive, the callback must send that amount of token1 to the pool. |
-| data | bytes | Any data passed through by the caller via the ISquadV3PoolActions#swap call |
+| data | bytes | Any data passed through by the caller via the ICryptoV3PoolActions#swap call |
 

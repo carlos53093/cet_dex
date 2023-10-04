@@ -6,9 +6,9 @@ import fs from 'fs'
 type ContractJson = { abi: any; bytecode: string }
 const artifacts: { [name: string]: ContractJson } = {
   // eslint-disable-next-line global-require
-  SquadV3PoolDeployer: require('../artifacts/contracts/SquadV3PoolDeployer.sol/SquadV3PoolDeployer.json'),
+  CryptoV3PoolDeployer: require('../artifacts/contracts/CryptoV3PoolDeployer.sol/CryptoV3PoolDeployer.json'),
   // eslint-disable-next-line global-require
-  SquadV3Factory: require('../artifacts/contracts/SquadV3Factory.sol/SquadV3Factory.json'),
+  CryptoV3Factory: require('../artifacts/contracts/CryptoV3Factory.sol/CryptoV3Factory.json'),
   FeeManager: require('../artifacts/contracts/FeeManger.sol/FeeManager.json'),
 }
 
@@ -17,44 +17,44 @@ async function main() {
   const networkName = network.name
   console.log('owner', owner.address)
 
-  let squadV3PoolDeployer_address = ''
-  let squadV3PoolDeployer
-  const SquadV3PoolDeployer = new ContractFactory(
-    artifacts.SquadV3PoolDeployer.abi,
-    artifacts.SquadV3PoolDeployer.bytecode,
+  let cryptoV3PoolDeployer_address = ''
+  let cryptoV3PoolDeployer
+  const CryptoV3PoolDeployer = new ContractFactory(
+    artifacts.CryptoV3PoolDeployer.abi,
+    artifacts.CryptoV3PoolDeployer.bytecode,
     owner
   )
-  if (!squadV3PoolDeployer_address) {
-    squadV3PoolDeployer = await SquadV3PoolDeployer.deploy()
+  if (!cryptoV3PoolDeployer_address) {
+    cryptoV3PoolDeployer = await CryptoV3PoolDeployer.deploy()
 
-    squadV3PoolDeployer_address = squadV3PoolDeployer.address
-    console.log('squadV3PoolDeployer', squadV3PoolDeployer_address)
+    cryptoV3PoolDeployer_address = cryptoV3PoolDeployer.address
+    console.log('cryptoV3PoolDeployer', cryptoV3PoolDeployer_address)
   } else {
-    squadV3PoolDeployer = new ethers.Contract(
-      squadV3PoolDeployer_address,
-      artifacts.SquadV3PoolDeployer.abi,
+    cryptoV3PoolDeployer = new ethers.Contract(
+      cryptoV3PoolDeployer_address,
+      artifacts.CryptoV3PoolDeployer.abi,
       owner
     )
   }
 
-  let squadV3Factory_address = ''
-  let squadV3Factory
-  if (!squadV3Factory_address) {
-    const SquadV3Factory = new ContractFactory(
-      artifacts.SquadV3Factory.abi,
-      artifacts.SquadV3Factory.bytecode,
+  let cryptoV3Factory_address = ''
+  let cryptoV3Factory
+  if (!cryptoV3Factory_address) {
+    const CryptoV3Factory = new ContractFactory(
+      artifacts.CryptoV3Factory.abi,
+      artifacts.CryptoV3Factory.bytecode,
       owner
     )
-    squadV3Factory = await SquadV3Factory.deploy(squadV3PoolDeployer_address)
+    cryptoV3Factory = await CryptoV3Factory.deploy(cryptoV3PoolDeployer_address)
 
-    squadV3Factory_address = squadV3Factory.address
-    console.log('squadV3Factory', squadV3Factory_address)
+    cryptoV3Factory_address = cryptoV3Factory.address
+    console.log('cryptoV3Factory', cryptoV3Factory_address)
   } else {
-    squadV3Factory = new ethers.Contract(squadV3Factory_address, artifacts.squadV3Factory.abi, owner)
+    cryptoV3Factory = new ethers.Contract(cryptoV3Factory_address, artifacts.cryptoV3Factory.abi, owner)
   }
-  console.log("===============================deployed squadFactory===================")
-  // Set FactoryAddress for squadV3PoolDeployer.
-  await squadV3PoolDeployer.setFactoryAddress(squadV3Factory_address);
+  console.log("===============================deployed cryptoFactory===================")
+  // Set FactoryAddress for cryptoV3PoolDeployer.
+  await cryptoV3PoolDeployer.setFactoryAddress(cryptoV3Factory_address);
 
   console.log("===============================set Factory ===================")
 
@@ -67,14 +67,14 @@ async function main() {
   const feeManager = await FeeManager.deploy()
 
   console.log("===============================feeManager ===================", feeManager.address)
-  await feeManager.setFactory(squadV3Factory_address)
+  await feeManager.setFactory(cryptoV3Factory_address)
   console.log("===============================setFactory ===================")
-  await squadV3Factory.changeFeeManager(feeManager.address)
+  await cryptoV3Factory.changeFeeManager(feeManager.address)
   console.log("===============================changeFeeManager ===================")
 
   const contracts = {
-    SquadV3Factory: squadV3Factory_address,
-    SquadV3PoolDeployer: squadV3PoolDeployer_address,
+    CryptoV3Factory: cryptoV3Factory_address,
+    CryptoV3PoolDeployer: cryptoV3PoolDeployer_address,
     FeeManager: feeManager.address
   }
 

@@ -1,8 +1,8 @@
-import { abi as ISquadV3PoolABI } from '@squadswap/v3-core/artifacts/contracts/interfaces/ISquadV3Pool.sol/ISquadV3Pool.json'
+import { abi as ICryptoV3PoolABI } from '@cryptoswap2/v3-core/artifacts/contracts/interfaces/ICryptoV3Pool.sol/ICryptoV3Pool.json'
 import { Fixture } from 'ethereum-waffle'
 import { BigNumber, constants, ContractTransaction, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
-import { ISquadV3Pool, IWETH9, MockTimeSwapRouter, TestERC20 } from '../typechain-types'
+import { ICryptoV3Pool, IWETH9, MockTimeSwapRouter, TestERC20 } from '../typechain-types'
 import completeFixture from './shared/completeFixture'
 import { FeeAmount, TICK_SPACINGS } from './shared/constants'
 import { encodePriceSqrt } from './shared/encodePriceSqrt'
@@ -21,7 +21,7 @@ describe('SwapRouter gas tests', function () {
     weth9: IWETH9
     router: MockTimeSwapRouter
     tokens: [TestERC20, TestERC20, TestERC20]
-    pools: [ISquadV3Pool, ISquadV3Pool, ISquadV3Pool]
+    pools: [ICryptoV3Pool, ICryptoV3Pool, ICryptoV3Pool]
   }> = async (wallets, provider) => {
     const { weth9, factory, router, tokens, nft } = await completeFixture(wallets, provider)
 
@@ -79,10 +79,10 @@ describe('SwapRouter gas tests', function () {
       factory.getPool(weth9.address, tokens[0].address, FeeAmount.MEDIUM),
     ])
 
-    const pools = poolAddresses.map((poolAddress) => new ethers.Contract(poolAddress, ISquadV3PoolABI, wallet)) as [
-      ISquadV3Pool,
-      ISquadV3Pool,
-      ISquadV3Pool
+    const pools = poolAddresses.map((poolAddress) => new ethers.Contract(poolAddress, ICryptoV3PoolABI, wallet)) as [
+      ICryptoV3Pool,
+      ICryptoV3Pool,
+      ICryptoV3Pool
     ]
 
     return {
@@ -96,7 +96,7 @@ describe('SwapRouter gas tests', function () {
   let weth9: IWETH9
   let router: MockTimeSwapRouter
   let tokens: [TestERC20, TestERC20, TestERC20]
-  let pools: [ISquadV3Pool, ISquadV3Pool, ISquadV3Pool]
+  let pools: [ICryptoV3Pool, ICryptoV3Pool, ICryptoV3Pool]
 
   let loadFixture: ReturnType<typeof waffle.createFixtureLoader>
 
@@ -267,7 +267,7 @@ describe('SwapRouter gas tests', function () {
     })
 
     // it.skip('0 -> 1 minimal', async () => {
-    //   const calleeFactory = await ethers.getContractFactory('TestSquadV3Callee')
+    //   const calleeFactory = await ethers.getContractFactory('TestCryptoV3Callee')
     //   const callee = await calleeFactory.deploy()
 
     //   await tokens[0].connect(trader).approve(callee.address, constants.MaxUint256)

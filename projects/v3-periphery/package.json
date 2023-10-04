@@ -1,13 +1,13 @@
 {
-  "name": "@squadswap/v3-periphery",
-  "description": "🎚 Peripheral smart contracts for interacting with SquadSwap V3",
+  "name": "@cryptoswap2/v3-periphery",
+  "description": "🎚 Peripheral smart contracts for interacting with CryptoSwap V3",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.4",
+  "version": "1.0.0",
   "keywords": [
-    "squadswap",
+    "cryptoswap",
     "periphery",
     "v3"
   ],
@@ -34,7 +34,7 @@
     "@nomiclabs/hardhat-etherscan": "^3.1.7",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@openzeppelin/hardhat-upgrades": "^1.22.1",
-    "@squadswap/v3-core": "1.0.7",
+    "@cryptoswap2/v3-core": "1.0.0",
     "@typechain/ethers-v5": "^10.2.0",
     "@types/chai": "^4.2.6",
     "@types/mocha": "^5.2.7",

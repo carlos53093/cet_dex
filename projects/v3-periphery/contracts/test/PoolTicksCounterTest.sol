@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Pool.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Pool.sol';
 
 pragma solidity >=0.6.0;
 
 import '../libraries/PoolTicksCounter.sol';
 
 contract PoolTicksCounterTest {
-    using PoolTicksCounter for ISquadV3Pool;
+    using PoolTicksCounter for ICryptoV3Pool;
 
     function countInitializedTicksCrossed(
-        ISquadV3Pool pool,
+        ICryptoV3Pool pool,
         int24 tickBefore,
         int24 tickAfter
     ) external view returns (uint32 initializedTicksCrossed) {

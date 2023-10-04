@@ -1,6 +1,6 @@
 pragma solidity >=0.5.0;
 
-import "@squadswap/v3-periphery/contracts/libraries/LiquidityAmounts.sol";
+import "@cryptoswap2/v3-periphery/contracts/libraries/LiquidityAmounts.sol";
 
 contract TestLiquidityAmounts {
   function getLiquidityForAmounts(

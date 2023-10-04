@@ -976,7 +976,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9749",
   "arbBalanceDelta1": "-0.0099019",
@@ -992,7 +992,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.0099900",
@@ -1001,7 +1001,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9791",
   "arbBalanceDelta1": "-0.0099171",
@@ -1037,7 +1037,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9750",
   "arbBalanceDelta1": "-0.010052",
@@ -1053,7 +1053,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.0099900",
@@ -1062,7 +1062,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9793",
   "arbBalanceDelta1": "-0.010068",
@@ -1098,7 +1098,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9636",
   "arbBalanceDelta1": "-0.89984",
@@ -1114,7 +1114,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.90888",
@@ -1123,7 +1123,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9628",
   "arbBalanceDelta1": "-0.89999",
@@ -1159,7 +1159,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9787",
   "arbBalanceDelta1": "-0.91490",
@@ -1175,7 +1175,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.90888",
@@ -1184,7 +1184,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9779",
   "arbBalanceDelta1": "-0.91505",
@@ -1220,7 +1220,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.8608",
   "arbBalanceDelta1": "-4.8931",
@@ -1236,7 +1236,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-4.9937",
@@ -1245,7 +1245,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.8555",
   "arbBalanceDelta1": "-4.8975",
@@ -1281,7 +1281,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "10.012",
   "arbBalanceDelta1": "-5.0437",
@@ -1297,7 +1297,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-4.9937",
@@ -1306,7 +1306,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "10.007",
   "arbBalanceDelta1": "-5.0481",
@@ -1342,7 +1342,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "8.8332",
   "arbBalanceDelta1": "-7.9613",
@@ -1358,7 +1358,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-9.0702",
@@ -1367,7 +1367,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "8.8260",
   "arbBalanceDelta1": "-7.9510",
@@ -1403,7 +1403,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "10.347",
   "arbBalanceDelta1": "-9.4670",
@@ -1419,7 +1419,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-9.0702",
@@ -1428,7 +1428,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 0; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "10.339",
   "arbBalanceDelta1": "-9.4567",
@@ -1464,7 +1464,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9749",
   "arbBalanceDelta1": "-0.0099019",
@@ -1480,7 +1480,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.0099900",
@@ -1489,7 +1489,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9941",
   "arbBalanceDelta1": "-0.0099171",
@@ -1525,7 +1525,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9750",
   "arbBalanceDelta1": "-0.010052",
@@ -1541,7 +1541,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.0099900",
@@ -1550,7 +1550,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 0.010000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9943",
   "arbBalanceDelta1": "-0.010068",
@@ -1586,7 +1586,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9636",
   "arbBalanceDelta1": "-0.89984",
@@ -1602,7 +1602,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.90888",
@@ -1611,7 +1611,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9778",
   "arbBalanceDelta1": "-0.89999",
@@ -1647,7 +1647,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.9787",
   "arbBalanceDelta1": "-0.91490",
@@ -1663,7 +1663,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-0.90888",
@@ -1672,7 +1672,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 1.0000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.9929",
   "arbBalanceDelta1": "-0.91505",
@@ -1708,7 +1708,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "9.8608",
   "arbBalanceDelta1": "-4.8931",
@@ -1724,7 +1724,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-4.9937",
@@ -1733,7 +1733,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "9.8705",
   "arbBalanceDelta1": "-4.8975",
@@ -1769,7 +1769,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "10.012",
   "arbBalanceDelta1": "-5.0437",
@@ -1785,7 +1785,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-4.9937",
@@ -1794,7 +1794,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 10.000 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "10.022",
   "arbBalanceDelta1": "-5.0481",
@@ -1830,7 +1830,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "8.8332",
   "arbBalanceDelta1": "-7.9613",
@@ -1846,7 +1846,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-9.0702",
@@ -1855,7 +1855,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 0.98 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "8.8410",
   "arbBalanceDelta1": "-7.9510",
@@ -1891,7 +1891,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 backrun to true price after swap only 1`] = `
 Object {
   "arbBalanceDelta0": "10.347",
   "arbBalanceDelta1": "-9.4670",
@@ -1907,7 +1907,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 not sandwiched 1`] = `
 Object {
   "amount0Delta": "10.000",
   "amount1Delta": "-9.0702",
@@ -1916,7 +1916,7 @@ Object {
 }
 `;
 
-exports[`SquadV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
+exports[`CryptoV3Pool arbitrage tests protocol fee = 2000; passive liquidity of 100.00 exact input of 10e18 token0 with starting price of 1.0 and true price of 1.01 sandwiched with swap to execution price then mint max liquidity/target/burn max liquidity 1`] = `
 Object {
   "arbBalanceDelta0": "10.354",
   "arbBalanceDelta1": "-9.4567",

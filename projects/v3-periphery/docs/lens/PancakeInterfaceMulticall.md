@@ -1,8 +1,8 @@
 # Solidity API
 
-## SquadInterfaceMulticall
+## CryptoInterfaceMulticall
 
-A fork of Multicall2 specifically tailored for the Squad Interface
+A fork of Multicall2 specifically tailored for the Crypto Interface
 
 ### Call
 
@@ -39,6 +39,6 @@ function getEthBalance(address addr) public view returns (uint256 balance)
 ### multicall
 
 ```solidity
-function multicall(struct SquadInterfaceMulticall.Call[] calls) public returns (uint256 blockNumber, struct SquadInterfaceMulticall.Result[] returnData)
+function multicall(struct CryptoInterfaceMulticall.Call[] calls) public returns (uint256 blockNumber, struct CryptoInterfaceMulticall.Result[] returnData)
 ```
 

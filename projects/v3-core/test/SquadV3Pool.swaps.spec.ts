@@ -1,10 +1,10 @@
 import { Decimal } from 'decimal.js'
 import { BigNumber, BigNumberish, ContractTransaction, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
-import { MockTimeSquadV3Pool } from '../typechain-types/contracts/test/MockTimeSquadV3Pool'
+import { MockTimeCryptoV3Pool } from '../typechain-types/contracts/test/MockTimeCryptoV3Pool'
 import { TestERC20 } from '../typechain-types/contracts/test/TestERC20'
 
-import { TestSquadV3Callee } from '../typechain-types/contracts/test/TestSquadV3Callee'
+import { TestCryptoV3Callee } from '../typechain-types/contracts/test/TestCryptoV3Callee'
 import { expect } from './shared/expect'
 import { poolFixture } from './shared/fixtures'
 import { formatPrice, formatTokenAmount } from './shared/format'
@@ -103,7 +103,7 @@ const SWAP_RECIPIENT_ADDRESS = constants.AddressZero.slice(0, -1) + '1'
 const POSITION_PROCEEDS_OUTPUT_ADDRESS = constants.AddressZero.slice(0, -1) + '2'
 
 async function executeSwap(
-  pool: MockTimeSquadV3Pool,
+  pool: MockTimeCryptoV3Pool,
   testCase: SwapTestCase,
   poolFunctions: PoolFunctions
 ): Promise<ContractTransaction> {
@@ -447,7 +447,7 @@ const TEST_POOLS: PoolTestCase[] = [
   },
 ]
 
-describe('SquadV3Pool swap tests', () => {
+describe('CryptoV3Pool swap tests', () => {
   let wallet: Wallet, other: Wallet
 
   let loadFixture: ReturnType<typeof createFixtureLoader>
@@ -489,8 +489,8 @@ describe('SquadV3Pool swap tests', () => {
       let poolBalance0: BigNumber
       let poolBalance1: BigNumber
 
-      let pool: MockTimeSquadV3Pool
-      let swapTarget: TestSquadV3Callee
+      let pool: MockTimeCryptoV3Pool
+      let swapTarget: TestCryptoV3Callee
       let poolFunctions: PoolFunctions
 
       beforeEach('load fixture', async () => {

@@ -12,13 +12,13 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`)
   }
 
-  // config.v2Factory = "0xf7b814A12617B92fb17f17276Cbc02ef3523C0D2";    // Squad factory v2 in bsc testnet
+  // config.v2Factory = "0xf7b814A12617B92fb17f17276Cbc02ef3523C0D2";    // Crypto factory v2 in bsc testnet
 
   const v3DeployedContracts = await import(`../../v3-core/deployments/${networkName}.json`)
   const v3PeripheryDeployedContracts = await import(`../../v3-periphery/deployments/${networkName}.json`)
 
-  const SquadV3PoolDeployer_address = v3DeployedContracts.SquadV3PoolDeployer
-  const SquadV3Factory_address = v3DeployedContracts.SquadV3Factory
+  const CryptoV3PoolDeployer_address = v3DeployedContracts.CryptoV3PoolDeployer
+  const CryptoV3Factory_address = v3DeployedContracts.CryptoV3Factory
   const positionManager_address = v3PeripheryDeployedContracts.NonfungiblePositionManager
 
   /** SmartRouterHelper */
@@ -37,8 +37,8 @@ async function main() {
   })
   const smartRouter = await SmartRouter.deploy(
     config.v2Factory,
-    SquadV3PoolDeployer_address,
-    SquadV3Factory_address,
+    CryptoV3PoolDeployer_address,
+    CryptoV3Factory_address,
     positionManager_address,
     config.stableFactory,
     config.stableInfo,
@@ -48,8 +48,8 @@ async function main() {
 
   // await tryVerify(smartRouter, [
   //   config.v2Factory,
-  //   SquadV3PoolDeployer_address,
-  //   SquadV3Factory_address,
+  //   CryptoV3PoolDeployer_address,
+  //   CryptoV3Factory_address,
   //   positionManager_address,
   //   config.stableFactory,
   //   config.stableInfo,
@@ -63,8 +63,8 @@ async function main() {
     },
   })
   const mixedRouteQuoterV1 = await MixedRouteQuoterV1.deploy(
-    SquadV3PoolDeployer_address,
-    SquadV3Factory_address,
+    CryptoV3PoolDeployer_address,
+    CryptoV3Factory_address,
     config.v2Factory,
     config.stableFactory,
     config.WNATIVE
@@ -72,8 +72,8 @@ async function main() {
   console.log('MixedRouteQuoterV1 deployed to:', mixedRouteQuoterV1.address)
 
   // await tryVerify(mixedRouteQuoterV1, [
-  //   SquadV3PoolDeployer_address,
-  //   SquadV3Factory_address,
+  //   CryptoV3PoolDeployer_address,
+  //   CryptoV3Factory_address,
   //   config.v2Factory,
   //   config.stableFactory,
   //   config.WNATIVE,
@@ -85,10 +85,10 @@ async function main() {
       SmartRouterHelper: smartRouterHelper.address,
     },
   })
-  const quoterV2 = await QuoterV2.deploy(SquadV3PoolDeployer_address, SquadV3Factory_address, config.WNATIVE)
+  const quoterV2 = await QuoterV2.deploy(CryptoV3PoolDeployer_address, CryptoV3Factory_address, config.WNATIVE)
   console.log('QuoterV2 deployed to:', quoterV2.address)
 
-  // await tryVerify(quoterV2, [SquadV3PoolDeployer_address, SquadV3Factory_address, config.WNATIVE])
+  // await tryVerify(quoterV2, [CryptoV3PoolDeployer_address, CryptoV3Factory_address, config.WNATIVE])
 
   /** TokenValidator */
   const TokenValidator = await ethers.getContractFactory('TokenValidator', {

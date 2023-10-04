@@ -1,21 +1,21 @@
 # Solidity API
 
-## ISquadV3PoolWithLmPool
+## ICryptoV3PoolWithLmPool
 
 ### setLmPool
 
 ```solidity
-function setLmPool(contract ISquadV3LmPool lmPool) external
+function setLmPool(contract ICryptoV3LmPool lmPool) external
 ```
 
-## SquadV3FactoryOwner
+## CryptoV3FactoryOwner
 
 Manages ownership and control over factory and pools
 
 ### factory
 
 ```solidity
-contract ISquadV3Factory factory
+contract ICryptoV3Factory factory
 ```
 
 ### owner
@@ -68,7 +68,7 @@ modifier onlyOwnerOrLmPoolDeployer()
 ### constructor
 
 ```solidity
-constructor(contract ISquadV3Factory _factory) public
+constructor(contract ICryptoV3Factory _factory) public
 ```
 
 ### setOwner
@@ -98,13 +98,13 @@ function enableFeeAmount(uint24 fee, int24 tickSpacing) external
 ### setFeeProtocol
 
 ```solidity
-function setFeeProtocol(contract ISquadV3Pool pool, uint8 feeProtocol0, uint8 feeProtocol1) external
+function setFeeProtocol(contract ICryptoV3Pool pool, uint8 feeProtocol0, uint8 feeProtocol1) external
 ```
 
 ### collectProtocol
 
 ```solidity
-function collectProtocol(contract ISquadV3Pool pool, address recipient, uint128 amount0Requested, uint128 amount1Requested) external returns (uint128 amount0, uint128 amount1)
+function collectProtocol(contract ICryptoV3Pool pool, address recipient, uint128 amount0Requested, uint128 amount1Requested) external returns (uint128 amount0, uint128 amount1)
 ```
 
 ### setLmPool

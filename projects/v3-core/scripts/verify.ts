@@ -5,14 +5,14 @@ async function main() {
   const networkName = network.name
   const deployedContracts = await import(`../../v3-core/deployments/${networkName}.json`)
 
-  // Verify SquadV3PoolDeployer
-  console.log('Verify SquadV3PoolDeployer')
-  await verifyContract(deployedContracts.SquadV3PoolDeployer)
+  // Verify CryptoV3PoolDeployer
+  console.log('Verify CryptoV3PoolDeployer')
+  await verifyContract(deployedContracts.CryptoV3PoolDeployer)
   await sleep(10000)
 
-  // Verify squadV3Factory
-  console.log('Verify squadV3Factory')
-  await verifyContract(deployedContracts.SquadV3Factory, [deployedContracts.SquadV3PoolDeployer])
+  // Verify cryptoV3Factory
+  console.log('Verify cryptoV3Factory')
+  await verifyContract(deployedContracts.CryptoV3Factory, [deployedContracts.CryptoV3PoolDeployer])
   await sleep(10000)
 
   console.log('Verify feeManager')

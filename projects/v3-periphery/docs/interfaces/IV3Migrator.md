@@ -2,7 +2,7 @@
 
 ## IV3Migrator
 
-Enables migration of liqudity from SquadSwap v2-compatible pairs into SquadSwap v3 pools
+Enables migration of liqudity from CryptoSwap v2-compatible pairs into CryptoSwap v3 pools
 
 ### MigrateParams
 

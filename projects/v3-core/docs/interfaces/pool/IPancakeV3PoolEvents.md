@@ -1,6 +1,6 @@
 # Solidity API
 
-## ISquadV3PoolEvents
+## ICryptoV3PoolEvents
 
 Contains all events emitted by the pool
 

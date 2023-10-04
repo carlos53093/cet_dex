@@ -1,9 +1,9 @@
-import { abi as ISquadV3PoolABI } from '@squadswap/v3-core/artifacts/contracts/interfaces/ISquadV3Pool.sol/ISquadV3Pool.json'
+import { abi as ICryptoV3PoolABI } from '@cryptoswap2/v3-core/artifacts/contracts/interfaces/ICryptoV3Pool.sol/ICryptoV3Pool.json'
 import { Fixture } from 'ethereum-waffle'
 import { BigNumberish, constants, Contract, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
 import {
-  ISquadV3Factory,
+  ICryptoV3Factory,
   IWETH9,
   MockTimeNonfungiblePositionManager,
   NonfungiblePositionManagerPositionsGasTest,
@@ -31,7 +31,7 @@ describe('NonfungiblePositionManager', () => {
 
   const nftFixture: Fixture<{
     nft: MockTimeNonfungiblePositionManager
-    factory: ISquadV3Factory
+    factory: ICryptoV3Factory
     tokens: [TestERC20, TestERC20, TestERC20]
     weth9: IWETH9
     router: SwapRouter
@@ -56,7 +56,7 @@ describe('NonfungiblePositionManager', () => {
     }
   }
 
-  let factory: ISquadV3Factory
+  let factory: ICryptoV3Factory
   let deployer: Contract
   let nft: MockTimeNonfungiblePositionManager
   let tokens: [TestERC20, TestERC20, TestERC20]
@@ -135,7 +135,7 @@ describe('NonfungiblePositionManager', () => {
         FeeAmount.MEDIUM
       )
       await factory.createPool(tokens[0].address, tokens[1].address, FeeAmount.MEDIUM)
-      const pool = new ethers.Contract(expectedAddress, ISquadV3PoolABI, wallet)
+      const pool = new ethers.Contract(expectedAddress, ICryptoV3PoolABI, wallet)
 
       await pool.initialize(encodePriceSqrt(3, 1))
       const code = await wallet.provider.getCode(expectedAddress)

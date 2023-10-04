@@ -2,7 +2,7 @@
 
 ## SwapRouter
 
-Router for stateless execution of swaps against Squad V3
+Router for stateless execution of swaps against Crypto V3
 
 ### constructor
 
@@ -19,16 +19,16 @@ struct SwapCallbackData {
 }
 ```
 
-### squadV3SwapCallback
+### cryptoV3SwapCallback
 
 ```solidity
-function squadV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes _data) external
+function cryptoV3SwapCallback(int256 amount0Delta, int256 amount1Delta, bytes _data) external
 ```
 
-Called to `msg.sender` after executing a swap via ISquadV3Pool#swap.
+Called to `msg.sender` after executing a swap via ICryptoV3Pool#swap.
 
 _In the implementation you must pay the pool tokens owed for the swap.
-The caller of this method must be checked to be a SquadV3Pool deployed by the canonical SquadV3Factory.
+The caller of this method must be checked to be a CryptoV3Pool deployed by the canonical CryptoV3Factory.
 amount0Delta and amount1Delta can both be 0 if no tokens were swapped._
 
 #### Parameters

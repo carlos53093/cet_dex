@@ -2,9 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@squadswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@squadswap/v3-core/contracts/libraries/TickMath.sol';
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Pool.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/SafeCast.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/TickMath.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Pool.sol';
 
 import './interfaces/ISwapRouter.sol';
 import './base/PeripheryImmutableState.sol';
@@ -17,8 +17,8 @@ import './libraries/PoolAddress.sol';
 import './libraries/CallbackValidation.sol';
 import './interfaces/external/IWETH9.sol';
 
-/// @title Squad V3 Swap Router
-/// @notice Router for stateless execution of swaps against Squad V3
+/// @title Crypto V3 Swap Router
+/// @notice Router for stateless execution of swaps against Crypto V3
 contract SwapRouter is
     ISwapRouter,
     PeripheryImmutableState,
@@ -44,8 +44,8 @@ contract SwapRouter is
         address tokenA,
         address tokenB,
         uint24 fee
-    ) private view returns (ISquadV3Pool) {
-        return ISquadV3Pool(PoolAddress.computeAddress(deployer, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
+    ) private view returns (ICryptoV3Pool) {
+        return ICryptoV3Pool(PoolAddress.computeAddress(deployer, PoolAddress.getPoolKey(tokenA, tokenB, fee)));
     }
 
     struct SwapCallbackData {
@@ -53,8 +53,8 @@ contract SwapRouter is
         address payer;
     }
 
-    /// @inheritdoc ISquadV3SwapCallback
-    function squadV3SwapCallback(
+    /// @inheritdoc ICryptoV3SwapCallback
+    function cryptoV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata _data

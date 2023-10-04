@@ -4,18 +4,18 @@ import { ethers, upgrades } from "hardhat";
 import { time, mineUpTo, reset } from "@nomicfoundation/hardhat-network-helpers";
 import { TickMath } from "@uniswap/v3-sdk";
 
-import SquadV3PoolDeployerArtifact from "@squadswap/v3-core/artifacts/contracts/SquadV3PoolDeployer.sol/SquadV3PoolDeployer.json";
-import SquadV3FactoryArtifact from "@squadswap/v3-core/artifacts/contracts/SquadV3Factory.sol/SquadV3Factory.json";
-// import SquadV3FactoryOwnerArtifact from "@squadswap/v3-core/artifacts/contracts/SquadV3FactoryOwner.sol/SquadV3FactoryOwner.json";
-import SquadV3SwapRouterArtifact from "@squadswap/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json";
-import NftDescriptorOffchainArtifact from "@squadswap/v3-periphery/artifacts/contracts/NonfungibleTokenPositionDescriptorOffChain.sol/NonfungibleTokenPositionDescriptorOffChain.json";
-import NonfungiblePositionManagerArtifact from "@squadswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
-import SquadV3LmPoolDeployerArtifact from "@squadswap/v3-lm-pool/artifacts/contracts/SquadV3LmPoolDeployer.sol/SquadV3LmPoolDeployer.json";
-import TestLiquidityAmountsArtifact from "@squadswap/v3-periphery/artifacts/contracts/test/LiquidityAmountsTest.sol/LiquidityAmountsTest.json";
-import TestPoolArtifact from "@squadswap/v3-core/artifacts/contracts/SquadV3Pool.sol/SquadV3Pool.json"
+import CryptoV3PoolDeployerArtifact from "@cryptoswap2/v3-core/artifacts/contracts/CryptoV3PoolDeployer.sol/CryptoV3PoolDeployer.json";
+import CryptoV3FactoryArtifact from "@cryptoswap2/v3-core/artifacts/contracts/CryptoV3Factory.sol/CryptoV3Factory.json";
+// import CryptoV3FactoryOwnerArtifact from "@cryptoswap2/v3-core/artifacts/contracts/CryptoV3FactoryOwner.sol/CryptoV3FactoryOwner.json";
+import CryptoV3SwapRouterArtifact from "@cryptoswap2/v3-periphery/artifacts/contracts/SwapRouter.sol/SwapRouter.json";
+import NftDescriptorOffchainArtifact from "@cryptoswap2/v3-periphery/artifacts/contracts/NonfungibleTokenPositionDescriptorOffChain.sol/NonfungibleTokenPositionDescriptorOffChain.json";
+import NonfungiblePositionManagerArtifact from "@cryptoswap2/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
+import CryptoV3LmPoolDeployerArtifact from "@cryptoswap2/v3-lm-pool/artifacts/contracts/CryptoV3LmPoolDeployer.sol/CryptoV3LmPoolDeployer.json";
+import TestLiquidityAmountsArtifact from "@cryptoswap2/v3-periphery/artifacts/contracts/test/LiquidityAmountsTest.sol/LiquidityAmountsTest.json";
+import TestPoolArtifact from "@cryptoswap2/v3-core/artifacts/contracts/CryptoV3Pool.sol/CryptoV3Pool.json"
 
 import ERC20MockArtifact from "./ERC20Mock.json";
-import SquadTokenArtifact from "./SquadToken.json";
+import CryptoTokenArtifact from "./CryptoToken.json";
 import SyrupBarArtifact from "./SyrupBar.json";
 import MasterChefArtifact from "./MasterChef.json";
 import MasterChefV2Artifact from "./MasterChefV2.json";
@@ -45,23 +45,23 @@ describe("MasterChefV3", function () {
     reset();
 
     // Deploy factory
-    const SquadV3PoolDeployer = await ethers.getContractFactoryFromArtifact(SquadV3PoolDeployerArtifact);
-    const squadV3PoolDeployer = await SquadV3PoolDeployer.deploy();
+    const CryptoV3PoolDeployer = await ethers.getContractFactoryFromArtifact(CryptoV3PoolDeployerArtifact);
+    const cryptoV3PoolDeployer = await CryptoV3PoolDeployer.deploy();
     const WETHFactory = await ethers.getContractFactoryFromArtifact(WETHArtiface)
     WETHContract =  await WETHFactory.deploy()
 
     const SafeCaseTestFactory = await ethers.getContractFactoryFromArtifact(SafeCaseTestArtiface)
     SafeCaseTest =  await SafeCaseTestFactory.deploy()
 
-    const SquadV3Factory = await ethers.getContractFactoryFromArtifact(SquadV3FactoryArtifact);
-    const squadV3Factory = await SquadV3Factory.deploy(squadV3PoolDeployer.address);
+    const CryptoV3Factory = await ethers.getContractFactoryFromArtifact(CryptoV3FactoryArtifact);
+    const cryptoV3Factory = await CryptoV3Factory.deploy(cryptoV3PoolDeployer.address);
 
-    await squadV3PoolDeployer.setFactoryAddress(squadV3Factory.address);
+    await cryptoV3PoolDeployer.setFactoryAddress(cryptoV3Factory.address);
 
-    const SquadV3SwapRouter = await ethers.getContractFactoryFromArtifact(SquadV3SwapRouterArtifact);
-    const squadV3SwapRouter = await SquadV3SwapRouter.deploy(
-      squadV3PoolDeployer.address,
-      squadV3Factory.address,
+    const CryptoV3SwapRouter = await ethers.getContractFactoryFromArtifact(CryptoV3SwapRouterArtifact);
+    const cryptoV3SwapRouter = await CryptoV3SwapRouter.deploy(
+      cryptoV3PoolDeployer.address,
+      cryptoV3Factory.address,
       WETHContract.address
     );
 
@@ -69,19 +69,19 @@ describe("MasterChefV3", function () {
     // const NonfungibleTokenPositionDescriptor = await ethers.getContractFactoryFromArtifact(
     //   NftDescriptorOffchainArtifact
     // );
-    // const baseTokenUri = "https://nft.squadswap.com/v3/";
+    // const baseTokenUri = "https://nft.cryptoswap.com/v3/";
     // const nonfungibleTokenPositionDescriptor = await upgrades.deployProxy(NonfungibleTokenPositionDescriptor, [
     //   baseTokenUri,
     // ]);
     // await nonfungibleTokenPositionDescriptor.deployed();
     // TODO:
-    await SquadV3SwapRouter.deploy(squadV3PoolDeployer.address, squadV3Factory.address, WETHContract.address);
+    await CryptoV3SwapRouter.deploy(cryptoV3PoolDeployer.address, cryptoV3Factory.address, WETHContract.address);
 
     // Deploy NFT position manager
     const NonfungiblePositionManager = await ethers.getContractFactoryFromArtifact(NonfungiblePositionManagerArtifact);
     const nonfungiblePositionManager = await NonfungiblePositionManager.deploy(
-      squadV3PoolDeployer.address,
-      squadV3Factory.address,
+      cryptoV3PoolDeployer.address,
+      cryptoV3Factory.address,
       WETHContract.address,
       // nonfungibleTokenPositionDescriptor.address
       ethers.constants.AddressZero
@@ -90,39 +90,39 @@ describe("MasterChefV3", function () {
     const ERC20Mock = await ethers.getContractFactoryFromArtifact(ERC20MockArtifact);
 
     // Deploy factory owner contract
-    // const SquadV3FactoryOwner = await ethers.getContractFactoryFromArtifact(SquadV3FactoryOwnerArtifact);
-    // const squadV3FactoryOwner = await SquadV3FactoryOwner.deploy(squadV3Factory.address);
-    // await squadV3Factory.setOwner(squadV3FactoryOwner.address);
+    // const CryptoV3FactoryOwner = await ethers.getContractFactoryFromArtifact(CryptoV3FactoryOwnerArtifact);
+    // const cryptoV3FactoryOwner = await CryptoV3FactoryOwner.deploy(cryptoV3Factory.address);
+    // await cryptoV3Factory.setOwner(cryptoV3FactoryOwner.address);
 
     // Prepare for master chef v3
-    const SquadToken = await ethers.getContractFactoryFromArtifact(SquadTokenArtifact);
-    const squadToken = await SquadToken.deploy();
+    const CryptoToken = await ethers.getContractFactoryFromArtifact(CryptoTokenArtifact);
+    const cryptoToken = await CryptoToken.deploy();
 
     const SyrupBar = await ethers.getContractFactoryFromArtifact(SyrupBarArtifact);
-    const syrupBar = await SyrupBar.deploy(squadToken.address);
+    const syrupBar = await SyrupBar.deploy(cryptoToken.address);
 
     const lpTokenV1 = await ERC20Mock.deploy("LP Token V1", "LPV1");
     const dummyTokenV2 = await ERC20Mock.deploy("Dummy Token V2", "DTV2");
 
     const MasterChef = await ethers.getContractFactoryFromArtifact(MasterChefArtifact);
     const masterChef = await MasterChef.deploy(
-      squadToken.address,
+      cryptoToken.address,
       syrupBar.address,
       admin.address,
       ethers.utils.parseUnits("40"),
       ethers.constants.Zero
     );
 
-    await squadToken["mint(address,uint256)"](admin.address, "100000000000000000000000")
+    await cryptoToken["mint(address,uint256)"](admin.address, "100000000000000000000000")
 
-    await squadToken.transferOwnership(masterChef.address);
+    await cryptoToken.transferOwnership(masterChef.address);
     await syrupBar.transferOwnership(masterChef.address);
 
     await masterChef.add(0, lpTokenV1.address, true); // farm with pid 1 and 0 allocPoint
     await masterChef.add(1, dummyTokenV2.address, true); // farm with pid 2 and 1 allocPoint
 
     const MasterChefV2 = await ethers.getContractFactoryFromArtifact(MasterChefV2Artifact);
-    const masterChefV2 = await MasterChefV2.deploy(masterChef.address, squadToken.address, 2, admin.address);
+    const masterChefV2 = await MasterChefV2.deploy(masterChef.address, cryptoToken.address, 2, admin.address);
 
     const MockBoost = await ethers.getContractFactoryFromArtifact(MockBoostArtifact);
     const mockBoost = await MockBoost.deploy(masterChefV2.address);
@@ -139,23 +139,23 @@ describe("MasterChefV3", function () {
 
     // Deploy master chef v3
     const MasterChefV3 = await ethers.getContractFactory("MasterChefV3");
-    masterChefV3 = await MasterChefV3.deploy(squadToken.address, nonfungiblePositionManager.address, WETHContract.address);
+    masterChefV3 = await MasterChefV3.deploy(cryptoToken.address, nonfungiblePositionManager.address, WETHContract.address);
 
     const MCV3TestFactory = await ethers.getContractFactory("MCV3Test");
-    MCV3Test = await MCV3TestFactory.deploy(squadToken.address, nonfungiblePositionManager.address, WETHContract.address);
+    MCV3Test = await MCV3TestFactory.deploy(cryptoToken.address, nonfungiblePositionManager.address, WETHContract.address);
 
     await dummyTokenV3.mint(admin.address, ethers.utils.parseUnits("1000"));
     await dummyTokenV3.approve(masterChefV2.address, ethers.constants.MaxUint256);
     await masterChefV2.deposit(1, await dummyTokenV3.balanceOf(admin.address));
     const firstFarmingBlock = await time.latestBlock();
 
-    const SquadV3LmPoolDeployer = await ethers.getContractFactoryFromArtifact(SquadV3LmPoolDeployerArtifact);
-    const squadV3LmPoolDeployer = await SquadV3LmPoolDeployer.deploy(
+    const CryptoV3LmPoolDeployer = await ethers.getContractFactoryFromArtifact(CryptoV3LmPoolDeployerArtifact);
+    const cryptoV3LmPoolDeployer = await CryptoV3LmPoolDeployer.deploy(
       masterChefV3.address
-      // squadV3FactoryOwner.address
+      // cryptoV3FactoryOwner.address
     );
 
-    // await squadV3FactoryOwner.setLmPoolDeployer(squadV3LmPoolDeployer.address);
+    // await cryptoV3FactoryOwner.setLmPoolDeployer(cryptoV3LmPoolDeployer.address);
     
 
     // Deploy mock ERC20 tokens
@@ -178,17 +178,17 @@ describe("MasterChefV3", function () {
     await WETHContract.connect(user1).deposit({value: ethers.utils.parseUnits("1000")});
     await WETHContract.connect(user2).deposit({value: ethers.utils.parseUnits("1000")});
 
-    await tokenA.connect(admin).approve(squadV3SwapRouter.address, ethers.constants.MaxUint256);
-    await tokenB.connect(admin).approve(squadV3SwapRouter.address, ethers.constants.MaxUint256);
-    await tokenC.connect(admin).approve(squadV3SwapRouter.address, ethers.constants.MaxUint256);
-    await WETHContract.connect(admin).approve(squadV3SwapRouter.address, ethers.constants.MaxUint256);
-    await WETHContract.connect(admin).approve(squadV3SwapRouter.address, ethers.constants.MaxUint256);
-    await squadToken.connect(admin).approve(squadV3SwapRouter.address, ethers.constants.MaxUint256);
-    await squadToken.connect(admin).approve(masterChefV3.address, ethers.constants.MaxUint256);
-    await squadToken.connect(admin).approve(nonfungiblePositionManager.address, ethers.constants.MaxUint256);
+    await tokenA.connect(admin).approve(cryptoV3SwapRouter.address, ethers.constants.MaxUint256);
+    await tokenB.connect(admin).approve(cryptoV3SwapRouter.address, ethers.constants.MaxUint256);
+    await tokenC.connect(admin).approve(cryptoV3SwapRouter.address, ethers.constants.MaxUint256);
+    await WETHContract.connect(admin).approve(cryptoV3SwapRouter.address, ethers.constants.MaxUint256);
+    await WETHContract.connect(admin).approve(cryptoV3SwapRouter.address, ethers.constants.MaxUint256);
+    await cryptoToken.connect(admin).approve(cryptoV3SwapRouter.address, ethers.constants.MaxUint256);
+    await cryptoToken.connect(admin).approve(masterChefV3.address, ethers.constants.MaxUint256);
+    await cryptoToken.connect(admin).approve(nonfungiblePositionManager.address, ethers.constants.MaxUint256);
 
-    await squadToken.connect(admin).transfer(masterChefV3.address, ethers.utils.parseUnits('30'))
-    await squadToken.connect(admin).transfer(MCV3Test.address, ethers.utils.parseUnits('300'))
+    await cryptoToken.connect(admin).transfer(masterChefV3.address, ethers.utils.parseUnits('30'))
+    await cryptoToken.connect(admin).transfer(MCV3Test.address, ethers.utils.parseUnits('300'))
 
     await tokenA.connect(user1).approve(nonfungiblePositionManager.address, ethers.constants.MaxUint256);
     await tokenB.connect(user1).approve(nonfungiblePositionManager.address, ethers.constants.MaxUint256);
@@ -223,8 +223,8 @@ describe("MasterChefV3", function () {
         initSqrtPriceX96: ethers.BigNumber.from("2").pow(96),
       },
       {
-        token0: squadToken.address < WETHContract.address ? squadToken.address : WETHContract.address,
-        token1: WETHContract.address > squadToken.address ? WETHContract.address : squadToken.address,
+        token0: cryptoToken.address < WETHContract.address ? cryptoToken.address : WETHContract.address,
+        token1: WETHContract.address > cryptoToken.address ? WETHContract.address : cryptoToken.address,
         fee: 500,
         initSqrtPriceX96: ethers.BigNumber.from("2").pow(96),
       },
@@ -247,15 +247,15 @@ describe("MasterChefV3", function () {
     // Farm 1 month in advance and then upkeep
     await mineUpTo(firstFarmingBlock + 30 * 24 * 60 * 60);
     await masterChefV2.connect(admin).deposit(1, 0);
-    // const squadFarmed = await squadToken.balanceOf(admin.address);
-    // console.log(`${ethers.utils.formatUnits(squadFarmed)} SQUAD farmed`);
-    await squadToken.approve(masterChefV3.address, ethers.constants.MaxUint256);
+    // const cryptoFarmed = await cryptoToken.balanceOf(admin.address);
+    // console.log(`${ethers.utils.formatUnits(cryptoFarmed)} CST farmed`);
+    await cryptoToken.approve(masterChefV3.address, ethers.constants.MaxUint256);
     const tx = await masterChefV3.setReceiver(admin.address);
     const res = await tx.wait()
     expect(res.events[0].args['receiver']).to.eq(admin.address)
 
     await masterChefV3.upkeep(ethers.utils.parseUnits(`${4 * 24 * 60 * 60}`), 24 * 60 * 60, false);
-    // console.log(`squadPerSecond: ${ethers.utils.formatUnits((await masterChefV3.latestPeriodSquadPerSecond()).div(await masterChefV3.PRECISION()))}\n`);
+    // console.log(`cryptoPerSecond: ${ethers.utils.formatUnits((await masterChefV3.latestPeriodCryptoPerSecond()).div(await masterChefV3.PRECISION()))}\n`);
 
     const LiquidityAmounts = await ethers.getContractFactoryFromArtifact(TestLiquidityAmountsArtifact);
     const liquidityAmounts = await LiquidityAmounts.deploy();
@@ -264,11 +264,11 @@ describe("MasterChefV3", function () {
     this.masterChefV3 = masterChefV3;
     this.pools = pools;
     this.poolAddresses = poolAddresses;
-    this.squadToken = squadToken;
+    this.cryptoToken = cryptoToken;
     this.liquidityAmounts = liquidityAmounts;
-    this.swapRouter = squadV3SwapRouter;
-    this.squadV3LmPoolDeployer = squadV3LmPoolDeployer.address
-    this.squadV3Factory = squadV3Factory
+    this.swapRouter = cryptoV3SwapRouter;
+    this.cryptoV3LmPoolDeployer = cryptoV3LmPoolDeployer.address
+    this.cryptoV3Factory = cryptoV3Factory
     this.MCV3Test = MCV3Test;
 
     await network.provider.send("evm_setAutomine", [false]);
@@ -284,8 +284,8 @@ describe("MasterChefV3", function () {
     context("when there are 2 users and 2 pools with no trading", function () {
 
       it("should executed successfully", async function () {
-        await this.masterChefV3.setLMPoolDeployer(this.squadV3LmPoolDeployer);
-        await this.squadV3Factory.setLmPoolDeployer(this.squadV3LmPoolDeployer);
+        await this.masterChefV3.setLMPoolDeployer(this.cryptoV3LmPoolDeployer);
+        await this.cryptoV3Factory.setLmPoolDeployer(this.cryptoV3LmPoolDeployer);
         // 1
         await time.increase(1);
 
@@ -345,13 +345,13 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        let squadUser1;
-        let squadUser2;
+        let cryptoUser1;
+        let cryptoUser2;
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
 
         console.log("@5 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
         console.log("");
 
         // 6
@@ -376,12 +376,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@6 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
         console.log("");
 
         // 7
@@ -389,14 +389,14 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(3));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(3));
 
         console.log("@7 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 8
@@ -421,16 +421,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@8 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 9
@@ -440,16 +440,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@9 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 10
@@ -457,16 +457,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@10 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 11
@@ -474,16 +474,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@11 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 12
@@ -491,16 +491,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@12 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 13
@@ -508,16 +508,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@13 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 14
@@ -534,16 +534,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@14 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 15
@@ -553,16 +553,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@15 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 16
@@ -572,16 +572,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@16 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 17
@@ -603,16 +603,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@17 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 18
@@ -637,17 +637,17 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@18 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 19
@@ -657,17 +657,17 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@19 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 20
@@ -677,17 +677,17 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@20 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 21
@@ -697,17 +697,17 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@21 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 22
@@ -717,17 +717,17 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@22 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 23
@@ -737,17 +737,17 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4));
 
         console.log("@23 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 24
@@ -772,18 +772,18 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6));
 
         console.log("@24 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 25
@@ -808,19 +808,19 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6));
 
         console.log("@25 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 26
@@ -845,20 +845,20 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6));
 
         console.log("@26 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 27
@@ -866,20 +866,20 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6));
 
         console.log("@27 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 28
@@ -904,21 +904,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@28 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 29
@@ -928,21 +928,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@29 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 30
@@ -950,21 +950,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@30 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 31
@@ -972,21 +972,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@31 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 32
@@ -994,21 +994,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@32 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 33
@@ -1043,21 +1043,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@33 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 34
@@ -1065,21 +1065,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@34 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 35
@@ -1115,21 +1115,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@35 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 36
@@ -1137,21 +1137,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@36 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 37
@@ -1168,21 +1168,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@37 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 38
@@ -1192,21 +1192,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@38 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 39
@@ -1216,21 +1216,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@39 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 40
@@ -1238,21 +1238,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@40 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 41
@@ -1274,21 +1274,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@41 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 42
@@ -1296,21 +1296,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@42 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 43
@@ -1318,21 +1318,21 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@43 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 44
@@ -1357,22 +1357,22 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@44 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 45
@@ -1382,22 +1382,22 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9));
 
         console.log("@45 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 46
@@ -1422,23 +1422,23 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@46 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 47
@@ -1446,23 +1446,23 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@47 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 48
@@ -1470,23 +1470,23 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@48 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 49
@@ -1494,23 +1494,23 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@49 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 50
@@ -1518,23 +1518,23 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@50 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 51
@@ -1542,23 +1542,23 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@51 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 52
@@ -1566,23 +1566,23 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@52 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 53
@@ -1590,27 +1590,27 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address))
-          .add(await this.masterChefV3.pendingSquad(1))
-          .add(await this.masterChefV3.pendingSquad(2))
-          .add(await this.masterChefV3.pendingSquad(5))
-          .add(await this.masterChefV3.pendingSquad(7))
-          .add(await this.masterChefV3.pendingSquad(8))
-          .add(await this.masterChefV3.pendingSquad(10));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address))
-          .add(await this.masterChefV3.pendingSquad(3))
-          .add(await this.masterChefV3.pendingSquad(4))
-          .add(await this.masterChefV3.pendingSquad(6))
-          .add(await this.masterChefV3.pendingSquad(9))
-          .add(await this.masterChefV3.pendingSquad(11));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address))
+          .add(await this.masterChefV3.pendingCrypto(1))
+          .add(await this.masterChefV3.pendingCrypto(2))
+          .add(await this.masterChefV3.pendingCrypto(5))
+          .add(await this.masterChefV3.pendingCrypto(7))
+          .add(await this.masterChefV3.pendingCrypto(8))
+          .add(await this.masterChefV3.pendingCrypto(10));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address))
+          .add(await this.masterChefV3.pendingCrypto(3))
+          .add(await this.masterChefV3.pendingCrypto(4))
+          .add(await this.masterChefV3.pendingCrypto(6))
+          .add(await this.masterChefV3.pendingCrypto(9))
+          .add(await this.masterChefV3.pendingCrypto(11));
 
         console.log("@53 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
-        assert(squadUser1.sub(ethers.utils.parseUnits("57.68974359")).abs().lte(ethers.utils.parseUnits("0.1")));
-        assert(squadUser2.sub(ethers.utils.parseUnits("105.3102564")).abs().lte(ethers.utils.parseUnits("0.1")));
+        assert(cryptoUser1.sub(ethers.utils.parseUnits("57.68974359")).abs().lte(ethers.utils.parseUnits("0.1")));
+        assert(cryptoUser2.sub(ethers.utils.parseUnits("105.3102564")).abs().lte(ethers.utils.parseUnits("0.1")));
         
         await network.provider.send("evm_setAutomine", [true]);
 
@@ -1640,9 +1640,9 @@ describe("MasterChefV3", function () {
         await expect(this.masterChefV3.collectTo([10, "0x0000000000000000000000000000000000000000", "10000000000000", "10000000000"], user2.address)).to.revertedWith('NotOwner')
         await time.increase(10000000);
         await this.masterChefV3.connect(user1).collectTo([10, user2.address, "10000000000000", "10000000000"], user2.address)
-        await expect(this.masterChefV3.connect(user2).sweepToken(this.squadToken.address, "10000000000000000000000000", user1.address)).to.revertedWith('InsufficientAmount')
-        await this.masterChefV3.connect(user2).sweepToken(this.squadToken.address, "0", user1.address)
-        await this.masterChefV3.connect(user2).sweepToken(this.squadToken.address, "0", user1.address)
+        await expect(this.masterChefV3.connect(user2).sweepToken(this.cryptoToken.address, "10000000000000000000000000", user1.address)).to.revertedWith('InsufficientAmount')
+        await this.masterChefV3.connect(user2).sweepToken(this.cryptoToken.address, "0", user1.address)
+        await this.masterChefV3.connect(user2).sweepToken(this.cryptoToken.address, "0", user1.address)
         await this.masterChefV3.connect(user2).sweepToken(this.pools[0].token0, "0", user1.address)
         await this.masterChefV3.connect(user2).increaseLiquidity({
           tokenId: 9,
@@ -1747,8 +1747,8 @@ describe("MasterChefV3", function () {
 
     context("when there are 2 users and 1 pool with different range positions", function () {
       it("should executed successfully", async function () {
-        await this.masterChefV3.setLMPoolDeployer(this.squadV3LmPoolDeployer);
-        await this.squadV3Factory.setLmPoolDeployer(this.squadV3LmPoolDeployer);
+        await this.masterChefV3.setLMPoolDeployer(this.cryptoV3LmPoolDeployer);
+        await this.cryptoV3Factory.setLmPoolDeployer(this.cryptoV3LmPoolDeployer);
 
         await this.masterChefV3.getLatestPeriodInfoByPid(1)
         await this.masterChefV3.getLatestPeriodInfo(this.poolAddresses[0])
@@ -1792,13 +1792,13 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        let squadUser1;
-        let squadUser2;
+        let cryptoUser1;
+        let cryptoUser2;
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
 
         console.log("@5 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
         console.log("");
 
         // 6
@@ -1823,10 +1823,10 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
 
         console.log("@6 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
         console.log("");
 
         // 7
@@ -1834,12 +1834,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@7 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 8
@@ -1847,12 +1847,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@8 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 9
@@ -1860,12 +1860,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@9 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 10
@@ -1873,12 +1873,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@10 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 11
@@ -1886,12 +1886,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@11 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 12
@@ -1899,12 +1899,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@12 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 13
@@ -1912,12 +1912,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@13 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 14
@@ -1925,12 +1925,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@14 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 15
@@ -1938,12 +1938,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@15 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 16
@@ -1951,12 +1951,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@16 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 17
@@ -1964,12 +1964,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@17 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 18
@@ -1977,12 +1977,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@18 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 19
@@ -1990,12 +1990,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@19 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 20
@@ -2003,12 +2003,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@20 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 21
@@ -2016,12 +2016,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@21 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 22
@@ -2029,12 +2029,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@22 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 23
@@ -2042,12 +2042,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@23 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 24
@@ -2055,12 +2055,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@24 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 25
@@ -2068,12 +2068,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@25 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 26
@@ -2081,12 +2081,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@26 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 27
@@ -2094,12 +2094,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@27 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 28
@@ -2107,12 +2107,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@28 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 29
@@ -2120,12 +2120,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@29 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 30
@@ -2133,12 +2133,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@30 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 31
@@ -2146,12 +2146,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@31 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 32
@@ -2159,12 +2159,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@32 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 33
@@ -2172,12 +2172,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@33 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 34
@@ -2185,12 +2185,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@34 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 35
@@ -2198,12 +2198,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@35 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 36
@@ -2211,12 +2211,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@36 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 37
@@ -2224,12 +2224,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@37 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 38
@@ -2237,12 +2237,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@38 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 39
@@ -2250,12 +2250,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@39 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 40
@@ -2263,12 +2263,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@40 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 41
@@ -2276,12 +2276,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@41 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 42
@@ -2289,12 +2289,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@42 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 43
@@ -2302,12 +2302,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@43 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 44
@@ -2315,12 +2315,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@44 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 45
@@ -2328,12 +2328,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@45 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 46
@@ -2341,12 +2341,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@46 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 47
@@ -2354,12 +2354,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@47 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 48
@@ -2367,12 +2367,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@48 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 49
@@ -2380,12 +2380,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@49 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 50
@@ -2393,12 +2393,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@50 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 51
@@ -2406,12 +2406,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@51 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 52
@@ -2419,12 +2419,12 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@52 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
         // 53
@@ -2432,16 +2432,16 @@ describe("MasterChefV3", function () {
 
         await time.increase(1);
 
-        squadUser1 = (await this.squadToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingSquad(1));
-        squadUser2 = (await this.squadToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingSquad(2));
+        cryptoUser1 = (await this.cryptoToken.balanceOf(user1.address)).add(await this.masterChefV3.pendingCrypto(1));
+        cryptoUser2 = (await this.cryptoToken.balanceOf(user2.address)).add(await this.masterChefV3.pendingCrypto(2));
 
         console.log("@53 ----------------------------------------");
-        console.log(`user1: ${ethers.utils.formatUnits(squadUser1)}`);
-        console.log(`user2: ${ethers.utils.formatUnits(squadUser2)}`);
+        console.log(`user1: ${ethers.utils.formatUnits(cryptoUser1)}`);
+        console.log(`user2: ${ethers.utils.formatUnits(cryptoUser2)}`);
         console.log("");
 
-        assert(squadUser1.sub(ethers.utils.parseUnits("28.73260345")).abs().lte(ethers.utils.parseUnits("0.0000001")));
-        assert(squadUser2.sub(ethers.utils.parseUnits("167.2673966")).abs().lte(ethers.utils.parseUnits("0.0000001")));
+        assert(cryptoUser1.sub(ethers.utils.parseUnits("28.73260345")).abs().lte(ethers.utils.parseUnits("0.0000001")));
+        assert(cryptoUser2.sub(ethers.utils.parseUnits("167.2673966")).abs().lte(ethers.utils.parseUnits("0.0000001")));
       });
     });
 
@@ -2453,13 +2453,13 @@ describe("MasterChefV3", function () {
 
         await expect(this.MCV3Test.safeTransferETHTest(user1.address, "1000000000000000")).to.reverted;
         await this.MCV3Test.safeTransferTest(user1.address, "0")
-        let bal = await this.squadToken.balanceOf(user1.address)
+        let bal = await this.cryptoToken.balanceOf(user1.address)
         await this.MCV3Test.safeTransferTest(user1.address, "1000000000000000")
-        expect(await this.squadToken.balanceOf(user1.address)).to.eq(bal.add("1000000000000000"))
-        bal = await this.squadToken.balanceOf(user1.address)
+        expect(await this.cryptoToken.balanceOf(user1.address)).to.eq(bal.add("1000000000000000"))
+        bal = await this.cryptoToken.balanceOf(user1.address)
         await this.MCV3Test.safeTransferTest(user1.address, "10000000000000000000000000")
-        expect(await this.squadToken.balanceOf(user1.address)).to.eq("300000000000000000000")
-        await this.MCV3Test.transferTokenTest(this.squadToken.address, user1.address)
+        expect(await this.cryptoToken.balanceOf(user1.address)).to.eq("300000000000000000000")
+        await this.MCV3Test.transferTokenTest(this.cryptoToken.address, user1.address)
 
         const tx = {
           from: user1.address,

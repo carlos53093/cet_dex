@@ -2,7 +2,7 @@
 
 ## IV2SwapRouter
 
-Functions for swapping tokens via squadSwap V2
+Functions for swapping tokens via cryptoSwap V2
 
 ### swapExactTokensForTokens
 

@@ -1,6 +1,6 @@
 # Solidity API
 
-## ISquadV3PoolImmutables
+## ICryptoV3PoolImmutables
 
 These parameters are fixed for a pool forever, i.e., the methods will always return the same values
 
@@ -10,7 +10,7 @@ These parameters are fixed for a pool forever, i.e., the methods will always ret
 function factory() external view returns (address)
 ```
 
-The contract that deployed the pool, which must adhere to the ISquadV3Factory interface
+The contract that deployed the pool, which must adhere to the ICryptoV3Factory interface
 
 #### Return Values
 

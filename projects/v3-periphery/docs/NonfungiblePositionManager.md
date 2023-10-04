@@ -2,7 +2,7 @@
 
 ## NonfungiblePositionManager
 
-Wraps Squad V3 positions in the ERC721 non-fungible token interface
+Wraps Crypto V3 positions in the ERC721 non-fungible token interface
 
 ### Position
 

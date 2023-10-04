@@ -2,11 +2,11 @@
 pragma solidity >=0.7.5;
 pragma abicoder v2;
 
-import '@squadswap/v3-core/contracts/interfaces/callback/ISquadV3SwapCallback.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/callback/ICryptoV3SwapCallback.sol';
 
 /// @title Router token swapping functionality
-/// @notice Functions for swapping tokens via SquadSwap V3
-interface ISwapRouter is ISquadV3SwapCallback {
+/// @notice Functions for swapping tokens via CryptoSwap V3
+interface ISwapRouter is ICryptoV3SwapCallback {
     struct ExactInputSingleParams {
         address tokenIn;
         address tokenOut;

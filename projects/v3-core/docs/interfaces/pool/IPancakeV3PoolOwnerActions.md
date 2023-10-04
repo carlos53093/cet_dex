@@ -1,6 +1,6 @@
 # Solidity API
 
-## ISquadV3PoolOwnerActions
+## ICryptoV3PoolOwnerActions
 
 Contains pool methods that may only be called by the factory owner
 

@@ -1,15 +1,15 @@
 import {
   abi as FACTORY_ABI,
   bytecode as FACTORY_BYTECODE,
-} from '@squadswap/v3-core/artifacts/contracts/SquadV3Factory.sol/SquadV3Factory.json'
+} from '@cryptoswap2/v3-core/artifacts/contracts/CryptoV3Factory.sol/CryptoV3Factory.json'
 import {
   abi as DEPLOYER_ABI,
   bytecode as DEPLOYER_BYTECODE,
-} from '@squadswap/v3-core/artifacts/contracts/SquadV3PoolDeployer.sol/SquadV3PoolDeployer.json'
+} from '@cryptoswap2/v3-core/artifacts/contracts/CryptoV3PoolDeployer.sol/CryptoV3PoolDeployer.json'
 import { abi as FACTORY_V2_ABI, bytecode as FACTORY_V2_BYTECODE } from '@uniswap/v2-core/build/UniswapV2Factory.json'
 import { Fixture } from 'ethereum-waffle'
 import { ethers, waffle } from 'hardhat'
-import { ISquadV3Factory, IWETH9, MockTimeSwapRouter } from '../../typechain-types'
+import { ICryptoV3Factory, IWETH9, MockTimeSwapRouter } from '../../typechain-types'
 
 import WETH9 from '../contracts/WETH9.json'
 import { Contract } from '@ethersproject/contracts'
@@ -37,7 +37,7 @@ export const v2FactoryFixture: Fixture<{ factory: Contract }> = async ([wallet])
   return { factory }
 }
 
-const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: ISquadV3Factory }> = async ([wallet]) => {
+const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: ICryptoV3Factory }> = async ([wallet]) => {
   const deployer = await waffle.deployContract(wallet, {
     bytecode: DEPLOYER_BYTECODE,
     abi: DEPLOYER_ABI,
@@ -49,7 +49,7 @@ const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: ISquadV3Facto
       abi: FACTORY_ABI,
     },
     [deployer.address]
-  )) as ISquadV3Factory
+  )) as ICryptoV3Factory
 
   await deployer.setFactoryAddress(factory.address)
 
@@ -61,7 +61,7 @@ const v3CoreFactoryFixture: Fixture<{ deployer: Contract; factory: ISquadV3Facto
 
 export const v3RouterFixture: Fixture<{
   weth9: IWETH9
-  factory: ISquadV3Factory
+  factory: ICryptoV3Factory
   router: MockTimeSwapRouter
   deployer: any
 }> = async ([wallet], provider) => {

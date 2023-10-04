@@ -7,7 +7,7 @@
 ```solidity
 struct PoolInfo {
   uint256 allocPoint;
-  contract ISquadV3Pool v3Pool;
+  contract ICryptoV3Pool v3Pool;
   address token0;
   address token1;
   uint24 fee;
@@ -72,13 +72,13 @@ mapping(address => uint256) v3PoolAddressPid
 
 v3PoolAddressPid[v3PoolAddress] => pid
 
-### SQUAD
+### CST
 
 ```solidity
-contract IERC20 SQUAD
+contract IERC20 CST
 ```
 
-Address of SQUAD contract.
+Address of CST contract.
 
 ### WETH
 
@@ -152,10 +152,10 @@ uint256 latestPeriodStartTime
 uint256 latestPeriodEndTime
 ```
 
-### latestPeriodSquadPerSecond
+### latestPeriodCryptoPerSecond
 
 ```solidity
-uint256 latestPeriodSquadPerSecond
+uint256 latestPeriodCryptoPerSecond
 ```
 
 ### operatorAddress
@@ -220,13 +220,13 @@ uint256 Q128
 uint256 MAX_U256
 ```
 
-### squadAmountBelongToMC
+### cryptoAmountBelongToMC
 
 ```solidity
-uint256 squadAmountBelongToMC
+uint256 cryptoAmountBelongToMC
 ```
 
-Record the squad amount belong to MasterChefV3.
+Record the crypto amount belong to MasterChefV3.
 
 ### ZeroAddress
 
@@ -246,10 +246,10 @@ error NotOwnerOrOperator()
 error NoBalance()
 ```
 
-### NotSquadNFT
+### NotCryptoNFT
 
 ```solidity
-error NotSquadNFT()
+error NotCryptoNFT()
 ```
 
 ### InvalidNFT
@@ -327,7 +327,7 @@ event Init()
 ### AddPool
 
 ```solidity
-event AddPool(uint256 pid, uint256 allocPoint, contract ISquadV3Pool v3Pool, contract ILMPool lmPool)
+event AddPool(uint256 pid, uint256 allocPoint, contract ICryptoV3Pool v3Pool, contract ILMPool lmPool)
 ```
 
 ### SetPool
@@ -387,13 +387,13 @@ event Harvest(address sender, address to, uint256 pid, uint256 tokenId, uint256 
 ### NewUpkeepPeriod
 
 ```solidity
-event NewUpkeepPeriod(uint256 periodNumber, uint256 startTime, uint256 endTime, uint256 squadPerSecond, uint256 squadAmount)
+event NewUpkeepPeriod(uint256 periodNumber, uint256 startTime, uint256 endTime, uint256 cryptoPerSecond, uint256 cryptoAmount)
 ```
 
 ### UpdateUpkeepPeriod
 
 ```solidity
-event UpdateUpkeepPeriod(uint256 periodNumber, uint256 oldEndTime, uint256 newEndTime, uint256 remainingSquad)
+event UpdateUpkeepPeriod(uint256 periodNumber, uint256 oldEndTime, uint256 newEndTime, uint256 remainingCrypto)
 ```
 
 ### UpdateFarmBoostContract
@@ -437,24 +437,24 @@ _Throws if caller is not the boost contract._
 ### constructor
 
 ```solidity
-constructor(contract IERC20 _SQUAD, contract INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) public
+constructor(contract IERC20 _crypto, contract INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) public
 ```
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| _SQUAD | contract IERC20 | The SQUAD token contract address. |
+| _crypto | contract IERC20 | The CST token contract address. |
 | _nonfungiblePositionManager | contract INonfungiblePositionManager | the NFT position manager contract address. |
 | _WETH | address |  |
 
 ### getLatestPeriodInfoByPid
 
 ```solidity
-function getLatestPeriodInfoByPid(uint256 _pid) public view returns (uint256 squadPerSecond, uint256 endTime)
+function getLatestPeriodInfoByPid(uint256 _pid) public view returns (uint256 cryptoPerSecond, uint256 endTime)
 ```
 
-Returns the squad per second , period end time.
+Returns the crypto per second , period end time.
 
 #### Parameters
 
@@ -465,10 +465,10 @@ Returns the squad per second , period end time.
 ### getLatestPeriodInfo
 
 ```solidity
-function getLatestPeriodInfo(address _v3Pool) public view returns (uint256 squadPerSecond, uint256 endTime)
+function getLatestPeriodInfo(address _v3Pool) public view returns (uint256 cryptoPerSecond, uint256 endTime)
 ```
 
-Returns the squad per second , period end time. This is for liquidity mining pool.
+Returns the crypto per second , period end time. This is for liquidity mining pool.
 
 #### Parameters
 
@@ -476,15 +476,15 @@ Returns the squad per second , period end time. This is for liquidity mining poo
 | ---- | ---- | ----------- |
 | _v3Pool | address | Address of the V3 pool. |
 
-### pendingSquad
+### pendingCrypto
 
 ```solidity
-function pendingSquad(uint256 _tokenId) external view returns (uint256 reward)
+function pendingCrypto(uint256 _tokenId) external view returns (uint256 reward)
 ```
 
-View function for checking pending SQUAD rewards.
+View function for checking pending CST rewards.
 
-_The pending squad amount is based on the last state in LMPool. The actual amount will happen whenever liquidity changes or harvest._
+_The pending crypto amount is based on the last state in LMPool. The actual amount will happen whenever liquidity changes or harvest._
 
 #### Parameters
 
@@ -515,7 +515,7 @@ function setLMPoolDeployer(contract ILMPoolDeployer _LMPoolDeployer) external
 ### add
 
 ```solidity
-function add(uint256 _allocPoint, contract ISquadV3Pool _v3Pool, bool _withUpdate) external
+function add(uint256 _allocPoint, contract ICryptoV3Pool _v3Pool, bool _withUpdate) external
 ```
 
 Add a new pool. Can only be called by the owner.
@@ -526,7 +526,7 @@ One v3 pool can only create one pool.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | _allocPoint | uint256 | Number of allocation points for the new pool. |
-| _v3Pool | contract ISquadV3Pool | Address of the V3 pool. |
+| _v3Pool | contract ICryptoV3Pool | Address of the V3 pool. |
 | _withUpdate | bool | Whether call "massUpdatePools" operation. |
 
 ### set
@@ -535,7 +535,7 @@ One v3 pool can only create one pool.
 function set(uint256 _pid, uint256 _allocPoint, bool _withUpdate) external
 ```
 
-Update the given pool's SQUAD allocation point. Can only be called by the owner.
+Update the given pool's CST allocation point. Can only be called by the owner.
 
 #### Parameters
 
@@ -572,7 +572,7 @@ Upon receiving a ERC721
 function harvest(uint256 _tokenId, address _to) external returns (uint256 reward)
 ```
 
-harvest squad from pool.
+harvest crypto from pool.
 
 #### Parameters
 
@@ -820,7 +820,7 @@ Upkeep period.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| _amount | uint256 | The amount of squad injected. |
+| _amount | uint256 | The amount of crypto injected. |
 | _duration | uint256 | The period duration. |
 | _withUpdate | bool | Whether call "massUpdatePools" operation. |
 
@@ -830,7 +830,7 @@ Upkeep period.
 function massUpdatePools() internal
 ```
 
-Update squad reward for all the liquidity mining pool.
+Update crypto reward for all the liquidity mining pool.
 
 ### updatePools
 
@@ -838,7 +838,7 @@ Update squad reward for all the liquidity mining pool.
 function updatePools(uint256[] pids) external
 ```
 
-Update squad reward for the liquidity mining pool.
+Update crypto reward for the liquidity mining pool.
 
 _Avoid too many pools, and a single transaction cannot be fully executed for all pools._
 
@@ -909,14 +909,14 @@ Transfer ETH in a safe way
 function _safeTransfer(address _to, uint256 _amount) internal
 ```
 
-Safe Transfer SQUAD.
+Safe Transfer CST.
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| _to | address | The SQUAD receiver address. |
-| _amount | uint256 | Transfer SQUAD amounts. |
+| _to | address | The CST receiver address. |
+| _amount | uint256 | Transfer CST amounts. |
 
 ### receive
 

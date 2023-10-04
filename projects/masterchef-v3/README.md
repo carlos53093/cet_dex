@@ -6,7 +6,7 @@
 ```solidity
 struct PoolInfo {
   uint256 allocPoint;
-  ISquadV3Pool v3Pool;
+  ICryptoV3Pool v3Pool;
   address token0;
   address token1;
   uint24 fee;
@@ -71,13 +71,13 @@ mapping(address => uint256) v3PoolAddressPid
 
 v3PoolAddressPid[v3PoolAddress] => pid
 
-### SQUAD
+### CST
 
 ```solidity
-IERC20 SQUAD
+IERC20 CST
 ```
 
-Address of SQUAD contract.
+Address of CST contract.
 
 ### WETH
 
@@ -151,10 +151,10 @@ uint256 latestPeriodStartTime
 uint256 latestPeriodEndTime
 ```
 
-### latestPeriodSQUADPerSecond
+### latestPeriodcryptoPerSecond
 
 ```solidity
-uint256 latestPeriodSQUADPerSecond
+uint256 latestPeriodcryptoPerSecond
 ```
 
 ### operatorAddress
@@ -219,36 +219,36 @@ uint256 Q128
 uint256 MAX_U256
 ```
 
-### SQUADAmountBelongToMC
+### cryptoAmountBelongToMC
 
 ```solidity
-uint256 SQUADAmountBelongToMC
+uint256 cryptoAmountBelongToMC
 ```
 
-Record the SQUAD amount belong to 
+Record the CST amount belong to 
 
 
 ### constructor
 
 ```solidity
-constructor(IERC20 _SQUAD, INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) public
+constructor(IERC20 _crypto, INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) public
 ```
 
 #### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| _SQUAD | IERC20 | The SQUAD token contract address. |
+| _crypto | IERC20 | The CST token contract address. |
 | _nonfungiblePositionManager | INonfungiblePositionManager | the NFT position manager contract address. |
 | _WETH | address |  |
 
 ### getLatestPeriodInfoByPid
 
 ```solidity
-function getLatestPeriodInfoByPid(uint256 _pid) public view returns (uint256 SQUADPerSecond, uint256 endTime)
+function getLatestPeriodInfoByPid(uint256 _pid) public view returns (uint256 cryptoPerSecond, uint256 endTime)
 ```
 
-Returns the SQUAD per second , period end time.
+Returns the CST per second , period end time.
 
 #### Parameters
 
@@ -260,16 +260,16 @@ Returns the SQUAD per second , period end time.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| SQUADPerSecond | uint256 | SQUAD reward per second. |
+| cryptoPerSecond | uint256 | CST reward per second. |
 | endTime | uint256 | Period end time. |
 
 ### getLatestPeriodInfo
 
 ```solidity
-function getLatestPeriodInfo(address _v3Pool) public view returns (uint256 SQUADPerSecond, uint256 endTime)
+function getLatestPeriodInfo(address _v3Pool) public view returns (uint256 cryptoPerSecond, uint256 endTime)
 ```
 
-Returns the SQUAD per second , period end time. This is for liquidity mining pool.
+Returns the CST per second , period end time. This is for liquidity mining pool.
 
 #### Parameters
 
@@ -281,18 +281,18 @@ Returns the SQUAD per second , period end time. This is for liquidity mining poo
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| SQUADPerSecond | uint256 | SQUAD reward per second. |
+| cryptoPerSecond | uint256 | CST reward per second. |
 | endTime | uint256 | Period end time. |
 
-### pendingSQUAD
+### pendingcrypto
 
 ```solidity
-function pendingSQUAD(uint256 _tokenId) external view returns (uint256 reward)
+function pendingcrypto(uint256 _tokenId) external view returns (uint256 reward)
 ```
 
-View function for checking pending SQUAD rewards.
+View function for checking pending CST rewards.
 
-_The pending SQUAD amount is based on the last state in LMPool. The actual amount will happen whenever liquidity changes or harvest._
+_The pending CST amount is based on the last state in LMPool. The actual amount will happen whenever liquidity changes or harvest._
 
 #### Parameters
 
@@ -329,7 +329,7 @@ function setLMPoolDeployer(ILMPoolDeployer _LMPoolDeployer) external
 ### add
 
 ```solidity
-function add(uint256 _allocPoint, ISquadV3Pool _v3Pool, bool _withUpdate) external
+function add(uint256 _allocPoint, ICryptoV3Pool _v3Pool, bool _withUpdate) external
 ```
 
 Add a new pool. Can only be called by the owner.
@@ -340,7 +340,7 @@ One v3 pool can only create one pool.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | _allocPoint | uint256 | Number of allocation points for the new pool. |
-| _v3Pool | ISquadV3Pool | Address of the V3 pool. |
+| _v3Pool | ICryptoV3Pool | Address of the V3 pool. |
 | _withUpdate | bool | Whether call "massUpdatePools" operation. |
 
 ### set
@@ -349,7 +349,7 @@ One v3 pool can only create one pool.
 function set(uint256 _pid, uint256 _allocPoint, bool _withUpdate) external
 ```
 
-Update the given pool's SQUAD allocation point. Can only be called by the owner.
+Update the given pool's CST allocation point. Can only be called by the owner.
 
 #### Parameters
 
@@ -374,7 +374,7 @@ Upon receiving a ERC721
 function harvest(uint256 _tokenId, address _to) external returns (uint256 reward)
 ```
 
-harvest SQUAD from pool.
+harvest CST from pool.
 
 #### Parameters
 
@@ -387,7 +387,7 @@ harvest SQUAD from pool.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| reward | uint256 | SQUAD reward. |
+| reward | uint256 | CST reward. |
 
 ### withdraw
 
@@ -408,7 +408,7 @@ Withdraw LP tokens from pool.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| reward | uint256 | SQUAD reward. |
+| reward | uint256 | CST reward. |
 
 ### updateLiquidity
 
@@ -629,7 +629,7 @@ Upkeep period.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| _amount | uint256 | The amount of SQUAD injected. |
+| _amount | uint256 | The amount of CST injected. |
 | _duration | uint256 | The period duration. |
 | _withUpdate | bool | Whether call "massUpdatePools" operation. |
 
@@ -640,7 +640,7 @@ Upkeep period.
 function updatePools(uint256[] pids) external
 ```
 
-Update SQUAD reward for the liquidity mining pool.
+Update CST reward for the liquidity mining pool.
 
 _Avoid too many pools, and a single transaction cannot be fully executed for all pools._
 
@@ -710,10 +710,10 @@ error NotOwnerOrOperator()
 error NoBalance()
 ```
 
-### NotSquadNFT
+### NotCryptoNFT
 
 ```solidity
-error NotSquadNFT()
+error NotCryptoNFT()
 ```
 
 ### InvalidNFT
@@ -791,7 +791,7 @@ event Init()
 ### AddPool
 
 ```solidity
-event AddPool(uint256 pid, uint256 allocPoint, ISquadV3Pool v3Pool, ILMPool lmPool)
+event AddPool(uint256 pid, uint256 allocPoint, ICryptoV3Pool v3Pool, ILMPool lmPool)
 ```
 
 ### SetPool
@@ -851,13 +851,13 @@ event Harvest(address sender, address to, uint256 pid, uint256 tokenId, uint256 
 ### NewUpkeepPeriod
 
 ```solidity
-event NewUpkeepPeriod(uint256 periodNumber, uint256 startTime, uint256 endTime, uint256 SQUADPerSecond, uint256 SQUADAmount)
+event NewUpkeepPeriod(uint256 periodNumber, uint256 startTime, uint256 endTime, uint256 cryptoPerSecond, uint256 cryptoAmount)
 ```
 
 ### UpdateUpkeepPeriod
 
 ```solidity
-event UpdateUpkeepPeriod(uint256 periodNumber, uint256 oldEndTime, uint256 newEndTime, uint256 remainingSQUAD)
+event UpdateUpkeepPeriod(uint256 periodNumber, uint256 oldEndTime, uint256 newEndTime, uint256 remainingcrypto)
 ```
 
 ### UpdateFarmBoostContract

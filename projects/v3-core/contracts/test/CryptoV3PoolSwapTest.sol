@@ -3,10 +3,10 @@ pragma solidity =0.7.6;
 
 import '../interfaces/IERC20Minimal.sol';
 
-import '../interfaces/callback/ISquadV3SwapCallback.sol';
-import '../interfaces/ISquadV3Pool.sol';
+import '../interfaces/callback/ICryptoV3SwapCallback.sol';
+import '../interfaces/ICryptoV3Pool.sol';
 
-contract SquadV3PoolSwapTest is ISquadV3SwapCallback {
+contract CryptoV3PoolSwapTest is ICryptoV3SwapCallback {
     int256 private _amount0Delta;
     int256 private _amount1Delta;
 
@@ -23,7 +23,7 @@ contract SquadV3PoolSwapTest is ISquadV3SwapCallback {
             uint160 nextSqrtRatio
         )
     {
-        (amount0Delta, amount1Delta) = ISquadV3Pool(pool).swap(
+        (amount0Delta, amount1Delta) = ICryptoV3Pool(pool).swap(
             address(0),
             zeroForOne,
             amountSpecified,
@@ -31,10 +31,10 @@ contract SquadV3PoolSwapTest is ISquadV3SwapCallback {
             abi.encode(msg.sender)
         );
 
-        (nextSqrtRatio, , , , , , ) = ISquadV3Pool(pool).slot0();
+        (nextSqrtRatio, , , , , , ) = ICryptoV3Pool(pool).slot0();
     }
 
-    function squadV3SwapCallback(
+    function cryptoV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata data
@@ -42,9 +42,9 @@ contract SquadV3PoolSwapTest is ISquadV3SwapCallback {
         address sender = abi.decode(data, (address));
 
         if (amount0Delta > 0) {
-            IERC20Minimal(ISquadV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
+            IERC20Minimal(ICryptoV3Pool(msg.sender).token0()).transferFrom(sender, msg.sender, uint256(amount0Delta));
         } else if (amount1Delta > 0) {
-            IERC20Minimal(ISquadV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
+            IERC20Minimal(ICryptoV3Pool(msg.sender).token1()).transferFrom(sender, msg.sender, uint256(amount1Delta));
         }
     }
 }

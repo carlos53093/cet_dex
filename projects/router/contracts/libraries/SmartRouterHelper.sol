@@ -5,8 +5,8 @@ pragma abicoder v2;
 import '../interfaces/IStableSwapFactory.sol';
 import '../interfaces/IStableSwapInfo.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
-import '@squadswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Pool.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/LowGasSafeMath.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Pool.sol';
 
 library SmartRouterHelper {
     using LowGasSafeMath for uint256;
@@ -181,7 +181,7 @@ library SmartRouterHelper {
     }
 
     /// @notice Deterministically computes the pool address given the deployer and PoolKey
-    /// @param deployer The SquadSwap V3 deployer contract address
+    /// @param deployer The CryptoSwap V3 deployer contract address
     /// @param key The PoolKey
     /// @return pool The contract address of the V3 pool
     function computeAddress(address deployer, PoolKey memory key) public pure returns (address pool) {
@@ -206,12 +206,12 @@ library SmartRouterHelper {
         address tokenA,
         address tokenB,
         uint24 fee
-    ) public pure returns (ISquadV3Pool) {
-        return ISquadV3Pool(computeAddress(deployer, getPoolKey(tokenA, tokenB, fee)));
+    ) public pure returns (ICryptoV3Pool) {
+        return ICryptoV3Pool(computeAddress(deployer, getPoolKey(tokenA, tokenB, fee)));
     }
 
-    /// @notice Returns the address of a valid SquadSwap V3 Pool
-    /// @param deployer The contract address of the SquadSwap V3 deployer
+    /// @notice Returns the address of a valid CryptoSwap V3 Pool
+    /// @param deployer The contract address of the CryptoSwap V3 deployer
     /// @param tokenA The contract address of either token0 or token1
     /// @param tokenB The contract address of the other token
     /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
@@ -221,20 +221,20 @@ library SmartRouterHelper {
         address tokenA,
         address tokenB,
         uint24 fee
-    ) public view returns (ISquadV3Pool pool) {
+    ) public view returns (ICryptoV3Pool pool) {
         return verifyCallback(deployer, getPoolKey(tokenA, tokenB, fee));
     }
 
-    /// @notice Returns the address of a valid SquadSwap V3 Pool
-    /// @param deployer The contract address of the SquadSwap V3 deployer
+    /// @notice Returns the address of a valid CryptoSwap V3 Pool
+    /// @param deployer The contract address of the CryptoSwap V3 deployer
     /// @param poolKey The identifying key of the V3 pool
     /// @return pool The V3 pool contract address
     function verifyCallback(address deployer, PoolKey memory poolKey)
         public
         view
-        returns (ISquadV3Pool pool)
+        returns (ICryptoV3Pool pool)
     {
-        pool = ISquadV3Pool(computeAddress(deployer, poolKey));
+        pool = ICryptoV3Pool(computeAddress(deployer, poolKey));
         require(msg.sender == address(pool));
     }
 }

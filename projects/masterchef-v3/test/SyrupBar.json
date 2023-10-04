@@ -6,8 +6,8 @@
     {
       "inputs": [
         {
-          "internalType": "contract SquadToken",
-          "name": "_squad",
+          "internalType": "contract CryptoToken",
+          "name": "_crypto",
           "type": "address"
         }
       ],
@@ -246,10 +246,10 @@
     },
     {
       "inputs": [],
-      "name": "squad",
+      "name": "crypto",
       "outputs": [
         {
-          "internalType": "contract SquadToken",
+          "internalType": "contract CryptoToken",
           "name": "",
           "type": "address"
         }
@@ -594,7 +594,7 @@
           "type": "uint256"
         }
       ],
-      "name": "safeSquadTransfer",
+      "name": "safeCryptoTransfer",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

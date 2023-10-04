@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
-import './interfaces/ISquadV3PoolDeployer.sol';
+import './interfaces/ICryptoV3PoolDeployer.sol';
 
-import './SquadV3Pool.sol';
+import './CryptoV3Pool.sol';
 
-contract SquadV3PoolDeployer is ISquadV3PoolDeployer {
+contract CryptoV3PoolDeployer is ICryptoV3PoolDeployer {
     struct Parameters {
         address factory;
         address token0;
@@ -14,7 +14,7 @@ contract SquadV3PoolDeployer is ISquadV3PoolDeployer {
         int24 tickSpacing;
     }
 
-    /// @inheritdoc ISquadV3PoolDeployer
+    /// @inheritdoc ICryptoV3PoolDeployer
     Parameters public override parameters;
 
     address public factoryAddress;
@@ -37,7 +37,7 @@ contract SquadV3PoolDeployer is ISquadV3PoolDeployer {
 
     /// @dev Deploys a pool with the given parameters by transiently setting the parameters storage slot and then
     /// clearing it after deploying the pool.
-    /// @param factory The contract address of the SquadSwap V3 factory
+    /// @param factory The contract address of the CryptoSwap V3 factory
     /// @param token0 The first token of the pool by address sort order
     /// @param token1 The second token of the pool by address sort order
     /// @param fee The fee collected upon every swap in the pool, denominated in hundredths of a bip
@@ -50,7 +50,7 @@ contract SquadV3PoolDeployer is ISquadV3PoolDeployer {
         int24 tickSpacing
     ) external override onlyFactory returns (address pool) {
         parameters = Parameters({factory: factory, token0: token0, token1: token1, fee: fee, tickSpacing: tickSpacing});
-        pool = address(new SquadV3Pool{salt: keccak256(abi.encode(token0, token1, fee))}());
+        pool = address(new CryptoV3Pool{salt: keccak256(abi.encode(token0, token1, fee))}());
         delete parameters;
     }
 }

@@ -2,9 +2,9 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Factory.sol';
-import '@squadswap/v3-core/contracts/interfaces/callback/ISquadV3MintCallback.sol';
-import '@squadswap/v3-core/contracts/libraries/TickMath.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Factory.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/callback/ICryptoV3MintCallback.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/TickMath.sol';
 
 import '../libraries/PoolAddress.sol';
 import '../libraries/CallbackValidation.sol';
@@ -14,15 +14,15 @@ import './PeripheryPayments.sol';
 import './PeripheryImmutableState.sol';
 
 /// @title Liquidity management functions
-/// @notice Internal functions for safely managing liquidity in SquadSwap V3
-abstract contract LiquidityManagement is ISquadV3MintCallback, PeripheryImmutableState, PeripheryPayments {
+/// @notice Internal functions for safely managing liquidity in CryptoSwap V3
+abstract contract LiquidityManagement is ICryptoV3MintCallback, PeripheryImmutableState, PeripheryPayments {
     struct MintCallbackData {
         PoolAddress.PoolKey poolKey;
         address payer;
     }
 
-    /// @inheritdoc ISquadV3MintCallback
-    function squadV3MintCallback(
+    /// @inheritdoc ICryptoV3MintCallback
+    function cryptoV3MintCallback(
         uint256 amount0Owed,
         uint256 amount1Owed,
         bytes calldata data
@@ -54,13 +54,13 @@ abstract contract LiquidityManagement is ISquadV3MintCallback, PeripheryImmutabl
             uint128 liquidity,
             uint256 amount0,
             uint256 amount1,
-            ISquadV3Pool pool
+            ICryptoV3Pool pool
         )
     {
         PoolAddress.PoolKey memory poolKey =
             PoolAddress.PoolKey({token0: params.token0, token1: params.token1, fee: params.fee});
 
-        pool = ISquadV3Pool(PoolAddress.computeAddress(deployer, poolKey));
+        pool = ICryptoV3Pool(PoolAddress.computeAddress(deployer, poolKey));
 
         // compute the liquidity amount
         {

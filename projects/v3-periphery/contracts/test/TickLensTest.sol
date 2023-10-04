@@ -2,7 +2,7 @@
 pragma solidity >=0.5.0;
 pragma abicoder v2;
 
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Pool.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Pool.sol';
 import '../lens/TickLens.sol';
 
 /// @title Tick Lens contract

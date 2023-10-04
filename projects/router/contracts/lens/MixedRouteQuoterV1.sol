@@ -2,13 +2,13 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@squadswap/v3-periphery/contracts/base/PeripheryImmutableState.sol';
-import '@squadswap/v3-core/contracts/libraries/SafeCast.sol';
-import '@squadswap/v3-core/contracts/libraries/TickMath.sol';
-import '@squadswap/v3-core/contracts/libraries/TickBitmap.sol';
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Pool.sol';
-import '@squadswap/v3-core/contracts/interfaces/callback/ISquadV3SwapCallback.sol';
-import '@squadswap/v3-periphery/contracts/libraries/Path.sol';
+import '@cryptoswap2/v3-periphery/contracts/base/PeripheryImmutableState.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/SafeCast.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/TickMath.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/TickBitmap.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Pool.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/callback/ICryptoV3SwapCallback.sol';
+import '@cryptoswap2/v3-periphery/contracts/libraries/Path.sol';
 import '@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol';
 
 import '../base/ImmutableState.sol';
@@ -22,10 +22,10 @@ import '../libraries/SmartRouterHelper.sol';
 /// @notice Does not support exact output swaps since using the contract balance between exactOut swaps is not supported
 /// @dev These functions are not gas efficient and should _not_ be called on chain. Instead, optimistically execute
 /// the swap and check the amounts in the callback.
-contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, ISquadV3SwapCallback, PeripheryImmutableState {
+contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, ICryptoV3SwapCallback, PeripheryImmutableState {
     using Path for bytes;
     using SafeCast for uint256;
-    using PoolTicksCounter for ISquadV3Pool;
+    using PoolTicksCounter for ICryptoV3Pool;
 
     address public immutable factoryV2;
     address public immutable factoryStable;
@@ -55,8 +55,8 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, ISquadV3SwapCallback, Periph
 
     /************************************************** V3 **************************************************/
 
-    /// @inheritdoc ISquadV3SwapCallback
-    function squadV3SwapCallback(
+    /// @inheritdoc ICryptoV3SwapCallback
+    function cryptoV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes memory path
@@ -70,7 +70,7 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, ISquadV3SwapCallback, Periph
                 ? (tokenIn < tokenOut, uint256(-amount1Delta))
                 : (tokenOut < tokenIn, uint256(-amount0Delta));
 
-        ISquadV3Pool pool = SmartRouterHelper.getPool(deployer, tokenIn, tokenOut, fee);
+        ICryptoV3Pool pool = SmartRouterHelper.getPool(deployer, tokenIn, tokenOut, fee);
         (uint160 v3SqrtPriceX96After, int24 tickAfter, , , , , ) = pool.slot0();
 
         if (isExactInput) {
@@ -109,7 +109,7 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, ISquadV3SwapCallback, Periph
 
     function handleV3Revert(
         bytes memory reason,
-        ISquadV3Pool pool,
+        ICryptoV3Pool pool,
         uint256 gasEstimate
     )
         private
@@ -143,7 +143,7 @@ contract MixedRouteQuoterV1 is IMixedRouteQuoterV1, ISquadV3SwapCallback, Periph
         )
     {
         bool zeroForOne = params.tokenIn < params.tokenOut;
-        ISquadV3Pool pool = SmartRouterHelper.getPool(deployer, params.tokenIn, params.tokenOut, params.fee);
+        ICryptoV3Pool pool = SmartRouterHelper.getPool(deployer, params.tokenIn, params.tokenOut, params.fee);
 
         uint256 gasBefore = gasleft();
         try

@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
-import '@squadswap/v3-lm-pool/contracts/interfaces/ISquadV3LmPool.sol';
+import '@cryptoswap2/v3-lm-pool/contracts/interfaces/ICryptoV3LmPool.sol';
 
-import './interfaces/ISquadV3Pool.sol';
+import './interfaces/ICryptoV3Pool.sol';
 
-import './interfaces/ISquadV3PoolDeployer.sol';
-import './interfaces/ISquadV3Factory.sol';
+import './interfaces/ICryptoV3PoolDeployer.sol';
+import './interfaces/ICryptoV3Factory.sol';
 import './interfaces/IERC20Minimal.sol';
-import './interfaces/callback/ISquadV3MintCallback.sol';
-import './interfaces/callback/ISquadV3SwapCallback.sol';
-import './interfaces/callback/ISquadV3FlashCallback.sol';
+import './interfaces/callback/ICryptoV3MintCallback.sol';
+import './interfaces/callback/ICryptoV3SwapCallback.sol';
+import './interfaces/callback/ICryptoV3FlashCallback.sol';
 
 import './libraries/LowGasSafeMath.sol';
 import './libraries/SafeCast.sol';
@@ -27,7 +27,7 @@ import './libraries/LiquidityMath.sol';
 import './libraries/SqrtPriceMath.sol';
 import './libraries/SwapMath.sol';
 
-contract SquadV3Pool is ISquadV3Pool {
+contract CryptoV3Pool is ICryptoV3Pool {
     using LowGasSafeMath for uint256;
     using LowGasSafeMath for int256;
     using SafeCast for uint256;
@@ -38,19 +38,19 @@ contract SquadV3Pool is ISquadV3Pool {
     using Position for Position.Info;
     using Oracle for Oracle.Observation[65535];
 
-    /// @inheritdoc ISquadV3PoolImmutables
+    /// @inheritdoc ICryptoV3PoolImmutables
     address public immutable override factory;
-    /// @inheritdoc ISquadV3PoolImmutables
+    /// @inheritdoc ICryptoV3PoolImmutables
     address public immutable override token0;
-    /// @inheritdoc ISquadV3PoolImmutables
+    /// @inheritdoc ICryptoV3PoolImmutables
     address public immutable override token1;
-    /// @inheritdoc ISquadV3PoolImmutables
+    /// @inheritdoc ICryptoV3PoolImmutables
     uint24 public immutable override fee;
 
-    /// @inheritdoc ISquadV3PoolImmutables
+    /// @inheritdoc ICryptoV3PoolImmutables
     int24 public immutable override tickSpacing;
 
-    /// @inheritdoc ISquadV3PoolImmutables
+    /// @inheritdoc ICryptoV3PoolImmutables
     uint128 public immutable override maxLiquidityPerTick;
 
     uint32  internal constant PROTOCOL_FEE_SP = 65536;
@@ -74,12 +74,12 @@ contract SquadV3Pool is ISquadV3Pool {
         // whether the pool is locked
         bool unlocked;
     }
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     Slot0 public override slot0;
 
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     uint256 public override feeGrowthGlobal0X128;
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     uint256 public override feeGrowthGlobal1X128;
 
     // accumulated protocol fees in token0/token1 units
@@ -87,23 +87,23 @@ contract SquadV3Pool is ISquadV3Pool {
         uint128 token0;
         uint128 token1;
     }
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     ProtocolFees public override protocolFees;
 
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     uint128 public override liquidity;
 
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     mapping(int24 => Tick.Info) public override ticks;
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     mapping(int16 => uint256) public override tickBitmap;
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     mapping(bytes32 => Position.Info) public override positions;
-    /// @inheritdoc ISquadV3PoolState
+    /// @inheritdoc ICryptoV3PoolState
     Oracle.Observation[65535] public override observations;
 
     // liquidity mining
-    ISquadV3LmPool public lmPool;
+    ICryptoV3LmPool public lmPool;
 
     event SetLmPoolEvent(address addr);
 
@@ -120,13 +120,13 @@ contract SquadV3Pool is ISquadV3Pool {
     /// @dev Prevents calling a function from anyone except the factory or its
     /// owner
     modifier onlyFactoryOrFactoryOwner() {
-        require(msg.sender == factory || msg.sender == ISquadV3Factory(factory).owner());
+        require(msg.sender == factory || msg.sender == ICryptoV3Factory(factory).owner());
         _;
     }
 
     constructor() {
         int24 _tickSpacing;
-        (factory, token0, token1, fee, _tickSpacing) = ISquadV3PoolDeployer(msg.sender).parameters();
+        (factory, token0, token1, fee, _tickSpacing) = ICryptoV3PoolDeployer(msg.sender).parameters();
         tickSpacing = _tickSpacing;
 
         maxLiquidityPerTick = Tick.tickSpacingToMaxLiquidityPerTick(_tickSpacing);
@@ -166,7 +166,7 @@ contract SquadV3Pool is ISquadV3Pool {
         return abi.decode(data, (uint256));
     }
 
-    /// @inheritdoc ISquadV3PoolDerivedState
+    /// @inheritdoc ICryptoV3PoolDerivedState
     function snapshotCumulativesInside(int24 tickLower, int24 tickUpper)
         external
         view
@@ -242,7 +242,7 @@ contract SquadV3Pool is ISquadV3Pool {
         }
     }
 
-    /// @inheritdoc ISquadV3PoolDerivedState
+    /// @inheritdoc ICryptoV3PoolDerivedState
     function observe(uint32[] calldata secondsAgos)
         external
         view
@@ -260,7 +260,7 @@ contract SquadV3Pool is ISquadV3Pool {
             );
     }
 
-    /// @inheritdoc ISquadV3PoolActions
+    /// @inheritdoc ICryptoV3PoolActions
     function increaseObservationCardinalityNext(uint16 observationCardinalityNext)
         external
         override
@@ -276,7 +276,7 @@ contract SquadV3Pool is ISquadV3Pool {
             emit IncreaseObservationCardinalityNext(observationCardinalityNextOld, observationCardinalityNextNew);
     }
 
-    /// @inheritdoc ISquadV3PoolActions
+    /// @inheritdoc ICryptoV3PoolActions
     /// @dev not locked because it initializes unlocked
     function initialize(uint160 sqrtPriceX96) external override {
         require(slot0.sqrtPriceX96 == 0, 'AI');
@@ -475,7 +475,7 @@ contract SquadV3Pool is ISquadV3Pool {
         }
     }
 
-    /// @inheritdoc ISquadV3PoolActions
+    /// @inheritdoc ICryptoV3PoolActions
     /// @dev noDelegateCall is applied indirectly via _modifyPosition
     function mint(
         address recipient,
@@ -501,14 +501,14 @@ contract SquadV3Pool is ISquadV3Pool {
         uint256 balance1Before;
         if (amount0 > 0) balance0Before = balance0();
         if (amount1 > 0) balance1Before = balance1();
-        ISquadV3MintCallback(msg.sender).squadV3MintCallback(amount0, amount1, data);
+        ICryptoV3MintCallback(msg.sender).cryptoV3MintCallback(amount0, amount1, data);
         if (amount0 > 0) require(balance0Before.add(amount0) <= balance0(), 'M0');
         if (amount1 > 0) require(balance1Before.add(amount1) <= balance1(), 'M1');
 
         emit Mint(msg.sender, recipient, tickLower, tickUpper, amount, amount0, amount1);
     }
 
-    /// @inheritdoc ISquadV3PoolActions
+    /// @inheritdoc ICryptoV3PoolActions
     function collect(
         address recipient,
         int24 tickLower,
@@ -534,7 +534,7 @@ contract SquadV3Pool is ISquadV3Pool {
         emit Collect(msg.sender, recipient, tickLower, tickUpper, amount0, amount1);
     }
 
-    /// @inheritdoc ISquadV3PoolActions
+    /// @inheritdoc ICryptoV3PoolActions
     /// @dev noDelegateCall is applied indirectly via _modifyPosition
     function burn(
         int24 tickLower,
@@ -613,7 +613,7 @@ contract SquadV3Pool is ISquadV3Pool {
         uint256 feeAmount;
     }
 
-    /// @inheritdoc ISquadV3PoolActions
+    /// @inheritdoc ICryptoV3PoolActions
     function swap(
         address recipient,
         bool zeroForOne,
@@ -804,13 +804,13 @@ contract SquadV3Pool is ISquadV3Pool {
             if (amount1 < 0) TransferHelper.safeTransfer(token1, recipient, uint256(-amount1));
 
             uint256 balance0Before = balance0();
-            ISquadV3SwapCallback(msg.sender).squadV3SwapCallback(amount0, amount1, data);
+            ICryptoV3SwapCallback(msg.sender).cryptoV3SwapCallback(amount0, amount1, data);
             require(balance0Before.add(uint256(amount0)) <= balance0(), 'IIA');
         } else {
             if (amount0 < 0) TransferHelper.safeTransfer(token0, recipient, uint256(-amount0));
 
             uint256 balance1Before = balance1();
-            ISquadV3SwapCallback(msg.sender).squadV3SwapCallback(amount0, amount1, data);
+            ICryptoV3SwapCallback(msg.sender).cryptoV3SwapCallback(amount0, amount1, data);
             require(balance1Before.add(uint256(amount1)) <= balance1(), 'IIA');
         }
 
@@ -818,7 +818,7 @@ contract SquadV3Pool is ISquadV3Pool {
         slot0.unlocked = true;
     }
 
-    /// @inheritdoc ISquadV3PoolActions
+    /// @inheritdoc ICryptoV3PoolActions
     function flash(
         address recipient,
         uint256 amount0,
@@ -836,7 +836,7 @@ contract SquadV3Pool is ISquadV3Pool {
         if (amount0 > 0) TransferHelper.safeTransfer(token0, recipient, amount0);
         if (amount1 > 0) TransferHelper.safeTransfer(token1, recipient, amount1);
 
-        ISquadV3FlashCallback(msg.sender).squadV3FlashCallback(fee0, fee1, data);
+        ICryptoV3FlashCallback(msg.sender).cryptoV3FlashCallback(fee0, fee1, data);
 
         uint256 balance0After = balance0();
         uint256 balance1After = balance1();
@@ -864,7 +864,7 @@ contract SquadV3Pool is ISquadV3Pool {
         emit Flash(msg.sender, recipient, amount0, amount1, paid0, paid1);
     }
 
-    /// @inheritdoc ISquadV3PoolOwnerActions
+    /// @inheritdoc ICryptoV3PoolOwnerActions
     function setFeeProtocol(uint32 feeProtocol0, uint32 feeProtocol1) external override lock onlyFactoryOrFactoryOwner {
         require(
             (feeProtocol0 == 0 || (feeProtocol0 >= 1000 && feeProtocol0 <= 4000)) &&
@@ -876,7 +876,7 @@ contract SquadV3Pool is ISquadV3Pool {
         emit SetFeeProtocol(feeProtocolOld % PROTOCOL_FEE_SP, feeProtocolOld >> 16, feeProtocol0, feeProtocol1);
     }
 
-    /// @inheritdoc ISquadV3PoolOwnerActions
+    /// @inheritdoc ICryptoV3PoolOwnerActions
     function collectProtocol(
         address recipient,
         uint128 amount0Requested,
@@ -899,7 +899,7 @@ contract SquadV3Pool is ISquadV3Pool {
     }
 
     function setLmPool(address _lmPool) external override onlyFactoryOrFactoryOwner {
-      lmPool = ISquadV3LmPool(_lmPool);
+      lmPool = ICryptoV3LmPool(_lmPool);
       emit SetLmPoolEvent(address(_lmPool));
     }
 }

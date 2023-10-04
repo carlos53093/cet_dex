@@ -2,7 +2,7 @@
 
 ## LiquidityManagement
 
-Internal functions for safely managing liquidity in squadSwap V3
+Internal functions for safely managing liquidity in cryptoSwap V3
 
 ### MintCallbackData
 
@@ -13,16 +13,16 @@ struct MintCallbackData {
 }
 ```
 
-### squadV3MintCallback
+### cryptoV3MintCallback
 
 ```solidity
-function squadV3MintCallback(uint256 amount0Owed, uint256 amount1Owed, bytes data) external
+function cryptoV3MintCallback(uint256 amount0Owed, uint256 amount1Owed, bytes data) external
 ```
 
-Called to `msg.sender` after minting liquidity to a position from IsquadV3Pool#mint.
+Called to `msg.sender` after minting liquidity to a position from IcryptoV3Pool#mint.
 
 _In the implementation you must pay the pool tokens owed for the minted liquidity.
-The caller of this method must be checked to be a squadV3Pool deployed by the canonical squadV3Factory._
+The caller of this method must be checked to be a cryptoV3Pool deployed by the canonical cryptoV3Factory._
 
 #### Parameters
 
@@ -30,7 +30,7 @@ The caller of this method must be checked to be a squadV3Pool deployed by the ca
 | ---- | ---- | ----------- |
 | amount0Owed | uint256 | The amount of token0 due to the pool for the minted liquidity |
 | amount1Owed | uint256 | The amount of token1 due to the pool for the minted liquidity |
-| data | bytes | Any data passed through by the caller via the IsquadV3PoolActions#mint call |
+| data | bytes | Any data passed through by the caller via the IcryptoV3PoolActions#mint call |
 
 ### AddLiquidityParams
 
@@ -52,7 +52,7 @@ struct AddLiquidityParams {
 ### addLiquidity
 
 ```solidity
-function addLiquidity(struct LiquidityManagement.AddLiquidityParams params) internal returns (uint128 liquidity, uint256 amount0, uint256 amount1, contract IsquadV3Pool pool)
+function addLiquidity(struct LiquidityManagement.AddLiquidityParams params) internal returns (uint128 liquidity, uint256 amount0, uint256 amount1, contract IcryptoV3Pool pool)
 ```
 
 Add liquidity to an initialized pool

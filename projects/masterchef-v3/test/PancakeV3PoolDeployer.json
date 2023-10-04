@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "SquadV3PoolDeployer",
-  "sourceName": "contracts/SquadV3PoolDeployer.sol",
+  "contractName": "CryptoV3PoolDeployer",
+  "sourceName": "contracts/CryptoV3PoolDeployer.sol",
   "abi": [
     {
       "inputs": [

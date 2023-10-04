@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "SquadToken",
-  "sourceName": "contracts/test/SquadToken.sol",
+  "contractName": "CryptoToken",
+  "sourceName": "contracts/test/CryptoToken.sol",
   "abi": [
     {
       "anonymous": false,

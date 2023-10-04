@@ -1,6 +1,6 @@
 import { verifyContract } from '../../../common/verify'
 import { sleep } from '../../../common/sleep'
-// import { configs } from '@Squadswap/common/config'
+// import { configs } from '@cryptoswap2/common/config'
 import { configs } from '../../../common/config';
 
 async function main() {
@@ -13,9 +13,9 @@ async function main() {
   const deployedContracts_masterchef_v3 = await import(`../../masterchef-v3/deployments/${networkName}.json`)
   const deployedContracts_v3_lm_pool = await import(`../../v3-lm-pool/deployments/${networkName}.json`)
 
-  // Verify SquadV3LmPoolDeployer
-  console.log('Verify SquadV3LmPoolDeployer')
-  await verifyContract(deployedContracts_v3_lm_pool.SquadV3LmPoolDeployer, [
+  // Verify CryptoV3LmPoolDeployer
+  console.log('Verify CryptoV3LmPoolDeployer')
+  await verifyContract(deployedContracts_v3_lm_pool.CryptoV3LmPoolDeployer, [
     deployedContracts_masterchef_v3.MasterChefV3,
   ])
   await sleep(10000)

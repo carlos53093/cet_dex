@@ -1,6 +1,6 @@
 # Solidity API
 
-## MockTimeSquadV3PoolDeployer
+## MockTimeCryptoV3PoolDeployer
 
 ### Parameters
 
@@ -17,7 +17,7 @@ struct Parameters {
 ### parameters
 
 ```solidity
-struct MockTimeSquadV3PoolDeployer.Parameters parameters
+struct MockTimeCryptoV3PoolDeployer.Parameters parameters
 ```
 
 Get the parameters to be used in constructing the pool, set transiently during pool creation.

@@ -2,7 +2,7 @@ import bn from 'bignumber.js'
 import { Contract, ContractFactory, utils, BigNumber } from 'ethers'
 import { ethers, upgrades, network } from 'hardhat'
 import { linkLibraries } from '../util/linkLibraries'
-// import { tryVerify } from '@squadswap/common/verify'
+// import { tryVerify } from '@cryptoswap2/common/verify'
 import { configs } from '../../../common/config'
 import fs from 'fs'
 
@@ -11,7 +11,7 @@ const artifacts: { [name: string]: ContractJson } = {
   QuoterV2: require('../artifacts/contracts/lens/QuoterV2.sol/QuoterV2.json'),
   TickLens: require('../artifacts/contracts/lens/TickLens.sol/TickLens.json'),
   V3Migrator: require('../artifacts/contracts/V3Migrator.sol/V3Migrator.json'),
-  SquadInterfaceMulticall: require('../artifacts/contracts/lens/SquadInterfaceMulticall.sol/SquadInterfaceMulticall.json'),
+  CryptoInterfaceMulticall: require('../artifacts/contracts/lens/CryptoInterfaceMulticall.sol/CryptoInterfaceMulticall.json'),
   // eslint-disable-next-line global-require
   SwapRouter: require('../artifacts/contracts/SwapRouter.sol/SwapRouter.json'),
   // eslint-disable-next-line global-require
@@ -64,13 +64,13 @@ async function main() {
 
   const deployedContracts = await import(`../../v3-core/deployments/${networkName}.json`)
 
-  const squadV3PoolDeployer_address = deployedContracts.SquadV3PoolDeployer
-  const squadV3Factory_address = deployedContracts.SquadV3Factory
+  const cryptoV3PoolDeployer_address = deployedContracts.CryptoV3PoolDeployer
+  const cryptoV3Factory_address = deployedContracts.CryptoV3Factory
 
   const SwapRouter = new ContractFactory(artifacts.SwapRouter.abi, artifacts.SwapRouter.bytecode, owner)
-  const swapRouter = await SwapRouter.deploy(squadV3PoolDeployer_address, squadV3Factory_address, config.WNATIVE)
+  const swapRouter = await SwapRouter.deploy(cryptoV3PoolDeployer_address, cryptoV3Factory_address, config.WNATIVE)
 
-  // await tryVerify(swapRouter, [squadV3PoolDeployer_address, squadV3Factory_address, config.WNATIVE])
+  // await tryVerify(swapRouter, [cryptoV3PoolDeployer_address, cryptoV3Factory_address, config.WNATIVE])
   console.log('swapRouter', swapRouter.address)
 
   // const NFTDescriptor = new ContractFactory(artifacts.NFTDescriptor.abi, artifacts.NFTDescriptor.bytecode, owner)
@@ -141,43 +141,43 @@ async function main() {
     owner
   )
   const nonfungiblePositionManager = await NonfungiblePositionManager.deploy(
-    squadV3PoolDeployer_address,
-    squadV3Factory_address,
+    cryptoV3PoolDeployer_address,
+    cryptoV3Factory_address,
     config.WNATIVE,
     nonfungibleTokenPositionDescriptor.address
   )
 
   // await tryVerify(nonfungiblePositionManager, [
-  //   squadV3PoolDeployer_address,
-  //   squadV3Factory_address,
+  //   cryptoV3PoolDeployer_address,
+  //   cryptoV3Factory_address,
   //   config.WNATIVE,
   //   nonfungibleTokenPositionDescriptor.address,
   // ])
   console.log('nonfungiblePositionManager', nonfungiblePositionManager.address)
 
-  const SquadInterfaceMulticall = new ContractFactory(
-    artifacts.SquadInterfaceMulticall.abi,
-    artifacts.SquadInterfaceMulticall.bytecode,
+  const CryptoInterfaceMulticall = new ContractFactory(
+    artifacts.CryptoInterfaceMulticall.abi,
+    artifacts.CryptoInterfaceMulticall.bytecode,
     owner
   )
 
-  const squadInterfaceMulticall = await SquadInterfaceMulticall.deploy()
-  console.log('SquadInterfaceMulticall', squadInterfaceMulticall.address)
+  const cryptoInterfaceMulticall = await CryptoInterfaceMulticall.deploy()
+  console.log('CryptoInterfaceMulticall', cryptoInterfaceMulticall.address)
 
-  // await tryVerify(squadInterfaceMulticall)
+  // await tryVerify(cryptoInterfaceMulticall)
 
   const V3Migrator = new ContractFactory(artifacts.V3Migrator.abi, artifacts.V3Migrator.bytecode, owner)
   const v3Migrator = await V3Migrator.deploy(
-    squadV3PoolDeployer_address,
-    squadV3Factory_address,
+    cryptoV3PoolDeployer_address,
+    cryptoV3Factory_address,
     config.WNATIVE,
     nonfungiblePositionManager.address
   )
   console.log('V3Migrator', v3Migrator.address)
 
   // await tryVerify(v3Migrator, [
-  //   squadV3PoolDeployer_address,
-  //   squadV3Factory_address,
+  //   cryptoV3PoolDeployer_address,
+  //   cryptoV3Factory_address,
   //   config.WNATIVE,
   //   nonfungiblePositionManager.address,
   // ])
@@ -189,10 +189,10 @@ async function main() {
   // await tryVerify(tickLens)
 
   const QuoterV2 = new ContractFactory(artifacts.QuoterV2.abi, artifacts.QuoterV2.bytecode, owner)
-  const quoterV2 = await QuoterV2.deploy(squadV3PoolDeployer_address, squadV3Factory_address, config.WNATIVE)
+  const quoterV2 = await QuoterV2.deploy(cryptoV3PoolDeployer_address, cryptoV3Factory_address, config.WNATIVE)
   console.log('QuoterV2', quoterV2.address)
 
-  // await tryVerify(quoterV2, [squadV3PoolDeployer_address, squadV3Factory_address, config.WNATIVE])
+  // await tryVerify(quoterV2, [cryptoV3PoolDeployer_address, cryptoV3Factory_address, config.WNATIVE])
 
   const contracts = {
     SwapRouter: swapRouter.address,
@@ -203,7 +203,7 @@ async function main() {
     // NFTDescriptorEx: nftDescriptorEx.address,
     NonfungibleTokenPositionDescriptor: nonfungibleTokenPositionDescriptor.address,
     NonfungiblePositionManager: nonfungiblePositionManager.address,
-    SquadInterfaceMulticall: squadInterfaceMulticall.address,
+    CryptoInterfaceMulticall: cryptoInterfaceMulticall.address,
   }
 
   fs.writeFileSync(`./deployments/${networkName}.json`, JSON.stringify(contracts, null, 2))

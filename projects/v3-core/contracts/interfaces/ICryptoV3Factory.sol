@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity >=0.5.0;
 
-/// @title The interface for the SquadSwap V3 Factory
-/// @notice The SquadSwap V3 Factory facilitates creation of SquadSwap V3 pools and control over the protocol fees
-interface ISquadV3Factory {
+/// @title The interface for the CryptoSwap V3 Factory
+/// @notice The CryptoSwap V3 Factory facilitates creation of CryptoSwap V3 pools and control over the protocol fees
+interface ICryptoV3Factory {
     struct TickSpacingExtraInfo {
         bool whitelistRequested;
         bool enabled;

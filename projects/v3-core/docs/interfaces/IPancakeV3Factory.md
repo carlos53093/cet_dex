@@ -1,8 +1,8 @@
 # Solidity API
 
-## ISquadV3Factory
+## ICryptoV3Factory
 
-The SquadSwap V3 Factory facilitates creation of SquadSwap V3 pools and control over the protocol fees
+The CryptoSwap V3 Factory facilitates creation of CryptoSwap V3 pools and control over the protocol fees
 
 ### TickSpacingExtraInfo
 

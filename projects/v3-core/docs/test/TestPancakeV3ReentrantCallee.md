@@ -1,6 +1,6 @@
 # Solidity API
 
-## TestSquadV3ReentrantCallee
+## TestCryptoV3ReentrantCallee
 
 ### swapToReenter
 
@@ -8,9 +8,9 @@
 function swapToReenter(address pool) external
 ```
 
-### squadV3SwapCallback
+### cryptoV3SwapCallback
 
 ```solidity
-function squadV3SwapCallback(int256, int256, bytes) external
+function cryptoV3SwapCallback(int256, int256, bytes) external
 ```
 

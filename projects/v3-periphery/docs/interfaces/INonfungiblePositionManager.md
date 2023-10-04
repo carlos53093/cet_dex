@@ -2,7 +2,7 @@
 
 ## INonfungiblePositionManager
 
-Wraps squadSwap V3 positions in a non-fungible token interface which allows for them to be transferred
+Wraps cryptoSwap V3 positions in a non-fungible token interface which allows for them to be transferred
 and authorized.
 
 ### IncreaseLiquidity

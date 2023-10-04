@@ -1,24 +1,24 @@
 {
-  "name": "@squadswap/v3-core",
-  "description": "🥞 Core smart contracts of SquadSwap V3",
+  "name": "@cryptoswap2/v3-core",
+  "description": "🥞 Core smart contracts of CryptoSwap V3",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.0.7",
+  "version": "1.0.0",
   "keywords": [
-    "squadswap",
+    "cryptoswap",
     "core",
     "v3"
   ],
   "files": [
     "contracts/interfaces",
     "contracts/libraries",
-    "artifacts/contracts/SquadV3Factory.sol/SquadV3Factory.json",
-    "artifacts/contracts/SquadV3Pool.sol/SquadV3Pool.json",
+    "artifacts/contracts/CryptoV3Factory.sol/CryptoV3Factory.json",
+    "artifacts/contracts/CryptoV3Pool.sol/CryptoV3Pool.json",
     "artifacts/contracts/interfaces/**/*.json",
     "!artifacts/contracts/interfaces/**/*.dbg.json",
-    "artifacts/contracts/SquadV3PoolDeployer.sol/SquadV3PoolDeployer.json"
+    "artifacts/contracts/CryptoV3PoolDeployer.sol/CryptoV3PoolDeployer.json"
   ],
   "engines": {
     "node": ">=10"
@@ -27,7 +27,7 @@
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "@squadswap/v3-lm-pool": "1.0.2",
+    "@cryptoswap2/v3-lm-pool": "1.0.1",
     "@typechain/ethers-v5": "^10.2.0",
     "@types/chai": "^4.2.6",
     "@types/mocha": "^5.2.7",

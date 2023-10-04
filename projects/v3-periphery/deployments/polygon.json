@@ -5,6 +5,6 @@
   "TickLens": "0xa4d6826e231184a2f251bd71B54304B95738eE8c",
   "NonfungibleTokenPositionDescriptor": "0xF1617cb57c215306a2AEe89CA25Dd6CE37C3058b",
   "NonfungiblePositionManager": "0x4fBF6146C392B0D58819DcB9D2A7E0DAE31a602F",
-  "SquadInterfaceMulticall": "0x662268f6A1F627ffC874c23780885BbB43c29CdF"
+  "CryptoInterfaceMulticall": "0x662268f6A1F627ffC874c23780885BbB43c29CdF"
 }
 

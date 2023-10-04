@@ -2,7 +2,7 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@squadswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
+import '@cryptoswap2/v3-core/contracts/libraries/LowGasSafeMath.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/utils/ReentrancyGuard.sol';
 
@@ -12,8 +12,8 @@ import './base/PeripheryPaymentsWithFeeExtended.sol';
 import './libraries/Constants.sol';
 import './libraries/SmartRouterHelper.sol';
 
-/// @title SquadSwap V2 Swap Router
-/// @notice Router for stateless execution of swaps against SquadSwap V2
+/// @title CryptoSwap V2 Swap Router
+/// @notice Router for stateless execution of swaps against CryptoSwap V2
 abstract contract V2SwapRouter is IV2SwapRouter, ImmutableState, PeripheryPaymentsWithFeeExtended, ReentrancyGuard {
     using LowGasSafeMath for uint256;
 

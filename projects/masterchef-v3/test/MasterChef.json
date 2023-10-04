@@ -6,8 +6,8 @@
     {
       "inputs": [
         {
-          "internalType": "contract SquadToken",
-          "name": "_squad",
+          "internalType": "contract CryptoToken",
+          "name": "_crypto",
           "type": "address"
         },
         {
@@ -22,7 +22,7 @@
         },
         {
           "internalType": "uint256",
-          "name": "_squadPerBlock",
+          "name": "_cryptoPerBlock",
           "type": "uint256"
         },
         {
@@ -166,10 +166,10 @@
     },
     {
       "inputs": [],
-      "name": "squad",
+      "name": "crypto",
       "outputs": [
         {
-          "internalType": "contract SquadToken",
+          "internalType": "contract CryptoToken",
           "name": "",
           "type": "address"
         }
@@ -179,7 +179,7 @@
     },
     {
       "inputs": [],
-      "name": "squadPerBlock",
+      "name": "cryptoPerBlock",
       "outputs": [
         {
           "internalType": "uint256",
@@ -356,7 +356,7 @@
           "type": "address"
         }
       ],
-      "name": "pendingSquad",
+      "name": "pendingCrypto",
       "outputs": [
         {
           "internalType": "uint256",
@@ -394,7 +394,7 @@
         },
         {
           "internalType": "uint256",
-          "name": "accSquadPerShare",
+          "name": "accCryptoPerShare",
           "type": "uint256"
         }
       ],

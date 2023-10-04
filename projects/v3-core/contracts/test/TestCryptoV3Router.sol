@@ -5,10 +5,10 @@ import '../libraries/SafeCast.sol';
 import '../libraries/TickMath.sol';
 
 import '../interfaces/IERC20Minimal.sol';
-import '../interfaces/callback/ISquadV3SwapCallback.sol';
-import '../interfaces/ISquadV3Pool.sol';
+import '../interfaces/callback/ICryptoV3SwapCallback.sol';
+import '../interfaces/ICryptoV3Pool.sol';
 
-contract TestSquadV3Router is ISquadV3SwapCallback {
+contract TestCryptoV3Router is ICryptoV3SwapCallback {
     using SafeCast for uint256;
 
     // flash swaps for an exact amount of token0 in the output pool
@@ -20,7 +20,7 @@ contract TestSquadV3Router is ISquadV3SwapCallback {
     ) external {
         address[] memory pools = new address[](1);
         pools[0] = poolInput;
-        ISquadV3Pool(poolOutput).swap(
+        ICryptoV3Pool(poolOutput).swap(
             recipient,
             false,
             -amount0Out.toInt256(),
@@ -38,7 +38,7 @@ contract TestSquadV3Router is ISquadV3SwapCallback {
     ) external {
         address[] memory pools = new address[](1);
         pools[0] = poolInput;
-        ISquadV3Pool(poolOutput).swap(
+        ICryptoV3Pool(poolOutput).swap(
             recipient,
             true,
             -amount1Out.toInt256(),
@@ -49,7 +49,7 @@ contract TestSquadV3Router is ISquadV3SwapCallback {
 
     event SwapCallback(int256 amount0Delta, int256 amount1Delta);
 
-    function squadV3SwapCallback(
+    function cryptoV3SwapCallback(
         int256 amount0Delta,
         int256 amount1Delta,
         bytes calldata data
@@ -61,12 +61,12 @@ contract TestSquadV3Router is ISquadV3SwapCallback {
         if (pools.length == 1) {
             // get the address and amount of the token that we need to pay
             address tokenToBePaid = amount0Delta > 0
-                ? ISquadV3Pool(msg.sender).token0()
-                : ISquadV3Pool(msg.sender).token1();
+                ? ICryptoV3Pool(msg.sender).token0()
+                : ICryptoV3Pool(msg.sender).token1();
             int256 amountToBePaid = amount0Delta > 0 ? amount0Delta : amount1Delta;
 
-            bool zeroForOne = tokenToBePaid == ISquadV3Pool(pools[0]).token1();
-            ISquadV3Pool(pools[0]).swap(
+            bool zeroForOne = tokenToBePaid == ICryptoV3Pool(pools[0]).token1();
+            ICryptoV3Pool(pools[0]).swap(
                 msg.sender,
                 zeroForOne,
                 -amountToBePaid,
@@ -75,13 +75,13 @@ contract TestSquadV3Router is ISquadV3SwapCallback {
             );
         } else {
             if (amount0Delta > 0) {
-                IERC20Minimal(ISquadV3Pool(msg.sender).token0()).transferFrom(
+                IERC20Minimal(ICryptoV3Pool(msg.sender).token0()).transferFrom(
                     payer,
                     msg.sender,
                     uint256(amount0Delta)
                 );
             } else {
-                IERC20Minimal(ISquadV3Pool(msg.sender).token1()).transferFrom(
+                IERC20Minimal(ICryptoV3Pool(msg.sender).token1()).transferFrom(
                     payer,
                     msg.sender,
                     uint256(amount1Delta)

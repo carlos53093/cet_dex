@@ -128,19 +128,19 @@ const config: HardhatUserConfig = {
       },
     ],
     overrides: {
-      '@squadswap/v3-core/contracts/libraries/FullMath.sol': {
+      '@cryptoswap2/v3-core/contracts/libraries/FullMath.sol': {
         version: '0.7.6',
         settings: {},
       },
-      '@squadswap/v3-core/contracts/libraries/TickBitmap.sol': {
+      '@cryptoswap2/v3-core/contracts/libraries/TickBitmap.sol': {
         version: '0.7.6',
         settings: {},
       },
-      '@squadswap/v3-core/contracts/libraries/TickMath.sol': {
+      '@cryptoswap2/v3-core/contracts/libraries/TickMath.sol': {
         version: '0.7.6',
         settings: {},
       },
-      '@squadswap/v3-periphery/contracts/libraries/PoolAddress.sol': {
+      '@cryptoswap2/v3-periphery/contracts/libraries/PoolAddress.sol': {
         version: '0.7.6',
         settings: {},
       },

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity =0.7.6;
 
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Factory.sol';
-import '@squadswap/v3-core/contracts/interfaces/ISquadV3Pool.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Factory.sol';
+import '@cryptoswap2/v3-core/contracts/interfaces/ICryptoV3Pool.sol';
 
 import './PeripheryImmutableState.sol';
 import '../interfaces/IPoolInitializer.sol';
@@ -17,15 +17,15 @@ abstract contract PoolInitializer is IPoolInitializer, PeripheryImmutableState {
         uint160 sqrtPriceX96
     ) external payable override returns (address pool) {
         require(token0 < token1);
-        pool = ISquadV3Factory(factory).getPool(token0, token1, fee);
+        pool = ICryptoV3Factory(factory).getPool(token0, token1, fee);
 
         if (pool == address(0)) {
-            pool = ISquadV3Factory(factory).createPool(token0, token1, fee);
-            ISquadV3Pool(pool).initialize(sqrtPriceX96);
+            pool = ICryptoV3Factory(factory).createPool(token0, token1, fee);
+            ICryptoV3Pool(pool).initialize(sqrtPriceX96);
         } else {
-            (uint160 sqrtPriceX96Existing, , , , , , ) = ISquadV3Pool(pool).slot0();
+            (uint160 sqrtPriceX96Existing, , , , , , ) = ICryptoV3Pool(pool).slot0();
             if (sqrtPriceX96Existing == 0) {
-                ISquadV3Pool(pool).initialize(sqrtPriceX96);
+                ICryptoV3Pool(pool).initialize(sqrtPriceX96);
             }
         }
     }

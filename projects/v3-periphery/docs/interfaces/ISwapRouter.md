@@ -2,7 +2,7 @@
 
 ## ISwapRouter
 
-Functions for swapping tokens via squadSwap V3
+Functions for swapping tokens via cryptoSwap V3
 
 ### ExactInputSingleParams
 

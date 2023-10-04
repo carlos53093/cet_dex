@@ -1,9 +1,9 @@
 import { ethers, waffle } from 'hardhat'
 import { BigNumber, BigNumberish, constants, Wallet } from 'ethers'
 import { TestERC20 } from '../typechain-types/contracts/test/TestERC20'
-import { SquadV3Factory } from '../typechain-types/contracts/SquadV3Factory'
-import { MockTimeSquadV3Pool } from '../typechain-types/contracts/test/MockTimeSquadV3Pool'
-import { TestSquadV3SwapPay } from '../typechain-types/contracts/test/TestSquadV3SwapPay'
+import { CryptoV3Factory } from '../typechain-types/contracts/CryptoV3Factory'
+import { MockTimeCryptoV3Pool } from '../typechain-types/contracts/test/MockTimeCryptoV3Pool'
+import { TestCryptoV3SwapPay } from '../typechain-types/contracts/test/TestCryptoV3SwapPay'
 import checkObservationEquals from './shared/checkObservationEquals'
 import { expect } from './shared/expect'
 
@@ -27,8 +27,8 @@ import {
   MIN_SQRT_RATIO,
   SwapToPriceFunction,
 } from './shared/utilities'
-import { TestSquadV3Callee } from '../typechain-types/contracts/test/TestSquadV3Callee'
-import { TestSquadV3ReentrantCallee } from '../typechain-types/contracts/test/TestSquadV3ReentrantCallee'
+import { TestCryptoV3Callee } from '../typechain-types/contracts/test/TestCryptoV3Callee'
+import { TestCryptoV3ReentrantCallee } from '../typechain-types/contracts/test/TestCryptoV3ReentrantCallee'
 import { TickMathTest } from '../typechain-types/contracts/test/TickMathTest'
 import { SwapMathTest } from '../typechain-types/contracts/test/SwapMathTest'
 import { FeeManager } from '../typechain-types/contracts/FeeManger.sol/FeeManager'
@@ -37,18 +37,18 @@ const createFixtureLoader = waffle.createFixtureLoader
 
 type ThenArg<T> = T extends PromiseLike<infer U> ? U : T
 
-describe('SquadV3Pool', () => {
-  let wallet: Wallet, other: Wallet, tradeWallet: Wallet, squadWallet: Wallet, teamWallet: Wallet, burnWallet: Wallet
+describe('CryptoV3Pool', () => {
+  let wallet: Wallet, other: Wallet, tradeWallet: Wallet, cryptoWallet: Wallet, teamWallet: Wallet, burnWallet: Wallet
 
   let token0: TestERC20
   let token1: TestERC20
   let token2: TestERC20
 
-  let factory: SquadV3Factory
-  let pool: MockTimeSquadV3Pool
+  let factory: CryptoV3Factory
+  let pool: MockTimeCryptoV3Pool
   let feeManager: FeeManager
 
-  let swapTarget: TestSquadV3Callee
+  let swapTarget: TestCryptoV3Callee
 
   let swapToLowerPrice: SwapToPriceFunction
   let swapToHigherPrice: SwapToPriceFunction
@@ -70,8 +70,8 @@ describe('SquadV3Pool', () => {
   let createPool: ThenArg<ReturnType<typeof poolFixture>>['createPool']
 
   before('create fixture loader', async () => {
-    ;[wallet, other, tradeWallet, squadWallet, teamWallet, burnWallet] = await (ethers as any).getSigners()
-    loadFixture = createFixtureLoader([wallet, other, tradeWallet, squadWallet, teamWallet, burnWallet])
+    ;[wallet, other, tradeWallet, cryptoWallet, teamWallet, burnWallet] = await (ethers as any).getSigners()
+    loadFixture = createFixtureLoader([wallet, other, tradeWallet, cryptoWallet, teamWallet, burnWallet])
   })
 
   beforeEach('deploy fixture', async () => {
@@ -104,7 +104,7 @@ describe('SquadV3Pool', () => {
 
     // default to the 30 bips pool
     pool = await createPool(FeeAmount.MEDIUM, TICK_SPACINGS[FeeAmount.MEDIUM])
-    await feeManager.setWallets(tradeWallet.address, squadWallet.address, teamWallet.address, burnWallet.address)
+    await feeManager.setWallets(tradeWallet.address, cryptoWallet.address, teamWallet.address, burnWallet.address)
     await feeManager.setRates(250, 250, 250, 250)
   })
 
@@ -615,7 +615,7 @@ describe('SquadV3Pool', () => {
 
   // the combined amount of liquidity that the pool is initialized with (including the 1 minimum liquidity that is burned)
   const initializeLiquidityAmount = expandTo18Decimals(2)
-  async function initializeAtZeroTick(pool: MockTimeSquadV3Pool): Promise<void> {
+  async function initializeAtZeroTick(pool: MockTimeCryptoV3Pool): Promise<void> {
     await pool.initialize(encodePriceSqrt(1, 1))
     const tickSpacing = await pool.tickSpacing()
     const [min, max] = [getMinTick(tickSpacing), getMaxTick(tickSpacing)]
@@ -969,19 +969,19 @@ describe('SquadV3Pool', () => {
 
       await feeManager.collectFee(pool.address, "170141183460469231731687303715884105727", "170141183460469231731687303715884105727")
       expect(await token0.balanceOf(tradeWallet.address)).to.be.eq('3000000000000000')
-      expect(await token0.balanceOf(squadWallet.address)).to.be.eq('3000000000000000')
+      expect(await token0.balanceOf(cryptoWallet.address)).to.be.eq('3000000000000000')
       expect(await token0.balanceOf(teamWallet.address)).to.be.eq('3000000000000000')
       expect(await token0.balanceOf(burnWallet.address)).to.be.eq('3000000000000001')
 
       expect( await token1.balanceOf(tradeWallet.address)).to.be.eq('299999999999999')
-      expect( await token1.balanceOf(squadWallet.address)).to.be.eq('299999999999999')
+      expect( await token1.balanceOf(cryptoWallet.address)).to.be.eq('299999999999999')
       expect( await token1.balanceOf(teamWallet.address)).to.be.eq('299999999999999')
       expect( await token1.balanceOf(burnWallet.address)).to.be.eq('300000000000002')
     })
 
     it('FeeManager testing', async()=>{
       await expect(feeManager.connect(tradeWallet).setFactory(wallet.address)).to.revertedWith('Not owner')
-      await expect(feeManager.connect(tradeWallet).setWallets(tradeWallet.address, squadWallet.address, teamWallet.address, burnWallet.address)).to.revertedWith('Not owner')
+      await expect(feeManager.connect(tradeWallet).setWallets(tradeWallet.address, cryptoWallet.address, teamWallet.address, burnWallet.address)).to.revertedWith('Not owner')
       await expect(feeManager.connect(tradeWallet).setRates(250, 250, 250, 250)).to.revertedWith('Not owner')
       await expect(feeManager.setRates(250, 250, 250, 400)).to.revertedWith('invalid Rate')
       await expect(feeManager.connect(tradeWallet).collectFee(pool.address, "170141183460469231731687303715884105727", "170141183460469231731687303715884105727")).to.revertedWith('Not owner')
@@ -1717,8 +1717,8 @@ describe('SquadV3Pool', () => {
 
     it('cannot reenter from swap callback', async () => {
       const reentrant = (await (
-        await ethers.getContractFactory('TestSquadV3ReentrantCallee')
-      ).deploy()) as TestSquadV3ReentrantCallee
+        await ethers.getContractFactory('TestCryptoV3ReentrantCallee')
+      ).deploy()) as TestCryptoV3ReentrantCallee
 
       // the tests happen in solidity
       await expect(reentrant.swapToReenter(pool.address)).to.be.revertedWith('Unable to reenter')
@@ -1974,10 +1974,10 @@ describe('SquadV3Pool', () => {
   })
 
   describe('swap underpayment tests', () => {
-    let underpay: TestSquadV3SwapPay
+    let underpay: TestCryptoV3SwapPay
     beforeEach('deploy swap test', async () => {
-      const underpayFactory = await ethers.getContractFactory('TestSquadV3SwapPay')
-      underpay = (await underpayFactory.deploy()) as TestSquadV3SwapPay
+      const underpayFactory = await ethers.getContractFactory('TestCryptoV3SwapPay')
+      underpay = (await underpayFactory.deploy()) as TestCryptoV3SwapPay
       await token0.approve(underpay.address, constants.MaxUint256)
       await token1.approve(underpay.address, constants.MaxUint256)
       await pool.initialize(encodePriceSqrt(1, 1))

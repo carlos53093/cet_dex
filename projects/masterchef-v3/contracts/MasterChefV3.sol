@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "./libraries/SafeCast.sol";
 import "./interfaces/INonfungiblePositionManager.sol";
 import "./interfaces/INonfungiblePositionManagerStruct.sol";
-import "./interfaces/ISquadV3Pool.sol";
+import "./interfaces/ICryptoV3Pool.sol";
 import "./interfaces/IMasterChefV2.sol";
 import "./interfaces/ILMPool.sol";
 import "./interfaces/ILMPoolDeployer.sol";
@@ -23,7 +23,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     struct PoolInfo {
         uint256 allocPoint;
         // V3 pool address
-        ISquadV3Pool v3Pool;
+        ICryptoV3Pool v3Pool;
         // V3 pool token0 address
         address token0;
         // V3 pool token1 address
@@ -61,8 +61,8 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     /// @notice v3PoolAddressPid[v3PoolAddress] => pid
     mapping(address => uint256) public v3PoolAddressPid;
 
-    /// @notice Address of SQUAD contract.
-    IERC20 public immutable SQUAD;
+    /// @notice Address of CST contract.
+    IERC20 public immutable CST;
 
     /// @notice Address of WETH contract.
     address public immutable WETH;
@@ -87,7 +87,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     uint256 public latestPeriodNumber;
     uint256 public latestPeriodStartTime;
     uint256 public latestPeriodEndTime;
-    uint256 public latestPeriodSquadPerSecond;
+    uint256 public latestPeriodCryptoPerSecond;
 
     /// @notice Address of the operator.
     address public operatorAddress;
@@ -103,13 +103,13 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     uint256 constant Q128 = 0x100000000000000000000000000000000;
     uint256 constant MAX_U256 = type(uint256).max;
 
-    /// @notice Record the squad amount belong to MasterChefV3.
-    uint256 public squadAmountBelongToMC;
+    /// @notice Record the crypto amount belong to MasterChefV3.
+    uint256 public cryptoAmountBelongToMC;
 
     error ZeroAddress();
     error NotOwnerOrOperator();
     error NoBalance();
-    error NotSquadNFT();
+    error NotCryptoNFT();
     error InvalidNFT();
     error NotOwner();
     error NoLiquidity();
@@ -122,7 +122,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     error InconsistentAmount();
     error InsufficientAmount();
 
-    event AddPool(uint256 indexed pid, uint256 allocPoint, ISquadV3Pool indexed v3Pool, ILMPool indexed lmPool);
+    event AddPool(uint256 indexed pid, uint256 allocPoint, ICryptoV3Pool indexed v3Pool, ILMPool indexed lmPool);
     event SetPool(uint256 indexed pid, uint256 allocPoint);
     event Deposit(
         address indexed from,
@@ -150,14 +150,14 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         uint256 indexed periodNumber,
         uint256 startTime,
         uint256 endTime,
-        uint256 squadPerSecond,
-        uint256 squadAmount
+        uint256 cryptoPerSecond,
+        uint256 cryptoAmount
     );
     event UpdateUpkeepPeriod(
         uint256 indexed periodNumber,
         uint256 oldEndTime,
         uint256 newEndTime,
-        uint256 remainingSquad
+        uint256 remainingCrypto
     );
     event UpdateFarmBoostContract(address indexed farmBoostContract);
     event SetEmergency(bool emergency);
@@ -185,43 +185,43 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     //     _;
     // }
 
-    /// @param _SQUAD The SQUAD token contract address.
+    /// @param _crypto The CST token contract address.
     /// @param _nonfungiblePositionManager the NFT position manager contract address.
-    constructor(IERC20 _SQUAD, INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) {
-        SQUAD = _SQUAD;
+    constructor(IERC20 _crypto, INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) {
+        CST = _crypto;
         nonfungiblePositionManager = _nonfungiblePositionManager;
         WETH = _WETH;
     }
 
-    /// @notice Returns the squad per second , period end time.
+    /// @notice Returns the crypto per second , period end time.
     /// @param _pid The pool pid.
-    /// @return squadPerSecond Squad reward per second.
+    /// @return cryptoPerSecond Crypto reward per second.
     /// @return endTime Period end time.
-    function getLatestPeriodInfoByPid(uint256 _pid) public view returns (uint256 squadPerSecond, uint256 endTime) {
+    function getLatestPeriodInfoByPid(uint256 _pid) public view returns (uint256 cryptoPerSecond, uint256 endTime) {
         if (totalAllocPoint > 0) {
-            squadPerSecond = (latestPeriodSquadPerSecond * poolInfo[_pid].allocPoint) / totalAllocPoint;
+            cryptoPerSecond = (latestPeriodCryptoPerSecond * poolInfo[_pid].allocPoint) / totalAllocPoint;
         }
         endTime = latestPeriodEndTime;
     }
 
-    /// @notice Returns the squad per second , period end time. This is for liquidity mining pool.
+    /// @notice Returns the crypto per second , period end time. This is for liquidity mining pool.
     /// @param _v3Pool Address of the V3 pool.
-    /// @return squadPerSecond Squad reward per second.
+    /// @return cryptoPerSecond Crypto reward per second.
     /// @return endTime Period end time.
-    function getLatestPeriodInfo(address _v3Pool) public view returns (uint256 squadPerSecond, uint256 endTime) {
+    function getLatestPeriodInfo(address _v3Pool) public view returns (uint256 cryptoPerSecond, uint256 endTime) {
         if (totalAllocPoint > 0) {
-            squadPerSecond =
-                (latestPeriodSquadPerSecond * poolInfo[v3PoolAddressPid[_v3Pool]].allocPoint) /
+            cryptoPerSecond =
+                (latestPeriodCryptoPerSecond * poolInfo[v3PoolAddressPid[_v3Pool]].allocPoint) /
                 totalAllocPoint;
         }
         endTime = latestPeriodEndTime;
     }
 
-    /// @notice View function for checking pending SQUAD rewards.
-    /// @dev The pending squad amount is based on the last state in LMPool. The actual amount will happen whenever liquidity changes or harvest.
+    /// @notice View function for checking pending CST rewards.
+    /// @dev The pending crypto amount is based on the last state in LMPool. The actual amount will happen whenever liquidity changes or harvest.
     /// @param _tokenId Token Id of NFT.
     /// @return reward Pending reward.
-    function pendingSquad(uint256 _tokenId) external view returns (uint256 reward) {
+    function pendingCrypto(uint256 _tokenId) external view returns (uint256 reward) {
         UserPositionInfo memory positionInfo = userPositionInfos[_tokenId];
         if (positionInfo.pid != 0) {
             PoolInfo memory pool = poolInfo[positionInfo.pid];
@@ -251,7 +251,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
 
     function setReceiver(address _receiver) external onlyOwner {
         if (_receiver == address(0)) revert ZeroAddress();
-        if (SQUAD.allowance(_receiver, address(this)) != type(uint256).max) revert();
+        if (CST.allowance(_receiver, address(this)) != type(uint256).max) revert();
         receiver = _receiver;
         emit NewReceiver(_receiver);
     }
@@ -267,7 +267,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     /// @param _allocPoint Number of allocation points for the new pool.
     /// @param _v3Pool Address of the V3 pool.
     /// @param _withUpdate Whether call "massUpdatePools" operation.
-    function add(uint256 _allocPoint, ISquadV3Pool _v3Pool, bool _withUpdate) external onlyOwner {
+    function add(uint256 _allocPoint, ICryptoV3Pool _v3Pool, bool _withUpdate) external onlyOwner {
         if (_withUpdate) massUpdatePools();
 
         ILMPool lmPool = LMPoolDeployer.deploy(_v3Pool);
@@ -299,7 +299,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         emit AddPool(poolLength, _allocPoint, _v3Pool, lmPool);
     }
 
-    /// @notice Update the given pool's SQUAD allocation point. Can only be called by the owner.
+    /// @notice Update the given pool's CST allocation point. Can only be called by the owner.
     /// @param _pid The id of the pool. See `poolInfo`.
     /// @param _allocPoint New number of allocation points for the pool.
     /// @param _withUpdate Whether call "massUpdatePools" operation.
@@ -333,7 +333,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         uint256 _tokenId,
         bytes calldata
     ) external nonReentrant returns (bytes4) {
-        if (msg.sender != address(nonfungiblePositionManager)) revert NotSquadNFT();
+        if (msg.sender != address(nonfungiblePositionManager)) revert NotCryptoNFT();
         DepositCache memory cache;
         (
             ,
@@ -374,10 +374,10 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         return this.onERC721Received.selector;
     }
 
-    /// @notice harvest squad from pool.
+    /// @notice harvest crypto from pool.
     /// @param _tokenId Token Id of NFT.
     /// @param _to Address to.
-    /// @return reward Squad reward.
+    /// @return reward Crypto reward.
     function harvest(uint256 _tokenId, address _to) external nonReentrant returns (uint256 reward) {
         UserPositionInfo storage positionInfo = userPositionInfos[_tokenId];
         if (positionInfo.user != msg.sender) revert NotOwner();
@@ -419,7 +419,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     /// @notice Withdraw LP tokens from pool.
     /// @param _tokenId Token Id of NFT to deposit.
     /// @param _to Address to which NFT token to withdraw.
-    /// @return reward Squad reward.
+    /// @return reward Crypto reward.
     function withdraw(uint256 _tokenId, address _to) external nonReentrant returns (uint256 reward) {
         if (_to == address(this) || _to == address(0)) revert WrongReceiver();
         UserPositionInfo storage positionInfo = userPositionInfos[_tokenId];
@@ -629,15 +629,15 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     /// @param _to The to address.
     function transferToken(address _token, address _to) internal {
         uint256 balance = IERC20(_token).balanceOf(address(this));
-        // Need to reduce squadAmountBelongToMC.
-        if (_token == address(SQUAD)) {
+        // Need to reduce cryptoAmountBelongToMC.
+        if (_token == address(CST)) {
             unchecked {
-                // In fact balance should always be greater than or equal to squadAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
-                if (balance >= squadAmountBelongToMC) {
-                    balance -= squadAmountBelongToMC;
+                // In fact balance should always be greater than or equal to cryptoAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
+                if (balance >= cryptoAmountBelongToMC) {
+                    balance -= cryptoAmountBelongToMC;
                 } else {
                     // This should never happend.
-                    squadAmountBelongToMC = balance;
+                    cryptoAmountBelongToMC = balance;
                     balance = 0;
                 }
             }
@@ -673,15 +673,15 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     /// @param recipient The destination address of the token
     function sweepToken(address token, uint256 amountMinimum, address recipient) external nonReentrant {
         uint256 balanceToken = IERC20(token).balanceOf(address(this));
-        // Need to reduce squadAmountBelongToMC.
-        if (token == address(SQUAD)) {
+        // Need to reduce cryptoAmountBelongToMC.
+        if (token == address(CST)) {
             unchecked {
-                // In fact balance should always be greater than or equal to squadAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
-                if (balanceToken >= squadAmountBelongToMC) {
-                    balanceToken -= squadAmountBelongToMC;
+                // In fact balance should always be greater than or equal to cryptoAmountBelongToMC, but in order to avoid any unknown issue, we added this check.
+                if (balanceToken >= cryptoAmountBelongToMC) {
+                    balanceToken -= cryptoAmountBelongToMC;
                 } else {
                     // This should never happend.
-                    squadAmountBelongToMC = balanceToken;
+                    cryptoAmountBelongToMC = balanceToken;
                     balanceToken = 0;
                 }
             }
@@ -694,15 +694,15 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     }
 
     /// @notice Upkeep period.
-    /// @param _amount The amount of squad injected.
+    /// @param _amount The amount of crypto injected.
     /// @param _duration The period duration.
     /// @param _withUpdate Whether call "massUpdatePools" operation.
     function upkeep(uint256 _amount, uint256 _duration, bool _withUpdate) external onlyReceiver {
-        // Transfer squad token from receiver.
-        SQUAD.safeTransferFrom(receiver, address(this), _amount);
-        // Update squadAmountBelongToMC
+        // Transfer crypto token from receiver.
+        CST.safeTransferFrom(receiver, address(this), _amount);
+        // Update cryptoAmountBelongToMC
         unchecked {
-            squadAmountBelongToMC += _amount;
+            cryptoAmountBelongToMC += _amount;
         }
 
         if (_withUpdate) massUpdatePools();
@@ -712,24 +712,24 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         if (_duration >= MIN_DURATION && _duration <= MAX_DURATION) duration = _duration;
         uint256 currentTime = block.timestamp;
         uint256 endTime = currentTime + duration;
-        uint256 squadPerSecond;
-        uint256 squadAmount = _amount;
+        uint256 cryptoPerSecond;
+        uint256 cryptoAmount = _amount;
         if (latestPeriodEndTime > currentTime) {
-            uint256 remainingSquad = ((latestPeriodEndTime - currentTime) * latestPeriodSquadPerSecond) / PRECISION;
-            emit UpdateUpkeepPeriod(latestPeriodNumber, latestPeriodEndTime, currentTime, remainingSquad);
-            squadAmount += remainingSquad;
+            uint256 remainingCrypto = ((latestPeriodEndTime - currentTime) * latestPeriodCryptoPerSecond) / PRECISION;
+            emit UpdateUpkeepPeriod(latestPeriodNumber, latestPeriodEndTime, currentTime, remainingCrypto);
+            cryptoAmount += remainingCrypto;
         }
-        squadPerSecond = (squadAmount * PRECISION) / duration;
+        cryptoPerSecond = (cryptoAmount * PRECISION) / duration;
         unchecked {
             latestPeriodNumber++;
             latestPeriodStartTime = currentTime + 1;
             latestPeriodEndTime = endTime;
-            latestPeriodSquadPerSecond = squadPerSecond;
+            latestPeriodCryptoPerSecond = cryptoPerSecond;
         }
-        emit NewUpkeepPeriod(latestPeriodNumber, currentTime + 1, endTime, squadPerSecond, squadAmount);
+        emit NewUpkeepPeriod(latestPeriodNumber, currentTime + 1, endTime, cryptoPerSecond, cryptoAmount);
     }
 
-    /// @notice Update squad reward for all the liquidity mining pool.
+    /// @notice Update crypto reward for all the liquidity mining pool.
     function massUpdatePools() internal {
         uint32 currentTime = uint32(block.timestamp);
         for (uint256 pid = 1; pid <= poolLength; pid++) {
@@ -741,7 +741,7 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         }
     }
 
-    /// @notice Update squad reward for the liquidity mining pool.
+    /// @notice Update crypto reward for the liquidity mining pool.
     /// @dev Avoid too many pools, and a single transaction cannot be fully executed for all pools.
     function updatePools(uint256[] calldata pids) external onlyOwnerOrOperator {
         uint32 currentTime = uint32(block.timestamp);
@@ -790,24 +790,24 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
         if (!success) revert();
     }
 
-    /// @notice Safe Transfer SQUAD.
-    /// @param _to The SQUAD receiver address.
-    /// @param _amount Transfer SQUAD amounts.
+    /// @notice Safe Transfer CST.
+    /// @param _to The CST receiver address.
+    /// @param _amount Transfer CST amounts.
     function _safeTransfer(address _to, uint256 _amount) internal {
         if (_amount > 0) {
-            uint256 balance = SQUAD.balanceOf(address(this));
+            uint256 balance = CST.balanceOf(address(this));
             if (balance < _amount) {
                 _amount = balance;
             }
-            // Update squadAmountBelongToMC
+            // Update cryptoAmountBelongToMC
             unchecked {
-                if (squadAmountBelongToMC >= _amount) {
-                    squadAmountBelongToMC -= _amount;
+                if (cryptoAmountBelongToMC >= _amount) {
+                    cryptoAmountBelongToMC -= _amount;
                 } else {
-                    squadAmountBelongToMC = balance - _amount;
+                    cryptoAmountBelongToMC = balance - _amount;
                 }
             }
-            SQUAD.safeTransfer(_to, _amount);
+            CST.safeTransfer(_to, _amount);
         }
     }
 

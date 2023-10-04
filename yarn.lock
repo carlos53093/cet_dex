@@ -525,6 +525,26 @@
   dependencies:
     chalk "^4.0.0"
 
+"@cryptoswap2/v3-core@1.0.7":
+  version "1.0.0"
+  dependencies:
+    solidity-coverage "^0.8.4"
+
+"@cryptoswap2/v3-lm-pool@1.0.2":
+  version "1.0.1"
+
+"@cryptoswap2/v3-periphery@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@cryptoswap2/v3-periphery/-/v3-periphery-1.0.4.tgz#4ec5d4ed3a5c21785070e8c867561b7535504243"
+  integrity sha512-Ljgk+w4JGlYsjjgQ+619uCh/g033Ay9SY0qZ2cHVj94g+HzCZZ/S3Deehj4TmDuadbKxQtoaZ8LOMs0wr8yqAQ==
+  dependencies:
+    "@openzeppelin/contracts" "3.4.2-solc-0.7"
+    "@openzeppelin/contracts-upgradeable" "3.4.2-solc-0.7"
+    "@uniswap/lib" "^4.0.1-alpha"
+    "@uniswap/v2-core" "1.0.1"
+    base64-sol "1.0.1"
+    ethereum-waffle "4.0.10"
+
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz#00629c35a688e05a88b1cda684fb9d5e73f000a1"

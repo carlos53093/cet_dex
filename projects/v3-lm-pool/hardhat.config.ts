@@ -4,7 +4,7 @@ import '@typechain/hardhat'
 import 'dotenv/config'
 import { NetworkUserConfig } from 'hardhat/types'
 import 'solidity-docgen';
-import "solidity-coverage";
+// import "solidity-coverage";
 
 require('dotenv').config({ path: require('find-config')('.env') })
 

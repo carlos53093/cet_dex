@@ -185,10 +185,10 @@ contract MasterChefV3 is INonfungiblePositionManagerStruct, Multicall, Ownable, 
     //     _;
     // }
 
-    /// @param _crypto The CST token contract address.
+    /// @param _cst The CST token contract address.
     /// @param _nonfungiblePositionManager the NFT position manager contract address.
-    constructor(IERC20 _crypto, INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) {
-        CST = _crypto;
+    constructor(IERC20 _cst, INonfungiblePositionManager _nonfungiblePositionManager, address _WETH) {
+        CST = _cst;
         nonfungiblePositionManager = _nonfungiblePositionManager;
         WETH = _WETH;
     }

@@ -1,7 +1,7 @@
 {
   "name": "@cryptoswap2/smart-router",
   "description": "Crypto Smart Router",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "GPL-2.0-or-later",
   "publishConfig": {
     "access": "public"
@@ -37,7 +37,7 @@
     "@openzeppelin/test-helpers": "^0.5.11",
     "@pancakeswap/eslint-config-pancake": "^1.2.0",
     "@pancakeswap/pancake-swap-lib": "0.0.4",
-    "@cryptoswap2/v3-periphery": "^1.0.0",
+    "@cryptoswap2/v3-periphery": "^1.0.2",
     "@types/chai": "^4.2.21",
     "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.35",

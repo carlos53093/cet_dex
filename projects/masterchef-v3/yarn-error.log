@@ -1,0 +1,92 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Bandizip\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Users\Administrator\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Users\Administrator\AppData\Local\pnpm;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Yarn\bin;C:\Users\Administrator\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\MongoDB\Server\5.0\bin;C:\Users\Administrator\.dotnet\tools
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  18.16.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'F:\projects\@nova\cet_dex\node_modules\keccak\prebuilds\win32-x64\node.napi.node'
+
+npm manifest: 
+  {
+    "name": "@cryptoswap2/masterchef-v3",
+    "version": "1.0.0",
+    "description": "Crypto MasterChef V3",
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": "CryptoSwap",
+    "license": "MIT",
+    "keywords": [
+      "cryptoswap",
+      "masterchef",
+      "v3"
+    ],
+    "files": [
+      "contracts",
+      "artifacts/contracts/**/*.json",
+      "!artifacts/contracts/**/*.dbg.json"
+    ],
+    "scripts": {
+      "format:check": "prettier --check './**/*.{js,ts,sol}'",
+      "format:write": "prettier --write './**/*.{js,ts,sol}'",
+      "test": "npx hardhat test",
+      "compile": "npx hardhat compile",
+      "coverage": "npx hardhat coverage --testfiles './test/*.ts' --solcoverjs ./.solcover.js",
+      "initial": "rm -rf abi artifacts catch typechain-types"
+    },
+    "devDependencies": {
+      "@chainlink/contracts": "^0.6.1",
+      "@commitlint/cli": "^12.1.4",
+      "@commitlint/config-conventional": "^12.1.4",
+      "@nomiclabs/hardhat-ethers": "^2.2.2",
+      "@nomiclabs/hardhat-etherscan": "^3.1.5",
+      "@nomiclabs/hardhat-truffle5": "^2.0.0",
+      "@nomiclabs/hardhat-waffle": "^2.0.3",
+      "@nomiclabs/hardhat-web3": "^2.0.0",
+      "@openzeppelin/contracts": "^4.8.1",
+      "@openzeppelin/hardhat-upgrades": "^1.22.1",
+      "@openzeppelin/test-helpers": "^0.5.11",
+      "@pancakeswap/eslint-config-pancake": "^1.2.0",
+      "@pancakeswap/pancake-swap-lib": "0.0.4",
+      "@cryptoswap2/v3-periphery": "^1.0.2",
+      "@types/chai": "^4.2.21",
+      "@types/mocha": "^8.2.2",
+      "@types/node": "^14.14.35",
+      "@uniswap/v3-sdk": "^3.9.0",
+      "chai": "^4.2.0",
+      "dotenv": "^8.2.0",
+      "eslint": "^7.22.0",
+      "ethereum-waffle": "^4.0.10",
+      "ethers": "^5.0.23",
+      "hardhat": "^2.12.6",
+      "hardhat-abi-exporter": "2.0.6",
+      "hardhat-contract-sizer": "^2.0.2",
+      "hardhat-watcher": "^2.1.1",
+      "prettier": "^2.3.2",
+      "prettier-plugin-solidity": "^1.0.0-beta.17",
+      "solidity-coverage": "0.8.4",
+      "ts-node": "^9.1.1",
+      "typescript": "^5.1.6",
+      "web3": "^1.3.6"
+    },
+    "dependencies": {
+      "@cryptoswap2/v3-core": "1.0.0",
+      "@cryptoswap2/v3-lm-pool": "1.0.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

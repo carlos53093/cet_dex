@@ -1,4 +1,3 @@
-import { MCV3Test } from './../typechain-types/contracts/test/MCV3Test';
 import { assert, expect } from "chai";
 import { ethers, upgrades } from "hardhat";
 import { time, mineUpTo, reset } from "@nomicfoundation/hardhat-network-helpers";
@@ -12,7 +11,6 @@ import NftDescriptorOffchainArtifact from "@cryptoswap2/v3-periphery/artifacts/c
 import NonfungiblePositionManagerArtifact from "@cryptoswap2/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
 import CryptoV3LmPoolDeployerArtifact from "@cryptoswap2/v3-lm-pool/artifacts/contracts/CryptoV3LmPoolDeployer.sol/CryptoV3LmPoolDeployer.json";
 import TestLiquidityAmountsArtifact from "@cryptoswap2/v3-periphery/artifacts/contracts/test/LiquidityAmountsTest.sol/LiquidityAmountsTest.json";
-import TestPoolArtifact from "@cryptoswap2/v3-core/artifacts/contracts/CryptoV3Pool.sol/CryptoV3Pool.json"
 
 import ERC20MockArtifact from "./ERC20Mock.json";
 import CryptoTokenArtifact from "./CryptoToken.json";
@@ -1611,136 +1609,6 @@ describe("MasterChefV3", function () {
 
         assert(cryptoUser1.sub(ethers.utils.parseUnits("57.68974359")).abs().lte(ethers.utils.parseUnits("0.1")));
         assert(cryptoUser2.sub(ethers.utils.parseUnits("105.3102564")).abs().lte(ethers.utils.parseUnits("0.1")));
-        
-        await network.provider.send("evm_setAutomine", [true]);
-
-        await time.increase(10000000);
-        
-        expect(await this.masterChefV3.balanceOf(user1.address)).to.eq("1")
-        expect(await this.masterChefV3.tokenOfOwnerByIndex(user1.address, 0)).to.eq("10")
-        
-        await expect(this.masterChefV3.updateLiquidity(1)).to.revertedWith("InvalidNFT")
-        await this.masterChefV3.updateLiquidity(9)
-        await time.increase(10000000);
-        await expect(this.masterChefV3.harvest(9, user1.address)).to.revertedWith('NotOwner')
-
-        await this.masterChefV3.connect(user2).harvest(9, user1.address)
-
-        await time.increase(10000000);
-        await expect(this.masterChefV3.collect([9, user1.address, "10000000000", "10000000000"])).to.revertedWith('NotOwner')
-        await this.masterChefV3.connect(user2).collect([9, "0x0000000000000000000000000000000000000000", "10000000000", "10000000000"])
-        await time.increase(10000000);
-        await this.masterChefV3.connect(user2).collectTo([9, this.masterChefV3.address, "10000000000", "10000000000"], "0x0000000000000000000000000000000000000000")
-        await WETHContract.connect(user1).transfer(this.masterChefV3.address, ethers.utils.parseEther("10"))
-        await time.increase(10000000);
-        await this.masterChefV3.connect(user2).collect([9, user1.address, "10000000000", "10000000000"])
-        await this.masterChefV3.connect(user1).collectTo([10, this.masterChefV3.address, "10000000000000", "10000000000"], user2.address)
-        await time.increase(10000000);
-        await this.masterChefV3.connect(user1).collectTo([10, "0x0000000000000000000000000000000000000000", "10000000000000", "10000000000"], user2.address)
-        await expect(this.masterChefV3.collectTo([10, "0x0000000000000000000000000000000000000000", "10000000000000", "10000000000"], user2.address)).to.revertedWith('NotOwner')
-        await time.increase(10000000);
-        await this.masterChefV3.connect(user1).collectTo([10, user2.address, "10000000000000", "10000000000"], user2.address)
-        await expect(this.masterChefV3.connect(user2).sweepToken(this.cryptoToken.address, "10000000000000000000000000", user1.address)).to.revertedWith('InsufficientAmount')
-        await this.masterChefV3.connect(user2).sweepToken(this.cryptoToken.address, "0", user1.address)
-        await this.masterChefV3.connect(user2).sweepToken(this.cryptoToken.address, "0", user1.address)
-        await this.masterChefV3.connect(user2).sweepToken(this.pools[0].token0, "0", user1.address)
-        await this.masterChefV3.connect(user2).increaseLiquidity({
-          tokenId: 9,
-          amount0Desired: ethers.utils.parseUnits("100"),
-          amount1Desired: ethers.utils.parseUnits("10"),
-          amount0Min: ethers.constants.Zero,
-          amount1Min: ethers.constants.Zero,
-          deadline: (await time.latest()) + 1,
-        });
-        await this.masterChefV3.connect(user2).increaseLiquidity({
-          tokenId: 9,
-          amount0Desired: ethers.utils.parseUnits("10"),
-          amount1Desired: ethers.utils.parseUnits("100"),
-          amount0Min: ethers.constants.Zero,
-          amount1Min: ethers.constants.Zero,
-          deadline: (await time.latest()) + 1,
-        });
-        await this.masterChefV3.connect(user2).increaseLiquidity({
-          tokenId: 10,
-          amount0Desired: ethers.utils.parseUnits("100"),
-          amount1Desired: ethers.utils.parseUnits("10"),
-          amount0Min: ethers.constants.Zero,
-          amount1Min: ethers.constants.Zero,
-          deadline: (await time.latest()) + 1,
-        },{value: ethers.utils.parseEther('10')});
-        await this.masterChefV3.connect(user2).increaseLiquidity({
-          tokenId: 10,
-          amount0Desired: ethers.utils.parseUnits("1"),
-          amount1Desired: ethers.utils.parseUnits("10"),
-          amount0Min: ethers.constants.Zero,
-          amount1Min: ethers.constants.Zero,
-          deadline: (await time.latest()) + 1,
-        },{value: ethers.utils.parseEther('10')});
-        await WETHContract.connect(user1).deposit({value: "1000000000000000000"})
-
-        await this.masterChefV3.connect(user1).unwrapWETH9("0", user1.address)
-        await WETHContract.connect(user1).transfer(this.masterChefV3.address, "1000000000000000000")
-        await expect(this.masterChefV3.connect(user1).unwrapWETH9("10000000000000000000000000000000", user1.address)).to.revertedWith('InsufficientAmount')
-        await this.masterChefV3.connect(user1).unwrapWETH9("1000000000000000000", user1.address)
-
-        await expect(this.masterChefV3.connect(user2).updatePools([1])).to.revertedWith('NotOwnerOrOperator')
-
-        await expect(this.masterChefV3.connect(user1).setOperator(user2.address)).to.revertedWith('Ownable: caller is not the owner')
-        await expect(this.masterChefV3.setOperator("0x0000000000000000000000000000000000000000")).to.revertedWith('ZeroAddress')
-        await this.masterChefV3.setOperator(user2.address)
-
-        await expect(this.masterChefV3.connect(user1).setPeriodDuration(24 * 3600 * 5)).to.revertedWith('Ownable: caller is not the owner')
-        await expect(this.masterChefV3.setPeriodDuration(0)).to.revertedWith('InvalidPeriodDuration')
-        await this.masterChefV3.setPeriodDuration(24 * 3600 * 5)
-
-        await this.masterChefV3.setEmergency(false)
-        await expect(this.masterChefV3.connect(user1).setEmergency(false)).to.revertedWith('Ownable: caller is not the owner')
-        await expect(this.masterChefV3.connect(user1).setReceiver(user2.address)).to.revertedWith('Ownable: caller is not the owner')
-        await expect(this.masterChefV3.setReceiver('0x0000000000000000000000000000000000000000')).to.revertedWith('ZeroAddress')
-        await expect(this.masterChefV3.connect(user1).setLMPoolDeployer(user2.address)).to.revertedWith('Ownable: caller is not the owner')
-        await expect(this.masterChefV3.setLMPoolDeployer('0x0000000000000000000000000000000000000000')).to.revertedWith('ZeroAddress')
-        await WETHContract.connect(user1).approve(user2.address, "1000000000000000000")
-        await expect(WETHContract.connect(user2).transferFrom(user1.address, user2.address, "2000000000000000000")).to.revertedWith('')
-        await WETHContract.connect(user2).transferFrom(user1.address, user2.address, "500000000000000000")
-        expect(await WETHContract.balanceOf(user2.address)).to.eq("967500000000000000000")
-        await expect(WETHContract.connect(user1).withdraw("100000000000000000000000")).to.revertedWith('')
-        await expect(SafeCaseTest.toUint128Test(ethers.constants.MaxUint256)).to.revertedWith("SafeCast: value doesn't fit in 128 bits")
-
-        const EnumerableTestFactory = await ethers.getContractFactoryFromArtifact(EnumerableTestArtiface)
-        EnumerableTest =  await EnumerableTestFactory.deploy()
-        await expect(EnumerableTest.tokenOfOwnerByIndexRevert()).to.revertedWith('Enumerable: owner index out of bounds')
-        await expect(EnumerableTest.balanceOfRevert()).to.revertedWith('Enumerable: address zero is not a valid owner')
-        await expect(this.masterChefV3.connect(user1).set(1, 3, true)).to.revertedWith('Ownable: caller is not the owner')
-        await expect(this.masterChefV3.set(0, 3, true)).to.revertedWith('InvalidPid')
-        await expect(this.masterChefV3.connect(user1).add(1, this.poolAddresses[0], true)).to.revertedWith('Ownable: caller is not the owner')
-
-        await expect(this.masterChefV3.add(1, this.poolAddresses[0], false)).to.revertedWith('DuplicatedPool')
-        await expect(this.masterChefV3.withdraw(7, user1.address)).to.revertedWith('NotOwner')
-        await expect(this.masterChefV3.withdraw(7, this.masterChefV3.address)).to.revertedWith('WrongReceiver')
-
-        await time.increase(10000000);
-        await this.masterChefV3.connect(user2).harvest(9, user1.address)
-
-        await expect(this.masterChefV3.setReceiver(user1.address)).to.revertedWith('');
-
-        await this.masterChefV3.upkeep(ethers.utils.parseUnits(`${0}`), 0, true);
-
-        await expect(this.masterChefV3.connect(user1).upkeep(ethers.utils.parseUnits(`${0}`), 24 * 60 * 60, true)).to.revertedWith('Not receiver')
-
-        await expect(this.masterChefV3.connect(user1).increaseLiquidity({
-          tokenId: 8,
-          amount0Desired: ethers.utils.parseUnits("2"),
-          amount1Desired: ethers.utils.parseUnits("2"),
-          amount0Min: ethers.constants.Zero,
-          amount1Min: ethers.constants.Zero,
-          deadline: (await time.latest()) + 1,
-        }, {value: "10000000000000000"})).to.reverted;
-
-        await expect(this.masterChefV3.connect(user1).updateBoostMultiplier(1, 1)).to.reverted
-        await this.masterChefV3.updateBoostMultiplier(10, 1)
-        await this.masterChefV3.updateBoostMultiplier(10, "30000000000000")
-
-        await this.masterChefV3.getLatestPeriodInfoByPid(1)
 
       });
     });

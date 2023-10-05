@@ -1,4 +1,4 @@
-# Squad V3
+# CryptoSwap V3
 
 
 ## Deployments
